@@ -685,13 +685,17 @@ table.data tr:last-child td{border-bottom:0}
 const CONFIG = {
   brand: "JS Apartments",
   building: "JS Mall",
-  addressLine: "JS Mall, Board Bazaar, Peshawar, Pakistan",
+  addressLine: "JS Apartments, JS Mall, Board Bazaar, Peshawar, Pakistan",
+  /* Client-provided Google Maps link. Used for every "Get Directions" and
+     "Open in Google Maps" button. */
+  googleMapsUrl: "https://maps.app.goo.gl/YfAgCxxh3Rgzsv3h9",
   /* Not yet supplied by the client — leave blank; never invent. */
   phone: "",
   whatsapp: "",
   email: "",
+  /* No verified embed URL was obtainable from the short link, so we show the
+     address and a working "Open in Google Maps" button instead. */
   mapEmbedUrl: "",
-  directionsUrl: "",
   /* Rental billing period is UNCONFIRMED. */
   rentalPeriodLabel: "contact us for rental terms",
   /* Content flags */
@@ -1128,8 +1132,11 @@ function renderFooter(force) {
         '<div class="footer-grid">' +
           '<div class="footer-col">' +
             '<a class="logo logo--light" href="#/" style="margin-bottom:1.1rem">' + logoLockup("light") + "</a>" +
-            "<p>" + esc(CONFIG.building) + ", " + esc(CONFIG.addressLine) +
+            "<p>" + esc(CONFIG.addressLine) +
               ". One-room and two-room apartments with a kitchen and washroom.</p>" +
+            '<p style="margin-top:1rem"><a href="' + esc(CONFIG.googleMapsUrl) + '" target="_blank" rel="noopener" ' +
+              'style="display:inline-flex;align-items:center;gap:.45rem;color:#A9BEDC;font-weight:600">' +
+              'Open in Google Maps</a></p>' +
           "</div>" +
           '<div class="footer-col"><h4>Explore</h4><ul>' +
             NAV_ITEMS.map(i => '<li><a href="' + i.href + '">' + esc(i.label) + "</a></li>").join("") +
@@ -1300,8 +1307,8 @@ function pageHome() {
     : '<div class="map-frame"><div class="map-placeholder">' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">' +
           '<path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>' +
-        '<strong style="color:var(--navy)">Exact map pin pending confirmation</strong>' +
-        "<span>The map will be added once management approves the exact location of " + esc(CONFIG.building) + ".</span>" +
+        '<strong style="color:var(--navy)">' + esc(CONFIG.addressLine) + '</strong>' +
+        "<span>Use the button below to open the location in Google Maps.</span>" +
       "</div></div>";
 
   return (
@@ -1381,11 +1388,9 @@ function pageHome() {
         "<div>" + mapBlock + "</div>" +
         '<div class="reveal">' +
           "<h3>Address</h3>" +
-          '<p style="margin-top:.6rem">' + esc(CONFIG.building) + "<br>" + esc(CONFIG.addressLine) + "</p>" +
-          (CONFIG.directionsUrl
-            ? '<a class="btn btn-primary" href="' + esc(CONFIG.directionsUrl) + '" target="_blank" rel="noopener">Get Directions</a>'
-            : '<button class="btn btn-outline" type="button" disabled aria-disabled="true">Get Directions</button>' +
-              '<p class="price-note" style="margin-top:.75rem">Directions will be enabled once the exact map pin is confirmed.</p>') +
+          '<p style="margin-top:.6rem">' + esc(CONFIG.addressLine) + "</p>" +
+          '<a class="btn btn-primary" href="' + esc(CONFIG.googleMapsUrl) + '" target="_blank" rel="noopener" ' +
+            'style="margin-top:1rem">Open in Google Maps</a>' +
         "</div>" +
       "</div>" +
     "</div></section>" +
@@ -1662,9 +1667,8 @@ function pageLocation() {
     : '<div class="map-frame"><div class="map-placeholder">' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">' +
           '<path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>' +
-        '<strong style="color:var(--navy)">Approved map pin pending</strong>' +
-        "<span>An embedded map will appear here once management confirms the exact location. " +
-        "We do not publish an unverified pin.</span>" +
+        '<strong style="color:var(--navy)">' + esc(CONFIG.addressLine) + '</strong>' +
+        "<span>Tap the button below to open the exact location in Google Maps.</span>" +
       "</div></div>";
 
   return pageHead("Location", CONFIG.addressLine, "Location") +
@@ -1677,17 +1681,13 @@ function pageLocation() {
           '<li><span class="k">Building</span><span class="v">' + esc(CONFIG.building) + "</span></li>" +
           '<li><span class="k">Area</span><span class="v">Board Bazaar</span></li>' +
           '<li><span class="k">City</span><span class="v">Peshawar, Pakistan</span></li>' +
-          '<li><span class="k">Map pin</span><span class="v">To be confirmed</span></li>' +
+          '<li><span class="k">Map pin</span><span class="v">Provided by management</span></li>' +
         "</ul>" +
         '<div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.75rem">' +
-          (CONFIG.directionsUrl
-            ? '<a class="btn btn-primary" href="' + esc(CONFIG.directionsUrl) + '" target="_blank" rel="noopener">Get Directions</a>'
-            : '<button class="btn btn-outline" type="button" disabled aria-disabled="true">Get Directions</button>') +
+          '<a class="btn btn-primary" href="' + esc(CONFIG.googleMapsUrl) + '" target="_blank" rel="noopener">' +
+            "Open in Google Maps</a>" +
           '<a class="btn btn-outline" href="#/request?type=viewing">Schedule a Viewing</a>' +
         "</div>" +
-        (!CONFIG.directionsUrl
-          ? '<p class="price-note" style="margin-top:1rem">Directions become available once the verified map link is added in the management dashboard.</p>'
-          : "") +
       "</div>" +
     "</div></div></section>";
 }
@@ -1700,17 +1700,15 @@ function pageContact() {
   if (CONFIG.phone) rows.push(["Phone", CONFIG.phone]);
   if (CONFIG.whatsapp) rows.push(["WhatsApp", "Available"]);
   if (CONFIG.email) rows.push(["Email", CONFIG.email]);
+  rows.push(["Address", CONFIG.addressLine]);
 
-  const contactBlock = rows.length
-    ? '<ul class="fact-list">' + rows.map(r =>
-        '<li><span class="k">' + esc(r[0]) + '</span><span class="v">' + esc(r[1]) + "</span></li>").join("") + "</ul>" +
-      '<div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.5rem">' +
-        (CONFIG.phone ? '<a class="btn btn-primary" href="tel:' + esc(CONFIG.phone.replace(/\s/g, "")) + '">Call management</a>' : "") +
-        (CONFIG.whatsapp ? '<a class="btn btn-outline" href="https://wa.me/' + esc(CONFIG.whatsapp) + '" target="_blank" rel="noopener">WhatsApp</a>' : "") +
-      "</div>"
-    : '<div class="notice notice--info"><div><strong>Contact details are being confirmed</strong>' +
-      "A verified phone number and WhatsApp number have not been supplied yet, so they are not published here. " +
-      "Please use the request form and management will contact you.</div></div>";
+  const contactBlock = '<ul class="fact-list">' + rows.map(r =>
+      '<li><span class="k">' + esc(r[0]) + '</span><span class="v">' + esc(r[1]) + "</span></li>").join("") + "</ul>" +
+    '<div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.5rem">' +
+      (CONFIG.phone ? '<a class="btn btn-primary" href="tel:' + esc(CONFIG.phone.replace(/\s/g, "")) + '">Call management</a>' : "") +
+      (CONFIG.whatsapp ? '<a class="btn btn-outline" href="https://wa.me/' + esc(CONFIG.whatsapp) + '" target="_blank" rel="noopener">WhatsApp</a>' : "") +
+      '<a class="btn btn-outline" href="' + esc(CONFIG.googleMapsUrl) + '" target="_blank" rel="noopener">Open in Google Maps</a>' +
+    "</div>";
 
   return pageHead("Contact Management",
       "Send a booking or viewing request and management will get back to you.", "Contact") +
@@ -2152,10 +2150,10 @@ function adminSettings() {
       '<div class="field"><label for="s-period">Rental period wording</label>' +
         '<input id="s-period" name="rentalPeriodLabel" type="text" value="' + esc(CONFIG.rentalPeriodLabel) + '">' +
         '<span class="hint">Shown after every price until the billing period is confirmed.</span></div>' +
-      '<div class="field span-2"><label for="s-map">Approved Google Maps embed URL</label>' +
+      '<div class="field span-2"><label for="s-mapurl">Google Maps link <span class="hint">(used for every directions button)</span></label>' +
+        '<input id="s-mapurl" name="googleMapsUrl" type="url" value="' + esc(CONFIG.googleMapsUrl) + '"></div>' +
+      '<div class="field span-2"><label for="s-map">Approved Google Maps embed URL <span class="hint">(optional, for an inline map)</span></label>' +
         '<input id="s-map" name="mapEmbedUrl" type="url" value="' + esc(CONFIG.mapEmbedUrl) + '" placeholder="https://www.google.com/maps/embed?..."></div>' +
-      '<div class="field span-2"><label for="s-dir">Get Directions link</label>' +
-        '<input id="s-dir" name="directionsUrl" type="url" value="' + esc(CONFIG.directionsUrl) + '" placeholder="https://maps.app.goo.gl/..."></div>' +
       '<div class="field span-2">' +
         '<label class="radio-pill" style="display:inline-flex;align-items:center;gap:.6rem">' +
           '<input type="checkbox" name="showDemoData" ' + (CONFIG.showDemoData ? "checked" : "") + ">" +
@@ -2427,8 +2425,8 @@ document.addEventListener("submit", function (e) {
     CONFIG.whatsapp = (fd.get("whatsapp") || "").toString().replace(/[^\d]/g, "");
     CONFIG.email = (fd.get("email") || "").toString().trim();
     CONFIG.rentalPeriodLabel = (fd.get("rentalPeriodLabel") || "").toString().trim();
+    CONFIG.googleMapsUrl = (fd.get("googleMapsUrl") || "").toString().trim();
     CONFIG.mapEmbedUrl = (fd.get("mapEmbedUrl") || "").toString().trim();
-    CONFIG.directionsUrl = (fd.get("directionsUrl") || "").toString().trim();
     CONFIG.showDemoData = fd.get("showDemoData") === "on";
     form.querySelector("#s-status").innerHTML =
       '<div class="notice notice--info"><div><strong>Saved for this session only</strong>' +
