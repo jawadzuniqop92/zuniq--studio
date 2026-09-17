@@ -1,722 +1,2522 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Zuniq Studio — Software House & AI Automation</title>
-<meta name="description" content="Zuniq Studio crafts high-performance software, AI agents, automation systems, and digital products for global businesses." />
-
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/lucide@latest"></script>
-
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        ink: '#05060A',
-        panel: '#0A0C12',
-        line: '#1A1D28',
-        accent: '#5B8CFF',
-        mint: '#5BFFC4',
-        soft: '#8892A6',
-      },
-      fontFamily: { sans: ['Inter','sans-serif'], mono: ['JetBrains Mono','monospace'] },
-    }
-  }
-}
-</script>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JS Apartments — One &amp; Two-Room Apartments at JS Mall, Board Bazaar, Peshawar</title>
+<meta name="description" content="JS Apartments offers one-room and two-room apartments with a kitchen and washroom at JS Mall, Board Bazaar, Peshawar. Request a viewing or a booking online.">
+<meta name="theme-color" content="#0B1F3A">
+<meta property="og:title" content="JS Apartments — Board Bazaar, Peshawar">
+<meta property="og:description" content="One-room and two-room apartments with a kitchen and washroom at JS Mall, Board Bazaar, Peshawar.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<link rel="icon" href="data:,">
 <style>
-  html, body { background:#05060A; color:#E6E8EF; overflow-x:hidden; }
-  body { font-family:'Inter',sans-serif; }
-  ::selection { background:#5B8CFF; color:#05060A; }
-  ::-webkit-scrollbar { width:8px; } ::-webkit-scrollbar-track { background:#05060A; } ::-webkit-scrollbar-thumb { background:#1A1D28; border-radius:4px; } ::-webkit-scrollbar-thumb:hover { background:#5B8CFF; }
+/* ============================================================================
+   JS APARTMENTS — DESIGN SYSTEM
+   ============================================================================ */
+:root{
+  --navy:#0B1F3A;
+  --navy-2:#16325A;
+  --blue:#1D4ED8;
+  --blue-dark:#1A43B8;
+  --blue-tint:#EAF0FE;
+  --ink:#0B1F3A;
+  --muted:#5B6B85;
+  --muted-2:#8496B0;
+  --line:#E4EAF2;
+  --line-2:#D3DCE9;
+  --surface:#F7F9FC;
+  --surface-2:#EDF2F8;
+  --white:#fff;
+  --ok:#0F7A4A;      --ok-bg:#E7F5EE;
+  --warn:#8A5A00;    --warn-bg:#FDF3E2;
+  --busy:#8A2B2B;    --busy-bg:#FBEBEB;
+  --r:18px;
+  --r-sm:12px;
+  --r-xs:9px;
+  --sh-1:0 1px 2px rgba(11,31,58,.05),0 8px 22px rgba(11,31,58,.05);
+  --sh-2:0 18px 44px rgba(11,31,58,.10);
+  --sh-3:0 34px 90px rgba(11,31,58,.18);
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --max:1220px;
+  --header-h:74px;
+}
 
-  /* Reveal */
-  .reveal { opacity:0; transform:translateY(28px); transition:all .9s cubic-bezier(.16,1,.3,1); }
-  .reveal.in { opacity:1; transform:translateY(0); }
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--white);color:var(--ink);
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+body.no-scroll{overflow:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,h4{margin:0;line-height:1.12;letter-spacing:-.022em;font-weight:700;color:var(--navy)}
+h1{font-size:clamp(2.2rem,5.4vw,3.9rem);letter-spacing:-.035em;font-weight:800}
+h2{font-size:clamp(1.55rem,3.1vw,2.4rem)}
+h3{font-size:1.13rem}
+p{margin:0 0 1rem}
+p:last-child{margin-bottom:0}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:6px}
+::selection{background:var(--blue);color:#fff}
+.container{width:100%;max-width:var(--max);margin:0 auto;padding:0 22px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--navy);color:#fff;padding:.8rem 1.3rem;z-index:300;border-radius:0 0 8px 0}
+.skip:focus{left:0}
 
-  /* Glow */
-  .glow { position:absolute; border-radius:50%; filter:blur(120px); opacity:.28; z-index:0; pointer-events:none; }
+/* --- Typography helpers --- */
+.eyebrow{display:inline-block;font-size:.71rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--blue);margin-bottom:.9rem}
+.lede{font-size:1.06rem;color:var(--muted);max-width:62ch}
+.section{padding:clamp(3.5rem,8vw,6.5rem) 0}
+.section--tight{padding:clamp(2.5rem,5vw,4rem) 0}
+.section--surface{background:var(--surface)}
+.section-head{max-width:66ch;margin-bottom:clamp(1.9rem,4vw,3rem)}
+.section-head h2{margin-bottom:.85rem}
+.rule{height:1px;background:var(--line);border:0;margin:0}
 
-  /* Grid bg */
-  .bg-grid {
-    background-image:
-      linear-gradient(rgba(91,140,255,.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(91,140,255,.05) 1px, transparent 1px);
-    background-size:64px 64px;
+/* ============================================================================
+   BUTTONS
+   ============================================================================ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  font-weight:600;font-size:.95rem;line-height:1;padding:.92rem 1.45rem;
+  border-radius:var(--r-xs);border:1px solid transparent;cursor:pointer;text-decoration:none;
+  transition:background-color .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease),
+             transform .2s var(--ease),box-shadow .2s var(--ease);
+  white-space:nowrap;position:relative;
+}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--blue);color:#fff;box-shadow:0 8px 22px rgba(29,78,216,.22)}
+.btn-primary:hover{background:var(--blue-dark);box-shadow:0 12px 30px rgba(29,78,216,.30);transform:translateY(-1px)}
+.btn-outline{background:#fff;border-color:var(--line-2);color:var(--navy)}
+.btn-outline:hover{background:var(--surface);border-color:#B7C7DC;transform:translateY(-1px)}
+.btn-quiet{background:transparent;color:var(--navy);border-color:transparent}
+.btn-quiet:hover{background:var(--surface)}
+.btn-sm{padding:.66rem 1.05rem;font-size:.875rem}
+.btn-lg{padding:1.08rem 1.75rem;font-size:1.01rem}
+.btn-block{width:100%}
+.btn[disabled],.btn[aria-disabled="true"]{opacity:.5;cursor:not-allowed;box-shadow:none;transform:none}
+
+/* Frosted-glass secondary button (readable on photography) */
+.btn-glass{
+  background:rgba(255,255,255,.14);
+  border-color:rgba(255,255,255,.55);
+  color:#fff;
+  -webkit-backdrop-filter:blur(14px) saturate(160%);
+  backdrop-filter:blur(14px) saturate(160%);
+  text-shadow:0 1px 3px rgba(6,16,32,.45);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18);
+}
+.btn-glass:hover{background:rgba(255,255,255,.26);border-color:rgba(255,255,255,.85);transform:translateY(-1px)}
+@supports not ((-webkit-backdrop-filter:blur(6px)) or (backdrop-filter:blur(6px))){
+  .btn-glass{background:rgba(11,31,58,.78);border-color:rgba(255,255,255,.5)}
+  .btn-glass:hover{background:rgba(11,31,58,.9)}
+}
+
+/* ============================================================================
+   HEADER
+   ============================================================================ */
+.site-header{
+  position:sticky;top:0;z-index:90;
+  background:rgba(255,255,255,.9);
+  -webkit-backdrop-filter:blur(18px) saturate(170%);
+  backdrop-filter:blur(18px) saturate(170%);
+  border-bottom:1px solid var(--line);
+}
+@supports not ((-webkit-backdrop-filter:blur(6px)) or (backdrop-filter:blur(6px))){
+  .site-header{background:#fff}
+}
+.header-inner{display:flex;align-items:center;gap:1.4rem;min-height:var(--header-h)}
+.logo{display:inline-flex;align-items:center;gap:.7rem;text-decoration:none;flex:0 0 auto}
+.logo-mark{width:38px;height:38px;flex:0 0 auto;overflow:visible}
+.logo-text{
+  font-size:1.03rem;letter-spacing:-.02em;color:var(--navy);font-weight:400;white-space:nowrap;
+  transition:opacity .3s ease;
+}
+.logo-text strong{font-weight:800;letter-spacing:-.035em}
+
+/* Logo mark colours */
+.logo-mark .logo-fill path:nth-child(1){fill:var(--navy)}
+.logo-mark .logo-fill path:nth-child(2){fill:var(--blue)}
+.logo-mark .logo-stroke{stroke:var(--blue)}
+.logo-mark .logo-windows{fill:#fff}
+.logo--light .logo-fill path:nth-child(1){fill:rgba(255,255,255,.5)}
+.logo--light .logo-fill path:nth-child(2){fill:#fff}
+.logo--light .logo-stroke{stroke:rgba(255,255,255,.85)}
+.logo--light .logo-windows{fill:var(--navy)}
+.logo--light .logo-text{color:#fff}
+
+/* Default (static) state */
+.logo-mark .logo-fill,
+.logo-mark .logo-windows{opacity:1}
+.logo-mark .logo-stroke path{stroke-dasharray:1;stroke-dashoffset:0}
+
+/* Animated state — runs once on the first visit */
+.logo-anim .logo-mark .logo-fill{opacity:0;animation:logoFill .5s ease-out .58s forwards}
+.logo-anim .logo-mark .logo-stroke path{
+  stroke-dashoffset:1;
+  animation:logoDraw .82s cubic-bezier(.65,0,.35,1) forwards;
+}
+.logo-anim .logo-mark .logo-stroke path:nth-child(1){animation-delay:.02s}
+.logo-anim .logo-mark .logo-stroke path:nth-child(2){animation-delay:.14s}
+.logo-anim .logo-mark .logo-stroke path:nth-child(3){animation-delay:.34s}
+.logo-anim .logo-mark .logo-windows{opacity:0;animation:logoFill .38s ease-out .72s forwards}
+.logo-anim .logo-text{opacity:0;transform:translateY(4px);animation:logoTextIn .55s var(--ease) .82s forwards}
+
+@keyframes logoDraw{to{stroke-dashoffset:0}}
+@keyframes logoFill{to{opacity:1}}
+@keyframes logoTextIn{to{opacity:1;transform:none}}
+
+/* Nav */
+.nav{display:flex;align-items:center;gap:.3rem;margin-left:auto}
+.nav a{
+  text-decoration:none;font-size:.92rem;font-weight:500;color:var(--navy-2);
+  padding:.56rem .82rem;border-radius:var(--r-xs);
+  transition:background-color .18s,color .18s;
+}
+.nav a:hover{background:var(--surface);color:var(--navy)}
+.nav a[aria-current="page"]{color:var(--blue);background:var(--blue-tint);font-weight:600}
+.header-actions{display:flex;align-items:center;gap:.6rem;margin-left:auto}
+.nav + .header-actions{margin-left:.8rem}
+.nav-toggle{
+  display:none;width:44px;height:44px;border:1px solid var(--line-2);background:#fff;
+  border-radius:var(--r-xs);cursor:pointer;align-items:center;justify-content:center;
+}
+.nav-toggle span{display:block;width:18px;height:1.6px;background:var(--navy);position:relative;transition:.22s}
+.nav-toggle span::before,.nav-toggle span::after{
+  content:"";position:absolute;left:0;width:18px;height:1.6px;background:var(--navy);transition:.22s;
+}
+.nav-toggle span::before{top:-6px}
+.nav-toggle span::after{top:6px}
+.nav-toggle[aria-expanded="true"] span{background:transparent}
+.nav-toggle[aria-expanded="true"] span::before{top:0;transform:rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg)}
+
+@media (max-width:980px){
+  .nav{
+    position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;
+    background:#fff;border-bottom:1px solid var(--line);padding:.7rem 22px 1.3rem;gap:.1rem;
+    box-shadow:var(--sh-2);display:none;
   }
+  .nav.open{display:flex}
+  .nav a{padding:.88rem .75rem;font-size:1rem}
+  .nav-toggle{display:inline-flex}
+  .header-actions .btn-primary{display:none}
+  .header-actions{margin-left:0}
+  .nav{margin-left:0}
+  .header-inner{justify-content:space-between}
+}
+/* First-visit header entrance */
+.first-visit .site-header{opacity:0;animation:fadeDown .55s var(--ease) .05s forwards}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
 
-  /* Image sticker placeholder */
-  .sticker {
-    background:
-      repeating-linear-gradient(45deg, rgba(91,140,255,.06) 0 8px, transparent 8px 16px),
-      linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.005));
-    border:1.5px dashed rgba(91,140,255,.35);
+/* ============================================================================
+   HERO
+   ============================================================================ */
+.hero{
+  position:relative;color:#fff;overflow:hidden;
+  min-height:clamp(600px,92vh,900px);
+  display:grid;grid-template-rows:1fr auto;
+  isolation:isolate;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:-2;
+  width:100%;height:100%;object-fit:cover;object-position:center 58%;
+  animation:heroZoom 2.6s cubic-bezier(.22,.61,.36,1) both;
+}
+@keyframes heroZoom{from{transform:scale(1.07)}to{transform:scale(1)}}
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(7,18,38,.68) 0%,rgba(7,18,38,.42) 34%,rgba(7,18,38,.52) 62%,rgba(7,18,38,.86) 100%),
+    radial-gradient(1200px 600px at 15% 30%,rgba(7,18,38,.42),transparent 70%);
+}
+.hero-content{
+  align-self:end;
+  padding:clamp(5rem,11vw,8rem) 0 clamp(1.75rem,4vw,2.75rem);
+  max-width:64ch;
+}
+.hero-eyebrow{
+  display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.82);margin-bottom:1.1rem;
+  padding:.42rem .8rem;border-radius:999px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+}
+.hero h1{color:#fff;margin-bottom:1.05rem;text-shadow:0 2px 24px rgba(4,12,28,.35)}
+.hero-sub{
+  font-size:clamp(1.02rem,2vw,1.2rem);color:rgba(255,255,255,.88);max-width:44ch;
+  margin-bottom:2rem;text-shadow:0 1px 12px rgba(4,12,28,.4);
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.75rem}
+.hero-finder-wrap{padding-bottom:clamp(1.5rem,4vw,2.75rem)}
+/* Hero entrance animation */
+.first-visit .hero-bg{animation:heroZoom 2.6s cubic-bezier(.22,.61,.36,1) both, heroFade 1.1s ease both}
+@keyframes heroFade{from{opacity:.4}to{opacity:1}}
+.first-visit .hero-eyebrow{opacity:0;animation:fadeUp .6s var(--ease) .8s forwards}
+.first-visit .hero h1{opacity:0;animation:fadeUp .75s var(--ease) .92s forwards}
+.first-visit .hero-sub{opacity:0;animation:fadeUp .65s var(--ease) 1.06s forwards}
+.first-visit .hero-actions{opacity:0;animation:fadeUp .65s var(--ease) 1.18s forwards}
+.first-visit .hero-finder-wrap .finder{opacity:0;animation:fadeUp .8s var(--ease) 1.28s forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* ============================================================================
+   FINDER
+   ============================================================================ */
+.finder{
+  background:rgba(255,255,255,.95);
+  -webkit-backdrop-filter:blur(22px) saturate(170%);
+  backdrop-filter:blur(22px) saturate(170%);
+  border:1px solid rgba(255,255,255,.6);
+  border-radius:var(--r);
+  box-shadow:0 26px 70px rgba(6,16,32,.30);
+  padding:1.3rem;
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;
+  gap:1rem;align-items:end;
+}
+@supports not ((-webkit-backdrop-filter:blur(6px)) or (backdrop-filter:blur(6px))){
+  .finder{background:#fff}
+}
+.field{display:flex;flex-direction:column;gap:.4rem;min-width:0}
+.field label{font-size:.79rem;font-weight:700;color:var(--navy);letter-spacing:.01em}
+.field .hint{font-size:.75rem;color:var(--muted-2);font-weight:400}
+input[type="text"],input[type="tel"],input[type="email"],input[type="date"],input[type="time"],
+input[type="number"],input[type="password"],input[type="url"],select,textarea{
+  width:100%;padding:.8rem .88rem;border:1px solid var(--line-2);border-radius:var(--r-xs);
+  background:#fff;color:var(--navy);font-size:.94rem;
+  transition:border-color .18s,box-shadow .18s;appearance:none;
+}
+select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%235B6B85' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right .9rem center;background-size:12px;padding-right:2.3rem;
+}
+textarea{min-height:124px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(29,78,216,.14)}
+input[aria-invalid="true"],select[aria-invalid="true"],textarea[aria-invalid="true"]{
+  border-color:#C0392B;box-shadow:0 0 0 3px rgba(192,57,43,.1)}
+.err{font-size:.78rem;color:#B3261E;font-weight:500}
+@media (max-width:900px){.finder{grid-template-columns:1fr 1fr}.finder .btn{grid-column:1/-1}}
+@media (max-width:540px){.finder{grid-template-columns:1fr;padding:1.1rem}}
+
+/* ============================================================================
+   FIGURES / IMAGERY
+   ============================================================================ */
+.figure{
+  position:relative;margin:0;overflow:hidden;border-radius:var(--r);
+  background:linear-gradient(135deg,#E8EEF6,#DCE5F0);
+}
+.figure img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.figure--4x3{aspect-ratio:4/3}
+.figure--3x2{aspect-ratio:3/2}
+.figure--2x1{aspect-ratio:2/1}
+.figure--1x1{aspect-ratio:1/1}
+.figure--4x5{aspect-ratio:4/5}
+.figure--16x9{aspect-ratio:16/9}
+.figure-btn{
+  display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;
+  border-radius:var(--r);overflow:hidden;
+}
+.figure-btn:hover img{transform:scale(1.04)}
+.img-note{
+  position:absolute;left:12px;bottom:12px;z-index:2;
+  font-size:.68rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+  color:#fff;background:rgba(11,31,58,.7);padding:.34rem .6rem;border-radius:6px;
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+}
+.gallery-note{
+  font-size:.86rem;color:var(--muted);font-style:italic;
+  padding:.7rem 0 0;margin:0;display:flex;align-items:center;gap:.55rem;
+}
+.gallery-note::before{
+  content:"";width:22px;height:1px;background:var(--line-2);flex:0 0 auto;
+}
+
+/* ============================================================================
+   GRIDS / CARDS
+   ============================================================================ */
+.grid{display:grid;gap:1.6rem}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:1000px){.grid-3,.grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}}
+
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:box-shadow .3s var(--ease),transform .3s var(--ease),border-color .3s var(--ease);
+}
+.card:hover{box-shadow:var(--sh-2);transform:translateY(-4px);border-color:var(--line-2)}
+.card .figure{border-radius:0}
+.card-body{padding:1.45rem;display:flex;flex-direction:column;gap:1rem;flex:1}
+.card-title{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
+.card-title h3{margin-bottom:.25rem}
+.card-sub{font-size:.83rem;color:var(--muted);font-weight:500}
+.price{font-size:1.4rem;font-weight:800;color:var(--navy);letter-spacing:-.028em;line-height:1.15}
+.price-note{font-size:.82rem;color:var(--muted);font-weight:500}
+.feature-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.feature-list li{display:flex;align-items:flex-start;gap:.62rem;font-size:.9rem;color:var(--navy-2)}
+.feature-list li::before{
+  content:"";flex:0 0 auto;width:6px;height:6px;margin-top:.52rem;border-radius:50%;background:var(--blue);
+}
+.card-actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:auto;padding-top:.4rem}
+.card-actions .btn{flex:1 1 auto}
+
+/* Badges */
+.badge{
+  display:inline-flex;align-items:center;gap:.42rem;font-size:.71rem;font-weight:700;
+  letter-spacing:.05em;text-transform:uppercase;padding:.33rem .62rem;border-radius:999px;white-space:nowrap;
+}
+.badge::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.badge--available{color:var(--ok);background:var(--ok-bg)}
+.badge--pending{color:var(--warn);background:var(--warn-bg)}
+.badge--occupied{color:var(--busy);background:var(--busy-bg)}
+.badge--demo{color:var(--muted);background:var(--surface-2)}
+.badge--demo::before{display:none}
+
+/* ============================================================================
+   SPLIT LAYOUTS (varied, not boxed)
+   ============================================================================ */
+.split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.split--top{align-items:start}
+@media (max-width:900px){.split{grid-template-columns:1fr;gap:2.25rem}}
+.fact-list{list-style:none;margin:1.75rem 0 0;padding:0;border-top:1px solid var(--line)}
+.fact-list li{
+  display:flex;justify-content:space-between;gap:1.5rem;padding:.95rem 0;
+  border-bottom:1px solid var(--line);font-size:.93rem;
+}
+.fact-list .k{color:var(--muted)}
+.fact-list .v{font-weight:600;color:var(--navy);text-align:right}
+
+/* Feature strip (photography + copy) */
+.feature-row{
+  display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;
+}
+.feature-row--flip .feature-row__media{order:2}
+@media (max-width:900px){
+  .feature-row{grid-template-columns:1fr;gap:2rem}
+  .feature-row--flip .feature-row__media{order:0}
+}
+
+/* ============================================================================
+   GALLERY
+   ============================================================================ */
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+.chip{
+  border:1px solid var(--line-2);background:#fff;color:var(--navy-2);
+  padding:.52rem .98rem;border-radius:999px;font-size:.86rem;font-weight:600;cursor:pointer;
+  transition:.2s var(--ease);
+}
+.chip:hover{background:var(--surface);border-color:#B7C7DC}
+.chip[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+
+.gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.gallery-grid .figure{aspect-ratio:1/1}
+.gallery-grid .g-feature{grid-column:span 2}
+.gallery-grid .g-feature .figure{aspect-ratio:2/1}
+@media (max-width:820px){
+  .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+}
+@media (max-width:560px){
+  .gallery-grid{grid-template-columns:1fr}
+  .gallery-grid .g-feature{grid-column:auto}
+  .gallery-grid .g-feature .figure{aspect-ratio:4/3}
+  .gallery-grid .figure{aspect-ratio:4/3}
+}
+
+/* ============================================================================
+   LIGHTBOX
+   ============================================================================ */
+.lightbox{
+  position:fixed;inset:0;z-index:220;background:rgba(5,14,30,.95);
+  display:none;align-items:center;justify-content:center;padding:clamp(1rem,4vw,3rem);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+}
+.lightbox.open{display:flex;animation:lbIn .25s ease}
+@keyframes lbIn{from{opacity:0}to{opacity:1}}
+.lightbox img{
+  max-width:min(1280px,92vw);max-height:78vh;object-fit:contain;border-radius:14px;
+  box-shadow:0 40px 100px rgba(0,0,0,.5);
+}
+.lb-bar{
+  position:absolute;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem clamp(1rem,4vw,2rem);gap:1rem;color:#fff;
+}
+.lb-caption{
+  position:absolute;bottom:0;left:0;right:0;text-align:center;
+  color:#D3DFF0;font-size:.9rem;padding:1.35rem 1rem;
+}
+.lb-btn{
+  width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.35);
+  background:rgba(255,255,255,.12);color:#fff;cursor:pointer;display:inline-flex;
+  align-items:center;justify-content:center;font-size:1.15rem;line-height:1;
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:background .18s,transform .18s;
+}
+.lb-btn:hover{background:rgba(255,255,255,.26);transform:scale(1.04)}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);display:flex;gap:1rem}
+.lb-prev{left:clamp(.5rem,2vw,1.5rem)}
+.lb-next{right:clamp(.5rem,2vw,1.5rem)}
+.lb-counter{font-size:.85rem;color:#B9C9E2;font-variant-numeric:tabular-nums}
+
+/* ============================================================================
+   FORMS
+   ============================================================================ */
+.form-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r);
+  padding:clamp(1.5rem,4vw,2.5rem);box-shadow:var(--sh-1);
+}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.15rem}
+.form-grid .span-2{grid-column:1/-1}
+@media (max-width:640px){.form-grid{grid-template-columns:1fr}}
+.radio-row{display:flex;gap:.6rem;flex-wrap:wrap}
+.radio-pill{position:relative}
+.radio-pill input{position:absolute;opacity:0;width:1px;height:1px}
+.radio-pill span{
+  display:inline-block;padding:.64rem 1.05rem;border:1px solid var(--line-2);
+  border-radius:999px;font-size:.88rem;font-weight:600;color:var(--navy-2);cursor:pointer;
+  transition:.18s var(--ease);
+}
+.radio-pill input:checked + span{background:var(--navy);border-color:var(--navy);color:#fff}
+.radio-pill input:focus-visible + span{outline:2px solid var(--blue);outline-offset:2px}
+.privacy{
+  font-size:.82rem;color:var(--muted);background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-xs);padding:.95rem 1.05rem;margin-top:1.25rem;
+}
+.notice{
+  border-radius:var(--r-sm);padding:1rem 1.15rem;font-size:.9rem;border:1px solid;
+  display:flex;gap:.75rem;align-items:flex-start;line-height:1.55;
+}
+.notice strong{display:block;margin-bottom:.2rem}
+.notice--info{background:var(--blue-tint);border-color:#C9D9FB;color:#14346F}
+.notice--warn{background:var(--warn-bg);border-color:#F0DDB8;color:#6B4500}
+.notice--ok{background:var(--ok-bg);border-color:#C3E6D3;color:#0B5C37}
+.notice--err{background:var(--busy-bg);border-color:#EFC7C7;color:#7A2222}
+
+/* ============================================================================
+   STICKY MOBILE BAR
+   ============================================================================ */
+.mobile-bar{
+  display:none;position:fixed;left:0;right:0;bottom:0;z-index:80;
+  background:rgba(255,255,255,.95);border-top:1px solid var(--line);
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+  padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom));gap:.6rem;
+}
+.mobile-bar .btn{flex:1}
+@media (max-width:700px){
+  .mobile-bar{display:flex}
+  body.has-mobile-bar{padding-bottom:86px}
+}
+
+/* ============================================================================
+   MAP
+   ============================================================================ */
+.map-frame{
+  border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface-2);
+  aspect-ratio:16/11;position:relative;
+}
+.map-frame iframe{width:100%;height:100%;border:0;display:block}
+.map-placeholder{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:.75rem;text-align:center;padding:2rem;color:var(--muted);
+  background:
+    linear-gradient(0deg,rgba(255,255,255,.55),rgba(255,255,255,.55)),
+    repeating-linear-gradient(0deg,transparent 0 39px,#DCE4EF 39px 40px),
+    repeating-linear-gradient(90deg,transparent 0 39px,#DCE4EF 39px 40px),
+    var(--surface-2);
+}
+.map-placeholder svg{width:34px;height:34px;color:var(--blue)}
+
+/* ============================================================================
+   CTA BAND
+   ============================================================================ */
+.cta-band{
+  position:relative;overflow:hidden;border-radius:var(--r);
+  padding:clamp(2.5rem,6vw,4.5rem);color:#fff;
+  background:var(--navy);
+}
+.cta-band::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(900px 420px at 88% -8%,rgba(29,78,216,.5),transparent 70%),
+    radial-gradient(620px 320px at 8% 118%,rgba(29,78,216,.32),transparent 70%);
+}
+.cta-band > *{position:relative}
+.cta-band h2{color:#fff;margin-bottom:.9rem}
+.cta-band p{color:#C3D2E8;max-width:54ch;margin-bottom:2rem}
+.cta-actions{display:flex;flex-wrap:wrap;gap:.75rem}
+
+/* ============================================================================
+   FOOTER
+   ============================================================================ */
+.site-footer{
+  background:var(--navy);color:#B9C9E2;
+  margin-top:clamp(3rem,8vw,6rem);padding:clamp(2.5rem,6vw,4rem) 0 1.5rem;
+}
+.footer-grid{
+  display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2.5rem;
+  padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.12);
+}
+@media (max-width:820px){.footer-grid{grid-template-columns:1fr 1fr;gap:2rem}}
+@media (max-width:520px){.footer-grid{grid-template-columns:1fr}}
+.footer-col h4{
+  color:#fff;font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;
+  margin-bottom:1rem;font-weight:700;
+}
+.footer-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.6rem}
+.footer-col a{color:#B9C9E2;text-decoration:none;font-size:.9rem;transition:color .18s}
+.footer-col a:hover{color:#fff}
+.footer-col p{font-size:.9rem;color:#9FB2CE;max-width:40ch;margin-top:1rem}
+.footer-bottom{
+  display:flex;flex-wrap:wrap;gap:.75rem;justify-content:space-between;align-items:center;
+  padding-top:1.5rem;font-size:.8rem;color:#8FA3C2;
+}
+.footer-note{font-size:.78rem;color:#8FA3C2;margin-top:1rem;max-width:76ch;line-height:1.6}
+.footer-note a{color:#A9BEDC}
+
+/* ============================================================================
+   ADMIN
+   ============================================================================ */
+.admin-shell{padding:clamp(2rem,5vw,3.5rem) 0 5rem;background:var(--surface);min-height:70vh}
+.admin-tabs{display:flex;gap:.4rem;border-bottom:1px solid var(--line-2);margin-bottom:2rem;flex-wrap:wrap}
+.admin-tabs button{
+  background:none;border:0;border-bottom:2px solid transparent;padding:.8rem 1rem;
+  font-size:.9rem;font-weight:600;color:var(--muted);cursor:pointer;transition:.18s;
+}
+.admin-tabs button:hover{color:var(--navy)}
+.admin-tabs button[aria-selected="true"]{color:var(--blue);border-bottom-color:var(--blue)}
+.panel{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:clamp(1.25rem,3vw,2rem)}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table.data{width:100%;border-collapse:collapse;font-size:.88rem;min-width:680px}
+table.data th{
+  text-align:left;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  padding:.75rem;border-bottom:1px solid var(--line-2);font-weight:700;white-space:nowrap;
+}
+table.data td{padding:.85rem .75rem;border-bottom:1px solid var(--line);vertical-align:middle}
+table.data tr:last-child td{border-bottom:0}
+.row-actions{display:flex;gap:.4rem;justify-content:flex-end}
+.icon-btn{
+  border:1px solid var(--line-2);background:#fff;border-radius:var(--r-xs);
+  padding:.44rem .72rem;font-size:.8rem;font-weight:600;cursor:pointer;color:var(--navy-2);transition:.18s;
+}
+.icon-btn:hover{background:var(--surface);color:var(--navy)}
+.icon-btn--danger:hover{background:var(--busy-bg);border-color:#EFC7C7;color:#8A2B2B}
+
+.modal{
+  position:fixed;inset:0;z-index:160;background:rgba(11,31,58,.55);
+  display:none;align-items:flex-start;justify-content:center;
+  padding:clamp(1rem,4vw,3rem);overflow-y:auto;
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+}
+.modal.open{display:flex}
+.modal-card{
+  background:#fff;border-radius:var(--r);width:min(740px,100%);
+  box-shadow:var(--sh-3);overflow:hidden;animation:modalIn .25s var(--ease);
+}
+@keyframes modalIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.modal-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.25rem 1.5rem;border-bottom:1px solid var(--line);
+}
+.modal-head h3{margin:0}
+.modal-body{padding:1.5rem}
+.modal-foot{
+  display:flex;gap:.6rem;justify-content:flex-end;padding:1.25rem 1.5rem;
+  border-top:1px solid var(--line);background:var(--surface);
+}
+.empty{
+  text-align:center;padding:clamp(2rem,6vw,3.5rem) 1.5rem;
+  border:1px dashed var(--line-2);border-radius:var(--r);color:var(--muted);background:#fff;
+}
+.empty svg{width:36px;height:36px;color:var(--muted-2);margin:0 auto 1rem}
+.empty h3{margin-bottom:.5rem}
+.empty p{font-size:.92rem;max-width:48ch;margin:0 auto}
+
+/* ============================================================================
+   REVEAL ANIMATION
+   ============================================================================ */
+.reveal{opacity:0;transform:translateY(16px)}
+.reveal.in{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .7s var(--ease)}
+
+/* ============================================================================
+   REDUCED MOTION
+   ============================================================================ */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important;animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;scroll-behavior:auto !important;
   }
-
-  /* Typewriter */
-  #typewriter::after { content:"▍"; color:#5B8CFF; animation:blink 1s steps(2) infinite; margin-left:2px; }
-  @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0; } }
-
-  /* Logo ring */
-  @keyframes ringSpin { to { transform:rotate(360deg); } }
-  @keyframes ringSpinBack { to { transform:rotate(-360deg); } }
-  @keyframes pulseGlow { 0%,100% { opacity:.45; transform:scale(1); } 50% { opacity:.9; transform:scale(1.08); } }
-  @keyframes shimmer { 0% { left:-60%; } 60% { left:130%; } 100% { left:130%; } }
-
-  .logo-ring {
-    width:42px; height:42px; border-radius:12px; padding:2px;
-    background: conic-gradient(from 0deg, #5B8CFF, #5BFFC4, #7BA4FF, #5B8CFF, #5BFFC4, #5B8CFF);
-    animation: ringSpin 6s linear infinite;
-    box-shadow: 0 0 18px rgba(91,140,255,.35);
-    position:relative;
-  }
-  .logo-inner {
-    position:absolute; inset:2px; border-radius:10px; background:#0C0E15;
-    display:flex; align-items:center; justify-content:center; overflow:hidden;
-  }
-  .logo-inner-inner { animation: ringSpinBack 6s linear infinite; }
-  .logo-glow {
-    position:absolute; inset:-8px; border-radius:18px;
-    background: radial-gradient(circle, rgba(91,140,255,.5), transparent 70%);
-    filter: blur(14px); opacity:.5; animation: pulseGlow 3s ease-in-out infinite; pointer-events:none;
-  }
-  .logo-text { position:relative; overflow:hidden; }
-  .logo-text::after {
-    content:""; position:absolute; top:0; left:-60%; width:40%; height:100%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,.55), transparent);
-    transform: skewX(-20deg); animation: shimmer 3.5s ease-in-out infinite; pointer-events:none;
-  }
-
-  /* LIVE badge pulse */
-  @keyframes livePulse { 0%,100% { box-shadow: 0 0 0 0 rgba(91,255,196,.5); } 50% { box-shadow: 0 0 0 6px rgba(91,255,196,0); } }
-  .live-badge { animation: livePulse 2s infinite; }
-
-  /* Vertical text */
-  .v-text { writing-mode: vertical-rl; text-orientation: mixed; }
-
-  /* Card hover */
-  .lift { transition: transform .5s cubic-bezier(.16,1,.3,1), border-color .4s, box-shadow .4s; }
-  .lift:hover { transform: translateY(-6px); border-color: rgba(91,140,255,.5); box-shadow: 0 30px 60px -30px rgba(91,140,255,.55); }
-
-  .fade-x { mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent); }
+  .reveal{opacity:1;transform:none}
+  .figure img{transition:none}
+  .logo-anim .logo-mark .logo-fill,
+  .logo-anim .logo-mark .logo-windows,
+  .logo-anim .logo-text{opacity:1 !important;transform:none !important;animation:none !important}
+  .logo-anim .logo-mark .logo-stroke path{stroke-dashoffset:0 !important;animation:none !important}
+  .first-visit .site-header,
+  .first-visit .hero-eyebrow,
+  .first-visit .hero h1,
+  .first-visit .hero-sub,
+  .first-visit .hero-actions,
+  .first-visit .hero-finder-wrap .finder{opacity:1 !important;animation:none !important}
+  .first-visit .hero-bg{animation:none !important}
+}
 </style>
 </head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<div id="app-header"></div>
+<main id="main" tabindex="-1"></main>
+<div id="app-footer"></div>
+<div id="mobile-bar"></div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer"></div>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"></div>
 
-<body class="bg-ink text-gray-200 antialiased">
-
-<!-- ═══════════════ NAV ═══════════════ -->
-<header class="fixed top-0 inset-x-0 z-[100] backdrop-blur-xl bg-ink/70 border-b border-line">
-  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-
-    <!-- LOGO -->
-    <a href="#" class="flex items-center gap-3 group">
-      <div class="relative">
-        <div class="logo-glow"></div>
-        <div class="logo-ring">
-          <div class="logo-inner">
-            <div class="logo-inner-inner flex items-center justify-center">
-              <img src="/logo.png" alt="Zuniq Studio" class="w-6 h-6 object-contain"
-                   onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=&quot;font-black italic text-accent text-base&quot;>Z</span>';" />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="leading-none">
-        <p class="logo-text font-black tracking-tight text-white text-lg">ZUNIQ<span class="text-accent">.</span></p>
-        <p class="text-[9px] tracking-[0.35em] text-gray-500 font-bold uppercase mt-1">Studio</p>
-      </div>
-    </a>
-
-    <!-- NAV LINKS -->
-    <nav class="hidden lg:flex items-center gap-9 text-[11px] font-bold tracking-[0.2em] uppercase text-gray-400">
-      <a href="#work" class="hover:text-white transition">Work</a>
-      <a href="#services" class="hover:text-white transition">Services</a>
-      <a href="#stores" class="hover:text-white transition">Store Directory</a>
-      <a href="#about" class="hover:text-white transition">About</a>
-      <a href="#process" class="hover:text-white transition">Process</a>
-      <a href="#contact" class="hover:text-white transition">Contact</a>
-    </nav>
-
-    <!-- CTA -->
-    <a href="https://wa.me/923185390057" target="_blank"
-       class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-mint/40 text-mint font-black uppercase tracking-widest text-[10px] hover:bg-mint hover:text-ink transition-all">
-      Book Consultation
-      <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
-    </a>
-
-    <button id="menuBtn" class="lg:hidden p-2 rounded-lg border border-line">
-      <i data-lucide="menu" class="w-5 h-5"></i>
-    </button>
-  </div>
-
-  <!-- Mobile menu -->
-  <div id="mobileMenu" class="lg:hidden hidden border-t border-line bg-ink/95 backdrop-blur-xl px-6 py-6 space-y-4">
-    <a href="#work" class="block text-sm font-bold tracking-widest uppercase text-gray-300 hover:text-white">Work</a>
-    <a href="#services" class="block text-sm font-bold tracking-widest uppercase text-gray-300 hover:text-white">Services</a>
-    <a href="#stores" class="block text-sm font-bold tracking-widest uppercase text-gray-300 hover:text-white">Store Directory</a>
-    <a href="#about" class="block text-sm font-bold tracking-widest uppercase text-gray-300 hover:text-white">About</a>
-    <a href="#process" class="block text-sm font-bold tracking-widest uppercase text-gray-300 hover:text-white">Process</a>
-    <a href="#contact" class="block text-sm font-bold tracking-widest uppercase text-gray-300 hover:text-white">Contact</a>
-    <a href="https://wa.me/923185390057" target="_blank" class="block w-full text-center px-5 py-3 rounded-lg bg-mint text-ink font-black uppercase tracking-widest text-xs">Book Consultation</a>
-  </div>
-</header>
-
-<!-- ═══════════════ HERO ═══════════════ -->
-<section class="relative pt-40 pb-24 px-6 overflow-hidden bg-grid">
-  <div class="glow bg-accent w-[600px] h-[600px] -top-40 -right-40"></div>
-  <div class="glow bg-mint w-[400px] h-[400px] bottom-0 -left-40 opacity-15"></div>
-
-  <div class="relative max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
-    <!-- LEFT -->
-    <div class="lg:col-span-6 reveal">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded border border-accent/30 bg-accent/5 mb-8">
-        <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-        <span class="text-[10px] font-black tracking-[0.3em] uppercase text-accent">Software House & AI Automation Studio</span>
-      </div>
-
-      <h1 class="text-5xl sm:text-6xl lg:text-[4.2rem] font-black tracking-[-0.03em] leading-[1.02] text-white mb-8">
-        We Build Digital<br>Systems That<br>
-        <span class="bg-gradient-to-r from-accent via-accent to-mint bg-clip-text text-transparent">Think, Scale & Deliver.</span>
-      </h1>
-
-      <p class="text-lg text-gray-400 max-w-xl leading-relaxed mb-10">
-        Zuniq Studio crafts high-performance software, AI agents, automation systems,
-        and digital products that drive real business outcomes.
-      </p>
-
-      <div class="flex flex-col sm:flex-row gap-4 mb-12">
-        <a href="https://wa.me/923185390057" target="_blank"
-           class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-lg bg-accent text-white font-black uppercase tracking-widest text-xs hover:bg-accentGlow transition-all shadow-[0_10px_40px_-10px_rgba(91,140,255,0.7)]">
-          <i data-lucide="message-circle" class="w-4 h-4"></i>
-          Book WhatsApp Consultation
-        </a>
-        <div class="flex items-center gap-3 px-5 py-4">
-          <span class="text-gray-500 text-sm font-mono">+92 318 539 0057</span>
-        </div>
-      </div>
-
-      <!-- Trust bar -->
-      <div>
-        <p class="text-[10px] font-black tracking-[0.35em] uppercase text-gray-500 mb-4">Trusted by businesses worldwide</p>
-        <div class="flex flex-wrap items-center gap-6">
-          <div class="flex items-center gap-2 text-gray-400 text-xs font-bold uppercase tracking-widest"><span class="text-base">🇦🇪</span> UAE</div>
-          <div class="flex items-center gap-2 text-gray-400 text-xs font-bold uppercase tracking-widest"><span class="text-base">🇬🇧</span> UK</div>
-          <div class="flex items-center gap-2 text-gray-400 text-xs font-bold uppercase tracking-widest"><span class="text-base">🇺🇸</span> USA</div>
-          <div class="flex items-center gap-2 text-gray-400 text-xs font-bold uppercase tracking-widest"><span class="text-base">🇵🇰</span> Pakistan</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- RIGHT: Monolith visual -->
-    <div class="lg:col-span-6 reveal relative" style="transition-delay:.15s">
-      <div class="relative aspect-[4/5] max-w-md mx-auto">
-        <!-- Three glowing slabs -->
-        <div class="absolute top-[8%] right-[8%] w-[55%] h-[80%] rounded-2xl bg-gradient-to-b from-accent/15 via-accent/5 to-transparent border border-accent/20 backdrop-blur-sm"></div>
-        <div class="absolute top-[18%] right-[22%] w-[55%] h-[70%] rounded-2xl bg-gradient-to-b from-accent/25 via-accent/10 to-transparent border border-accent/30 backdrop-blur-sm"></div>
-        <div class="absolute top-[30%] right-[36%] w-[55%] h-[60%] rounded-2xl bg-gradient-to-b from-accent/40 via-accent/20 to-transparent border border-accent/50 shadow-[0_0_80px_-20px_rgba(91,140,255,0.8)]"></div>
-
-        <!-- Silhouette figure -->
-        <div class="absolute bottom-[10%] left-[42%] z-10">
-          <div class="w-2 h-12 bg-ink rounded-full mb-1 mx-auto"></div>
-          <div class="w-4 h-14 bg-ink rounded-lg mx-auto"></div>
-        </div>
-
-        <!-- Floor glow -->
-        <div class="absolute bottom-[8%] left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-accent to-transparent opacity-60 blur-sm"></div>
-      </div>
-
-      <!-- Scroll cue -->
-      <div class="absolute right-0 top-1/2 -translate-y-1/2 hidden xl:block">
-        <p class="v-text text-[10px] font-black tracking-[0.4em] uppercase text-gray-600">Scroll to explore</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════ INTERACTIVE DEMOS ═══════════════ -->
-<section id="work" class="relative py-28 px-6 border-t border-line">
-  <div class="max-w-7xl mx-auto">
-    <div class="reveal flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-      <div class="max-w-2xl">
-        <p class="text-[10px] font-black tracking-[0.4em] uppercase text-accent mb-4">Interactive Demos</p>
-        <h2 class="text-4xl md:text-5xl font-black tracking-tight text-white leading-[1.05] mb-4">
-          Explore. Test. Experience.
-        </h2>
-        <p class="text-gray-400">Test our solutions live. Every demo is fully interactive and built to showcase real-world impact.</p>
-      </div>
-      <a href="#stores" class="text-[11px] font-black uppercase tracking-[0.25em] text-accent hover:text-white transition inline-flex items-center gap-2">
-        View All Demos <i data-lucide="arrow-right" class="w-4 h-4"></i>
-      </a>
-    </div>
-
-    <!-- Demo cards -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <!-- Card 1: AI Agents -->
-      <div class="reveal lift rounded-2xl border border-line bg-panel p-7">
-        <div class="flex justify-between items-start mb-8">
-          <div class="w-11 h-11 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center">
-            <i data-lucide="brain" class="w-5 h-5 text-accent"></i>
-          </div>
-          <span class="live-badge flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-mint/10 border border-mint/30 text-[9px] font-black uppercase tracking-widest text-mint">
-            <span class="w-1.5 h-1.5 rounded-full bg-mint"></span> Live
-          </span>
-        </div>
-        <h3 class="text-lg font-black text-white mb-2">AI Agents</h3>
-        <p class="text-gray-500 text-sm leading-relaxed mb-6">Intelligent AI agents for support, sales, and operations that work 24/7.</p>
-        <a href="https://agent.jotform.com/019f3239d61870008ea2cda1401fa666044a" target="_blank" class="text-[10px] font-black uppercase tracking-[0.25em] text-white hover:text-accent transition inline-flex items-center gap-2">
-          Test Live <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-        </a>
-      </div>
-
-      <!-- Card 2: Web Development -->
-      <div class="reveal lift rounded-2xl border border-line bg-panel p-7" style="transition-delay:.05s">
-        <div class="flex justify-between items-start mb-8">
-          <div class="w-11 h-11 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center">
-            <i data-lucide="code-2" class="w-5 h-5 text-accent"></i>
-          </div>
-          <span class="live-badge flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-mint/10 border border-mint/30 text-[9px] font-black uppercase tracking-widest text-mint">
-            <span class="w-1.5 h-1.5 rounded-full bg-mint"></span> Live
-          </span>
-        </div>
-        <h3 class="text-lg font-black text-white mb-2">Web Development</h3>
-        <p class="text-gray-500 text-sm leading-relaxed mb-6">High-performance websites & web applications built on Next.js and modern stacks.</p>
-        <a href="https://zuniq.xyz" target="_blank" class="text-[10px] font-black uppercase tracking-[0.25em] text-white hover:text-accent transition inline-flex items-center gap-2">
-          Test Live <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-        </a>
-      </div>
-
-      <!-- Card 3: E-Commerce -->
-      <div class="reveal lift rounded-2xl border border-line bg-panel p-7" style="transition-delay:.1s">
-        <div class="flex justify-between items-start mb-8">
-          <div class="w-11 h-11 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center">
-            <i data-lucide="shopping-cart" class="w-5 h-5 text-accent"></i>
-          </div>
-          <span class="live-badge flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-mint/10 border border-mint/30 text-[9px] font-black uppercase tracking-widest text-mint">
-            <span class="w-1.5 h-1.5 rounded-full bg-mint"></span> Live
-          </span>
-        </div>
-        <h3 class="text-lg font-black text-white mb-2">E-Commerce Stores</h3>
-        <p class="text-gray-500 text-sm leading-relaxed mb-6">Conversion-optimized online stores with search, cart, and WhatsApp ordering.</p>
-        <a href="https://labbaikperfume.com" target="_blank" class="text-[10px] font-black uppercase tracking-[0.25em] text-white hover:text-accent transition inline-flex items-center gap-2">
-          Test Live <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-        </a>
-      </div>
-
-      <!-- Card 4: Mobile Apps -->
-      <div class="reveal lift rounded-2xl border border-line bg-panel p-7" style="transition-delay:.15s">
-        <div class="flex justify-between items-start mb-8">
-          <div class="w-11 h-11 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center">
-            <i data-lucide="smartphone" class="w-5 h-5 text-accent"></i>
-          </div>
-          <span class="live-badge flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-mint/10 border border-mint/30 text-[9px] font-black uppercase tracking-widest text-mint">
-            <span class="w-1.5 h-1.5 rounded-full bg-mint"></span> Live
-          </span>
-        </div>
-        <h3 class="text-lg font-black text-white mb-2">Mobile Apps</h3>
-        <p class="text-gray-500 text-sm leading-relaxed mb-6">Cross-platform mobile apps for iOS & Android that feel native and fast.</p>
-        <a href="https://wa.me/923185390057" target="_blank" class="text-[10px] font-black uppercase tracking-[0.25em] text-white hover:text-accent transition inline-flex items-center gap-2">
-          Test Live <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-        </a>
-      </div>
-
-      <!-- Card 5: Workflow Automation -->
-      <div class="reveal lift rounded-2xl border border-line bg-panel p-7" style="transition-delay:.2s">
-        <div class="flex justify-between items-start mb-8">
-          <div class="w-11 h-11 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center">
-            <i data-lucide="workflow" class="w-5 h-5 text-accent"></i>
-          </div>
-          <span class="live-badge flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-mint/10 border border-mint/30 text-[9px] font-black uppercase tracking-widest text-mint">
-            <span class="w-1.5 h-1.5 rounded-full bg-mint"></span> Live
-          </span>
-        </div>
-        <h3 class="text-lg font-black text-white mb-2">Workflow Automation</h3>
-        <p class="text-gray-500 text-sm leading-relaxed mb-6">Automate business processes and save hundreds of hours every month.</p>
-        <a href="https://bit.ly/3QLPTCf" target="_blank" class="text-[10px] font-black uppercase tracking-[0.25em] text-white hover:text-accent transition inline-flex items-center gap-2">
-          Test Live <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-        </a>
-      </div>
-
-      <!-- Card 6: UI/UX Design -->
-      <div class="reveal lift rounded-2xl border border-line bg-panel p-7" style="transition-delay:.25s">
-        <div class="flex justify-between items-start mb-8">
-          <div class="w-11 h-11 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center">
-            <i data-lucide="palette" class="w-5 h-5 text-accent"></i>
-          </div>
-          <span class="live-badge flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-mint/10 border border-mint/30 text-[9px] font-black uppercase tracking-widest text-mint">
-            <span class="w-1.5 h-1.5 rounded-full bg-mint"></span> Live
-          </span>
-        </div>
-        <h3 class="text-lg font-black text-white mb-2">UI/UX Design</h3>
-        <p class="text-gray-500 text-sm leading-relaxed mb-6">Beautiful, intuitive, and user-centered digital experiences that convert.</p>
-        <a href="https://wa.me/923185390057" target="_blank" class="text-[10px] font-black uppercase tracking-[0.25em] text-white hover:text-accent transition inline-flex items-center gap-2">
-          Test Live <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════ TESTIMONIALS / REVIEWS ═══════════════ -->
-<section id="reviews" class="relative py-28 px-6 border-t border-line">
-  <div class="max-w-7xl mx-auto">
-    <div class="reveal max-w-2xl mb-16">
-      <p class="text-[10px] font-black tracking-[0.4em] uppercase text-accent mb-4">Client Reviews</p>
-      <h2 class="text-4xl md:text-5xl font-black tracking-tight text-white leading-[1.05] mb-4">
-        What clients say<br><span class="text-gray-500">about working with us.</span>
-      </h2>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-6">
-      <!-- Review 1 -->
-      <div class="reveal lift rounded-2xl border border-line bg-panel p-7">
-        <div class="flex gap-1 mb-5">
-          <i data-lucide="star" class="w-4 h-4 text-mint fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 text-mint fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 text-mint fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 text-mint fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 text-mint fill-current"></i>
-        </div>
-        <p class="text-gray-300 leading-relaxed mb-7 text-sm">
-          “Zuniq Studio rebuilt our fragrance store from scratch. It looks incredible and our customers find what they want in seconds. Sales went up within the first week.”
-        </p>
-        <div class="flex items-center gap-3 pt-5 border-t border-line">
-          <div class="sticker w-10 h-10 rounded-full flex items-center justify-center text-gray-500">
-            <i data-lucide="user" class="w-4 h-4"></i>
-          </div>
-          <div>
-            <p class="font-bold text-white text-sm">Labbaik Perfume</p>
-            <p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Luxury Retail · Pakistan</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Review 2 -->
-      <div class="reveal lift rounded-2xl border border-line bg-panel p-7" style="transition-delay:.08s">
-        <div class="flex gap-1 mb-5">
-          <i data-lucide="star" class="w-4 h-4 text-mint fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 text-mint fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 text-mint fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 text-mint fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 text-mint fill-current"></i>
-        </div>
-        <p class="text-gray-300 leading-relaxed mb-7 text-sm">
-          “The AI agent Zuniq built handles all our customer questions on WhatsApp. We literally wake up to new orders — no manual work.”
-        </p>
-        <div class="flex items-center gap-3 pt-5 border-t border-line">
-          <div class="sticker w-10 h-10 rounded-full flex items-center justify-center text-gray-500">
-            <i data-lucide="user" class="w-4 h-4"></i>
-          </div>
-          <div>
-            <p class="font-bold text-white text-sm">Cleaning Client</p>
-            <p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold">UAE Market · AI Agent</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Review 3 -->
-      <div class="reveal lift rounded-2xl border border-line bg-panel p-7" style="transition-delay:.16s">
-        <div class="flex gap-1 mb-5">
-          <i data-lucide="star" class="w-4 h-4 text-mint fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 text-mint fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 text-mint fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 text-mint fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 text-mint fill-current"></i>
-        </div>
-        <p class="text-gray-300 leading-relaxed mb-7 text-sm">
-          “Khyber Collection is now mobile-first and looks high-end. Zuniq understood our brand instantly and delivered beyond expectations.”
-        </p>
-        <div class="flex items-center gap-3 pt-5 border-t border-line">
-          <div class="sticker w-10 h-10 rounded-full flex items-center justify-center text-gray-500">
-            <i data-lucide="user" class="w-4 h-4"></i>
-          </div>
-          <div>
-            <p class="font-bold text-white text-sm">Khyber Collection</p>
-            <p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Fashion & Decor · Pakistan</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════ CLIENT STORE DIRECTORY ═══════════════ -->
-<section id="stores" class="relative py-28 px-6 border-t border-line">
-  <div class="max-w-7xl mx-auto">
-    <div class="reveal mb-14">
-      <p class="text-[10px] font-black tracking-[0.4em] uppercase text-accent mb-4">Client Store Directory</p>
-      <h2 class="text-4xl md:text-5xl font-black tracking-tight text-white leading-[1.05] mb-4">
-        Stores We've Built<br>and Scaled
-      </h2>
-      <p class="text-gray-400 max-w-xl mb-8">High-performing e-commerce experiences built for real brands with real results.</p>
-      <a href="#contact" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-line text-white font-black uppercase tracking-widest text-[10px] hover:border-accent hover:bg-white/5 transition">
-        View All Stores <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-      </a>
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-6">
-      <!-- Store 1 -->
-      <a href="https://labbaikperfume.com" target="_blank" class="reveal lift group rounded-2xl overflow-hidden border border-line bg-panel">
-        <div class="sticker aspect-[16/10] flex flex-col items-center justify-center text-gray-500">
-          <i data-lucide="image" class="w-8 h-8 mb-3"></i>
-          <p class="text-[10px] font-black uppercase tracking-[0.3em]">Labbaik Product Image</p>
-        </div>
-        <div class="p-6 flex items-center justify-between">
-          <div>
-            <h3 class="text-lg font-black text-white mb-1">Labbaik Perfume</h3>
-            <p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Premium Fragrances Store</p>
-          </div>
-          <span class="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-accent group-hover:text-white transition">
-            View Store <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-          </span>
-        </div>
-      </a>
-
-      <!-- Store 2 -->
-      <a href="https://khybercollection.com" target="_blank" class="reveal lift group rounded-2xl overflow-hidden border border-line bg-panel" style="transition-delay:.08s">
-        <div class="sticker aspect-[16/10] flex flex-col items-center justify-center text-gray-500">
-          <i data-lucide="image" class="w-8 h-8 mb-3"></i>
-          <p class="text-[10px] font-black uppercase tracking-[0.3em]">Khyber Collection Image</p>
-        </div>
-        <div class="p-6 flex items-center justify-between">
-          <div>
-            <h3 class="text-lg font-black text-white mb-1">Khyber Collection</h3>
-            <p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Men's Fashion Store</p>
-          </div>
-          <span class="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-accent group-hover:text-white transition">
-            View Store <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-          </span>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════ TEAM ═══════════════ -->
-<section id="about" class="relative py-28 px-6 border-t border-line">
-  <div class="max-w-7xl mx-auto">
-    <div class="reveal grid lg:grid-cols-12 gap-12 items-start mb-16">
-      <div class="lg:col-span-5">
-        <p class="text-[10px] font-black tracking-[0.4em] uppercase text-accent mb-4">The Team</p>
-        <h2 class="text-4xl md:text-5xl font-black tracking-tight text-white leading-[1.05] mb-6">
-          The Minds Behind<br>Zuniq Studio
-        </h2>
-        <p class="text-gray-400 mb-8">A passionate team of builders, problem solvers, and innovators.</p>
-        <a href="#contact" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-line text-white font-black uppercase tracking-widest text-[10px] hover:border-accent hover:bg-white/5 transition">
-          Meet The Team <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-        </a>
-      </div>
-
-      <div class="lg:col-span-7 grid sm:grid-cols-3 gap-5">
-        <!-- Member 1 -->
-        <div class="reveal lift rounded-2xl border border-line bg-panel overflow-hidden">
-          <div class="sticker aspect-[4/5] flex flex-col items-center justify-center text-gray-500">
-            <i data-lucide="user" class="w-10 h-10 mb-2"></i>
-            <p class="text-[9px] font-black uppercase tracking-widest">Add Photo</p>
-          </div>
-          <div class="p-5">
-            <h3 class="font-black text-white text-sm mb-1">M Jawad</h3>
-            <p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold mb-4">Founder & CEO</p>
-            <div class="flex gap-3 text-gray-500">
-              <a href="#" class="hover:text-accent"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
-              <a href="#" class="hover:text-accent"><i data-lucide="twitter" class="w-4 h-4"></i></a>
-              <a href="mailto:zuniq.studio@gmail.com" class="hover:text-accent"><i data-lucide="mail" class="w-4 h-4"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Member 2 -->
-        <div class="reveal lift rounded-2xl border border-line bg-panel overflow-hidden" style="transition-delay:.08s">
-          <div class="sticker aspect-[4/5] flex flex-col items-center justify-center text-gray-500">
-            <i data-lucide="user" class="w-10 h-10 mb-2"></i>
-            <p class="text-[9px] font-black uppercase tracking-widest">Add Photo</p>
-          </div>
-          <div class="p-5">
-            <h3 class="font-black text-white text-sm mb-1">Rizwanullah</h3>
-            <p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold mb-4">Senior Engineer</p>
-            <div class="flex gap-3 text-gray-500">
-              <a href="#" class="hover:text-accent"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
-              <a href="#" class="hover:text-accent"><i data-lucide="twitter" class="w-4 h-4"></i></a>
-              <a href="#" class="hover:text-accent"><i data-lucide="mail" class="w-4 h-4"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Member 3 -->
-        <div class="reveal lift rounded-2xl border border-line bg-panel overflow-hidden" style="transition-delay:.16s">
-          <div class="sticker aspect-[4/5] flex flex-col items-center justify-center text-gray-500">
-            <i data-lucide="user" class="w-10 h-10 mb-2"></i>
-            <p class="text-[9px] font-black uppercase tracking-widest">Add Photo</p>
-          </div>
-          <div class="p-5">
-            <h3 class="font-black text-white text-sm mb-1">Waqas Rahim</h3>
-            <p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold mb-4">Creative Lead</p>
-            <div class="flex gap-3 text-gray-500">
-              <a href="#" class="hover:text-accent"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
-              <a href="#" class="hover:text-accent"><i data-lucide="twitter" class="w-4 h-4"></i></a>
-              <a href="#" class="hover:text-accent"><i data-lucide="mail" class="w-4 h-4"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════ WHATSAPP CTA ═══════════════ -->
-<section id="contact" class="relative py-24 px-6">
-  <div class="max-w-5xl mx-auto">
-    <div class="reveal rounded-2xl border border-mint/20 bg-gradient-to-br from-mint/5 via-panel to-panel p-8 md:p-10 flex flex-col md:flex-row items-center gap-8">
-      <div class="w-16 h-16 rounded-2xl bg-mint/10 border border-mint/30 flex items-center justify-center flex-shrink-0">
-        <i data-lucide="message-circle" class="w-8 h-8 text-mint"></i>
-      </div>
-      <div class="flex-1 text-center md:text-left">
-        <p class="text-[10px] font-black tracking-[0.3em] uppercase text-gray-500 mb-2">Ready to build something amazing?</p>
-        <h3 class="text-2xl md:text-3xl font-black text-white mb-2">Let's discuss your project on WhatsApp.</h3>
-        <p class="text-gray-400 text-sm">Fast response. Clear communication. Real results.</p>
-      </div>
-      <div class="flex flex-col items-center md:items-end gap-3">
-        <a href="https://wa.me/923185390057" target="_blank"
-           class="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-mint/50 text-mint font-black uppercase tracking-widest text-[10px] hover:bg-mint hover:text-ink transition">
-          Chat on WhatsApp <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-        </a>
-        <p class="text-mint font-mono text-sm font-bold">+92 318 539 0057</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════ PROCESS ═══════════════ -->
-<section id="process" class="relative py-24 px-6 border-t border-line">
-  <div class="max-w-7xl mx-auto">
-    <div class="reveal max-w-2xl mb-14">
-      <p class="text-[10px] font-black tracking-[0.4em] uppercase text-accent mb-4">Our Process</p>
-      <h2 class="text-4xl md:text-5xl font-black tracking-tight text-white leading-[1.05]">
-        Simple. Transparent. <span class="text-gray-500">Delivered.</span>
-      </h2>
-    </div>
-    <div class="grid md:grid-cols-5 gap-5">
-      <div class="reveal rounded-2xl border border-line bg-panel p-6">
-        <div class="text-accent font-mono text-xs font-bold mb-5">01</div>
-        <h4 class="font-black text-white mb-2 text-sm">Discovery</h4>
-        <p class="text-gray-500 text-xs leading-relaxed">We map your goals and success metrics.</p>
-      </div>
-      <div class="reveal rounded-2xl border border-line bg-panel p-6" style="transition-delay:.05s">
-        <div class="text-accent font-mono text-xs font-bold mb-5">02</div>
-        <h4 class="font-black text-white mb-2 text-sm">Architecture</h4>
-        <p class="text-gray-500 text-xs leading-relaxed">We design stack, data flow, and UI.</p>
-      </div>
-      <div class="reveal rounded-2xl border border-line bg-panel p-6" style="transition-delay:.1s">
-        <div class="text-accent font-mono text-xs font-bold mb-5">03</div>
-        <h4 class="font-black text-white mb-2 text-sm">Build</h4>
-        <p class="text-gray-500 text-xs leading-relaxed">Weekly milestones, always visible.</p>
-      </div>
-      <div class="reveal rounded-2xl border border-line bg-panel p-6" style="transition-delay:.15s">
-        <div class="text-accent font-mono text-xs font-bold mb-5">04</div>
-        <h4 class="font-black text-white mb-2 text-sm">Launch</h4>
-        <p class="text-gray-500 text-xs leading-relaxed">Deploy, integrate, hand over.</p>
-      </div>
-      <div class="reveal rounded-2xl border border-line bg-panel p-6" style="transition-delay:.2s">
-        <div class="text-accent font-mono text-xs font-bold mb-5">05</div>
-        <h4 class="font-black text-white mb-2 text-sm">Support</h4>
-        <p class="text-gray-500 text-xs leading-relaxed">Ongoing maintenance & tuning.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════ FOOTER ═══════════════ -->
-<footer class="border-t border-line bg-panel/40 px-6 pt-16 pb-10">
-  <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 mb-14">
-    <div class="md:col-span-1">
-      <div class="flex items-center gap-3 mb-5">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-accent to-mint flex items-center justify-center">
-          <span class="font-black text-ink italic text-sm">Z</span>
-        </div>
-        <p class="font-black tracking-tight text-white">ZUNIQ<span class="text-accent">.</span></p>
-      </div>
-      <p class="text-gray-500 text-sm leading-relaxed mb-5">
-        Software House & AI Automation Studio based in Peshawar, Pakistan. Building digital products for global clients.
-      </p>
-      <div class="flex gap-3 text-gray-500">
-        <a href="#" class="hover:text-accent transition"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
-        <a href="#" class="hover:text-accent transition"><i data-lucide="github" class="w-4 h-4"></i></a>
-        <a href="#" class="hover:text-accent transition"><i data-lucide="twitter" class="w-4 h-4"></i></a>
-      </div>
-    </div>
-
-    <div>
-      <p class="text-[10px] font-black uppercase tracking-[0.3em] text-gray-500 mb-5">Services</p>
-      <ul class="space-y-3 text-sm">
-        <li><a href="#work" class="text-gray-400 hover:text-white transition">AI Agents</a></li>
-        <li><a href="#work" class="text-gray-400 hover:text-white transition">Web Development</a></li>
-        <li><a href="#work" class="text-gray-400 hover:text-white transition">E-Commerce Stores</a></li>
-        <li><a href="#work" class="text-gray-400 hover:text-white transition">Mobile Apps</a></li>
-        <li><a href="#work" class="text-gray-400 hover:text-white transition">Workflow Automation</a></li>
-        <li><a href="#work" class="text-gray-400 hover:text-white transition">UI/UX Design</a></li>
-      </ul>
-    </div>
-
-    <div>
-      <p class="text-[10px] font-black uppercase tracking-[0.3em] text-gray-500 mb-5">Company</p>
-      <ul class="space-y-3 text-sm">
-        <li><a href="#about" class="text-gray-400 hover:text-white transition">About Us</a></li>
-        <li><a href="#process" class="text-gray-400 hover:text-white transition">Our Process</a></li>
-        <li><a href="#stores" class="text-gray-400 hover:text-white transition">Case Studies</a></li>
-        <li><a href="#stores" class="text-gray-400 hover:text-white transition">Store Directory</a></li>
-        <li><a href="#reviews" class="text-gray-400 hover:text-white transition">Reviews</a></li>
-      </ul>
-    </div>
-
-    <div>
-      <p class="text-[10px] font-black uppercase tracking-[0.3em] text-gray-500 mb-5">Contact</p>
-      <ul class="space-y-3 text-sm">
-        <li><a href="https://wa.me/923185390057" class="text-gray-400 hover:text-white transition">+92 318 539 0057</a></li>
-        <li><a href="mailto:zuniq.studio@gmail.com" class="text-gray-400 hover:text-white transition">hello@zuniq.studio</a></li>
-        <li class="text-gray-400">Peshawar, Pakistan</li>
-        <li class="pt-4 text-[10px] font-black uppercase tracking-[0.3em] text-gray-500">Working Hours</li>
-        <li class="text-gray-400">Mon – Sat: 10 AM – 7 PM PKT</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="max-w-7xl mx-auto pt-8 border-t border-line flex flex-col md:flex-row justify-between items-center gap-4">
-    <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-600">© 2025 Zuniq Studio. All rights reserved.</p>
-    <div class="flex gap-6 text-[10px] font-bold uppercase tracking-[0.3em] text-gray-600">
-      <a href="#" class="hover:text-white transition">Privacy Policy</a>
-      <a href="#" class="hover:text-white transition">Terms & Conditions</a>
-    </div>
-  </div>
-</footer>
-
-<!-- ═══════════════ SCRIPTS ═══════════════ -->
 <script>
-  lucide.createIcons();
+"use strict";
+/* ============================================================================
+   JS APARTMENTS — APPLICATION SCRIPT
+   ============================================================================ */
 
-  // Mobile menu
-  const menuBtn = document.getElementById('menuBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+/* ---------------------------------------------------------------------------
+   1. BUSINESS CONFIGURATION — editable via the management dashboard
+   --------------------------------------------------------------------------- */
+const CONFIG = {
+  brand: "JS Apartments",
+  building: "JS Mall",
+  addressLine: "JS Mall, Board Bazaar, Peshawar, Pakistan",
+  /* Not yet supplied by the client — leave blank; never invent. */
+  phone: "",
+  whatsapp: "",
+  email: "",
+  mapEmbedUrl: "",
+  directionsUrl: "",
+  /* Rental billing period is UNCONFIRMED. */
+  rentalPeriodLabel: "contact us for rental terms",
+  /* Content flags */
+  showDemoData: true
+};
 
-  // Reveal on scroll
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+/* ---------------------------------------------------------------------------
+   2. PHOTOGRAPHY LIBRARY
+   ---------------------------------------------------------------------------
+   Real, freely usable photographs from Unsplash. These are ILLUSTRATIVE and
+   are shown only for this website preview. They must be replaced with
+   owner-approved photographs of the actual property before publishing.
+   --------------------------------------------------------------------------- */
+const UNSPLASH = {
+  hero:      "photo-1522708323590-d24dbb6b0267",  // bright living space
+  livingA:   "photo-1560448204-e02f11c3d0e2",     // living area with sofa
+  oneRoomA:  "photo-1502672260266-1c1ef2d93688",  // apartment living space
+  twoRoomA:  "photo-1493809842364-78817add7ffb",  // living room, plants
+  twoRoomB:  "photo-1598928506311-c55ded91a20c",  // modern living room
+  kitchenA:  "photo-1556909114-f6e7ad7d3136",     // kitchen
+  kitchenB:  "photo-1484154218962-a197022b5858",  // kitchen with wood
+  bathA:     "photo-1584622650111-993a426fbf0a",  // washroom
+  bathB:     "photo-1552321554-5fefe8c9ef14",     // washroom fittings
+  corridorA: "photo-1555636222-cae831e670b3",     // corridor / hallway
+  bedroomA:  "photo-1522771739844-6a9f6d5f14af",  // bedroom
+  interiorA: "photo-1600607687939-ce8a6c25118c"   // shared entrance interior
+};
+function photo(key, w) {
+  const id = UNSPLASH[key] || UNSPLASH.hero;
+  return "https://images.unsplash.com/" + id +
+    "?auto=format&fit=crop&w=" + (w || 1200) + "&q=80";
+}
+function resolvePhoto(ref, w) {
+  if (!ref) return photo("hero", w);
+  return /^https?:/i.test(ref) ? ref : photo(ref, w);
+}
+/* Neutral fallback if a remote image ever fails. */
+const IMG_FALLBACK =
+  "data:image/svg+xml;charset=utf-8," + encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">' +
+    '<rect width="800" height="600" fill="#EDF2F8"/>' +
+    '<text x="400" y="304" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" ' +
+    'font-size="22" fill="#8496B0">Image unavailable</text></svg>'
+  );
+document.addEventListener("error", function (e) {
+  const t = e.target;
+  if (t && t.tagName === "IMG" && !t.dataset.fb) { t.dataset.fb = "1"; t.src = IMG_FALLBACK; }
+}, true);
 
-  // Smooth scroll
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+const GALLERY_NOTE =
+  "Illustrative photography for the website preview. Actual property photos will be added.";
+
+/* ---------------------------------------------------------------------------
+   3. APARTMENT TYPES (confirmed facts only)
+   --------------------------------------------------------------------------- */
+const APARTMENT_TYPES = {
+  "one-room": {
+    id: "one-room", name: "One-Room Apartment", rooms: 1, price: 25000,
+    features: ["One room", "Kitchen", "Washroom"]
+  },
+  "two-room": {
+    id: "two-room", name: "Two-Room Apartment", rooms: 2, price: 30000,
+    features: ["Two rooms", "Kitchen", "Washroom"]
+  }
+};
+
+/* ---------------------------------------------------------------------------
+   4. FLOOR STRUCTURE — editable. `residential: null` means unconfirmed.
+   --------------------------------------------------------------------------- */
+const FLOORS = [
+  { id: "G",  label: "Ground Floor", residential: null },
+  { id: "1",  label: "Floor 1",      residential: null },
+  { id: "2",  label: "Floor 2",      residential: null },
+  { id: "3",  label: "Floor 3",      residential: null },
+  { id: "4",  label: "Floor 4",      residential: null },
+  { id: "5",  label: "Floor 5",      residential: null },
+  { id: "6",  label: "Floor 6",      residential: null },
+  { id: "7",  label: "Floor 7",      residential: null },
+  { id: "8",  label: "Floor 8",      residential: null },
+  { id: "9",  label: "Floor 9",      residential: null },
+  { id: "10", label: "Floor 10",     residential: null }
+];
+const floorLabel = id => (FLOORS.find(f => f.id === String(id)) || {}).label || ("Floor " + id);
+
+/* ---------------------------------------------------------------------------
+   5. DEMO APARTMENT INVENTORY (development preview only)
+   --------------------------------------------------------------------------- */
+const DEMO_APARTMENTS = [
+  {
+    id: "demo-201", number: "201", floor: "2", type: "one-room",
+    price: 25000, pricePeriod: "", status: "available", availableFrom: "",
+    kitchen: "Kitchen included", washroom: "Washroom included",
+    size: "", furnishing: "",
+    description:
+      "Demo listing for layout preview. A one-room apartment with a kitchen and a washroom. " +
+      "Replace this description, the apartment number and the photographs with details confirmed by management.",
+    photos: ["oneRoomA", "livingA", "kitchenA", "bathA"],
+    demo: true
+  },
+  {
+    id: "demo-305", number: "305", floor: "3", type: "two-room",
+    price: 30000, pricePeriod: "", status: "available", availableFrom: "",
+    kitchen: "Kitchen included", washroom: "Washroom included",
+    size: "", furnishing: "",
+    description:
+      "Demo listing for layout preview. A two-room apartment with a kitchen and a washroom. " +
+      "Replace this description, the apartment number and the photographs with details confirmed by management.",
+    photos: ["twoRoomA", "bedroomA", "kitchenB", "bathB"],
+    demo: true
+  },
+  {
+    id: "demo-502", number: "502", floor: "5", type: "one-room",
+    price: 25000, pricePeriod: "", status: "pending", availableFrom: "",
+    kitchen: "Kitchen included", washroom: "Washroom included",
+    size: "", furnishing: "",
+    description:
+      "Demo listing for layout preview. A one-room apartment with a kitchen and a washroom. " +
+      "Availability is shown for interface testing only.",
+    photos: ["twoRoomB", "kitchenA", "bathA"],
+    demo: true
+  },
+  {
+    id: "demo-703", number: "703", floor: "7", type: "two-room",
+    price: 30000, pricePeriod: "", status: "occupied", availableFrom: "",
+    kitchen: "Kitchen included", washroom: "Washroom included",
+    size: "", furnishing: "",
+    description:
+      "Demo listing for layout preview. A two-room apartment with a kitchen and a washroom. " +
+      "Availability is shown for interface testing only.",
+    photos: ["livingA", "bedroomA", "kitchenB", "bathB"],
+    demo: true
+  }
+];
+
+/* ---------------------------------------------------------------------------
+   6. GALLERY
+   --------------------------------------------------------------------------- */
+const GALLERY_CATEGORIES = [
+  { id: "living",    name: "Living Spaces" },
+  { id: "one-room",  name: "One-Room Apartments" },
+  { id: "two-room",  name: "Two-Room Apartments" },
+  { id: "kitchens",  name: "Kitchens" },
+  { id: "washrooms", name: "Washrooms" },
+  { id: "common",    name: "Common Areas" }
+];
+const GALLERY = [
+  { id: "g1",  cat: "living",    label: "Bright living space",              photo: "hero" },
+  { id: "g2",  cat: "living",    label: "Living area with seating",         photo: "livingA" },
+  { id: "g3",  cat: "one-room",  label: "One-room apartment",               photo: "oneRoomA" },
+  { id: "g4",  cat: "one-room",  label: "One-room apartment, second view",  photo: "twoRoomB" },
+  { id: "g5",  cat: "two-room",  label: "Two-room apartment, main room",    photo: "twoRoomA" },
+  { id: "g6",  cat: "two-room",  label: "Two-room apartment, bedroom",      photo: "bedroomA" },
+  { id: "g7",  cat: "two-room",  label: "Two-room apartment, living area",  photo: "livingA" },
+  { id: "g8",  cat: "kitchens",  label: "Kitchen",                          photo: "kitchenA" },
+  { id: "g9",  cat: "kitchens",  label: "Kitchen counters",                 photo: "kitchenB" },
+  { id: "g10", cat: "washrooms", label: "Washroom",                         photo: "bathA" },
+  { id: "g11", cat: "washrooms", label: "Washroom fittings",                photo: "bathB" },
+  { id: "g12", cat: "common",    label: "Apartment corridor",               photo: "corridorA" },
+  { id: "g13", cat: "common",    label: "Shared entrance interior",         photo: "interiorA" }
+];
+
+/* ---------------------------------------------------------------------------
+   7. RUNTIME STATE
+   --------------------------------------------------------------------------- */
+const state = {
+  apartments: [],
+  authed: false,
+  adminTab: "listings",
+  apiOnline: false,
+  galleryFilter: "all"
+};
+
+/* ---------------------------------------------------------------------------
+   8. UTILITIES
+   --------------------------------------------------------------------------- */
+const $  = (s, r) => (r || document).querySelector(s);
+const $$ = (s, r) => Array.prototype.slice.call((r || document).querySelectorAll(s));
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => (
+  { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]
+));
+const money = n => "PKR " + Number(n || 0).toLocaleString("en-PK");
+const typeName = id => (APARTMENT_TYPES[id] || {}).name || "Apartment";
+const typePrice = id => (APARTMENT_TYPES[id] || {}).price || 0;
+
+function priceShort(apt) {
+  return money(apt.price != null ? apt.price : typePrice(apt.type));
+}
+function pricePeriod(apt) {
+  return apt.pricePeriod || CONFIG.rentalPeriodLabel;
+}
+function statusLabel(s) {
+  return { available: "Available", pending: "Pending", occupied: "Occupied" }[s] || "Unknown";
+}
+
+/* ---------------------------------------------------------------------------
+   9. LOGO (animated architectural SVG)
+   --------------------------------------------------------------------------- */
+function logoSVG(variant) {
+  const cls = variant === "light" ? "logo-mark logo--light" : "logo-mark";
+  return '' +
+  '<svg class="' + cls + '" viewBox="0 0 48 48" aria-hidden="true" focusable="false">' +
+    '<g class="logo-fill">' +
+      '<path d="M6 42 V20 H26 V42 Z"/>' +
+      '<path d="M26 42 V8 H42 V42 Z"/>' +
+    '</g>' +
+    '<g class="logo-stroke" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' +
+      '<path d="M6 42 V20 H26 V42" pathLength="1"/>' +
+      '<path d="M26 42 V8 H42 V42" pathLength="1"/>' +
+      '<path d="M3 42 H45" pathLength="1"/>' +
+    '</g>' +
+    '<g class="logo-windows">' +
+      '<rect x="8"  y="24" width="4" height="4" rx="1"/>' +
+      '<rect x="14" y="24" width="4" height="4" rx="1"/>' +
+      '<rect x="20" y="24" width="4" height="4" rx="1"/>' +
+      '<rect x="8"  y="31" width="4" height="4" rx="1"/>' +
+      '<rect x="14" y="31" width="4" height="4" rx="1"/>' +
+      '<rect x="20" y="31" width="4" height="4" rx="1"/>' +
+      '<rect x="30" y="13" width="4" height="4" rx="1"/>' +
+      '<rect x="36" y="13" width="4" height="4" rx="1"/>' +
+      '<rect x="30" y="20" width="4" height="4" rx="1"/>' +
+      '<rect x="36" y="20" width="4" height="4" rx="1"/>' +
+      '<rect x="30" y="27" width="4" height="4" rx="1"/>' +
+      '<rect x="36" y="27" width="4" height="4" rx="1"/>' +
+      '<rect x="30" y="34" width="4" height="4" rx="1"/>' +
+      '<rect x="36" y="34" width="4" height="4" rx="1"/>' +
+    '</g>' +
+  '</svg>';
+}
+function logoLockup(variant) {
+  return logoSVG(variant) +
+    '<span class="logo-text"><strong>JS</strong> Apartments</span>';
+}
+/* Favicon */
+(function () {
+  const svg =
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">' +
+    '<rect width="64" height="64" rx="14" fill="#0B1F3A"/>' +
+    '<rect x="13" y="30" width="15" height="22" rx="2.4" fill="#7FA6F0"/>' +
+    '<rect x="32" y="13" width="19" height="39" rx="2.4" fill="#FFFFFF"/>' +
+    '<g fill="#0B1F3A">' +
+      '<rect x="36" y="19" width="4" height="4" rx="1"/><rect x="43" y="19" width="4" height="4" rx="1"/>' +
+      '<rect x="36" y="27" width="4" height="4" rx="1"/><rect x="43" y="27" width="4" height="4" rx="1"/>' +
+      '<rect x="36" y="35" width="4" height="4" rx="1"/><rect x="43" y="35" width="4" height="4" rx="1"/>' +
+    '</g>' +
+    '<g fill="#0B1F3A">' +
+      '<rect x="17" y="34" width="3.2" height="3.2" rx="1"/><rect x="22.6" y="34" width="3.2" height="3.2" rx="1"/>' +
+      '<rect x="17" y="41" width="3.2" height="3.2" rx="1"/><rect x="22.6" y="41" width="3.2" height="3.2" rx="1"/>' +
+    '</g></svg>';
+  const link = document.querySelector('link[rel="icon"]');
+  if (link) link.href = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+})();
+
+/* First-visit flag: drives the logo, header and hero entrance animations. */
+const FIRST_VISIT = !sessionStorage.getItem("js-apt-seen");
+if (FIRST_VISIT) {
+  document.documentElement.classList.add("first-visit");
+  sessionStorage.setItem("js-apt-seen", "1");
+  window.setTimeout(function () {
+    document.documentElement.classList.remove("first-visit");
+  }, 2400);
+}
+
+/* ---------------------------------------------------------------------------
+   10. DATA ACCESS
+   --------------------------------------------------------------------------- */
+function visibleApartments() {
+  return state.apartments.filter(a => CONFIG.showDemoData || !a.demo);
+}
+function findApartment(id) {
+  return visibleApartments().filter(a => a.id === id)[0] || null;
+}
+function visibleGallery() {
+  return GALLERY.filter(g => CONFIG.showDemoData || !g.demo);
+}
+function galleryCategoriesInUse() {
+  const used = {};
+  visibleGallery().forEach(g => { used[g.cat] = true; });
+  return GALLERY_CATEGORIES.filter(c => used[c.id]);
+}
+function floorsInUse() {
+  const ids = {};
+  visibleApartments().forEach(a => { ids[String(a.floor)] = true; });
+  return FLOORS.filter(f => ids[f.id]);
+}
+function statusesInUse() {
+  const ids = {};
+  visibleApartments().forEach(a => { ids[a.status] = true; });
+  return ["available", "pending", "occupied"].filter(s => ids[s]);
+}
+
+/* ---------------------------------------------------------------------------
+   11. API LAYER (optional backend)
+   --------------------------------------------------------------------------- */
+const API = {
+  online: false,
+  async probe() {
+    try {
+      const r = await fetch("/api/health", {
+        headers: { Accept: "application/json" }, credentials: "same-origin"
+      });
+      this.online = r.ok;
+    } catch (e) { this.online = false; }
+    state.apiOnline = this.online;
+    return this.online;
+  },
+  async req(path, options) {
+    options = options || {};
+    const r = await fetch(path, {
+      credentials: "same-origin",
+      headers: Object.assign({ "Content-Type": "application/json" }, options.headers || {}),
+      method: options.method || "GET",
+      body: options.body ? JSON.stringify(options.body) : undefined
     });
+    let data = {};
+    try { data = await r.json(); } catch (e) { data = {}; }
+    if (!r.ok) {
+      const err = new Error(data.error || "Request failed");
+      err.status = r.status;
+      throw err;
+    }
+    return data;
+  }
+};
+
+/* ---------------------------------------------------------------------------
+   12. ROUTER
+   --------------------------------------------------------------------------- */
+function parseHash() {
+  const raw = (location.hash || "#/").replace(/^#/, "");
+  const parts = raw.split("?");
+  const path = parts[0] || "/";
+  const params = {};
+  new URLSearchParams(parts[1] || "").forEach((v, k) => { params[k] = v; });
+  return { path: path, segments: path.split("/").filter(Boolean), params: params };
+}
+function go(hash) {
+  if (location.hash === hash) { route(); return; }
+  location.hash = hash;
+}
+window.addEventListener("hashchange", route);
+
+function route() {
+  const r = parseHash();
+  const seg = r.segments;
+  let html = "";
+  let after = null;
+
+  switch (seg[0]) {
+    case undefined:    html = pageHome();                 break;
+    case "apartments": html = pageApartments(r.params);    break;
+    case "apartment":  html = pageApartmentDetail(seg[1]); break;
+    case "gallery":    html = pageGallery();               break;
+    case "about":      html = pageAbout();                 break;
+    case "location":   html = pageLocation();              break;
+    case "contact":    html = pageContact();               break;
+    case "request":    html = pageRequest(r.params); after = afterRequest; break;
+    case "admin":      html = pageAdmin();           after = afterAdmin;   break;
+    default:           html = pageNotFound();
+  }
+
+  $("#main").innerHTML = html;
+  if (!$(".site-header")) renderHeader(); else updateNavActive();
+  if (!$(".site-footer")) renderFooter();
+  renderMobileBar();
+  closeMobileNav();
+  window.scrollTo({ top: 0, behavior: "auto" });
+  if (after) after();
+  observeReveals();
+}
+
+/* ---------------------------------------------------------------------------
+   13. HEADER / FOOTER / MOBILE BAR
+   --------------------------------------------------------------------------- */
+const NAV_ITEMS = [
+  { href: "#/",           label: "Home",       match: "" },
+  { href: "#/apartments", label: "Apartments", match: "apartments" },
+  { href: "#/gallery",    label: "Gallery",    match: "gallery" },
+  { href: "#/about",      label: "About",      match: "about" },
+  { href: "#/location",   label: "Location",   match: "location" },
+  { href: "#/contact",    label: "Contact",    match: "contact" }
+];
+function currentSection() {
+  const seg = parseHash().segments;
+  if (!seg[0]) return "";
+  if (seg[0] === "apartment") return "apartments";
+  return seg[0];
+}
+function renderHeader(force) {
+  const existing = $(".site-header");
+  if (existing && !force) { updateNavActive(); return; }
+
+  const section = currentSection();
+  const links = NAV_ITEMS.map(item =>
+    '<a href="' + item.href + '"' + (section === item.match ? ' aria-current="page"' : "") + ">" +
+      esc(item.label) + "</a>"
+  ).join("");
+  const animate = FIRST_VISIT && !window.__logoPlayed;
+  window.__logoPlayed = true;
+
+  $("#app-header").innerHTML =
+    '<header class="site-header' + (animate ? " logo-anim" : "") + '">' +
+      '<div class="container header-inner">' +
+        '<a class="logo" href="#/" aria-label="' + esc(CONFIG.brand) + ' — home">' + logoLockup() + "</a>" +
+        '<nav class="nav" id="primary-nav" aria-label="Primary">' + links + "</nav>" +
+        '<div class="header-actions">' +
+          '<a class="btn btn-primary btn-sm" href="#/request?type=viewing">Schedule a Viewing</a>' +
+          '<button type="button" class="nav-toggle" data-action="nav-toggle" aria-expanded="false" ' +
+            'aria-controls="primary-nav" aria-label="Open menu"><span></span></button>' +
+        "</div>" +
+      "</div>" +
+    "</header>";
+}
+function updateNavActive() {
+  const section = currentSection();
+  $$(".site-header .nav a").forEach(a => {
+    const item = NAV_ITEMS.find(i => i.href === a.getAttribute("href"));
+    if (item && section === item.match) a.setAttribute("aria-current", "page");
+    else a.removeAttribute("aria-current");
   });
+}
+function renderFooter(force) {
+  const existing = $(".site-footer");
+  if (existing && !force) return;
+
+  const bits = [];
+  if (CONFIG.phone) bits.push('<li><a href="tel:' + esc(CONFIG.phone.replace(/\s/g, "")) + '">' + esc(CONFIG.phone) + "</a></li>");
+  if (CONFIG.whatsapp) bits.push('<li><a href="https://wa.me/' + esc(CONFIG.whatsapp) + '" target="_blank" rel="noopener">WhatsApp</a></li>');
+  if (CONFIG.email) bits.push('<li><a href="mailto:' + esc(CONFIG.email) + '">' + esc(CONFIG.email) + "</a></li>");
+  if (!bits.length) bits.push('<li><span style="color:#8FA3C2">Contact details pending confirmation</span></li>');
+
+  $("#app-footer").innerHTML =
+    '<footer class="site-footer">' +
+      '<div class="container">' +
+        '<div class="footer-grid">' +
+          '<div class="footer-col">' +
+            '<a class="logo logo--light" href="#/" style="margin-bottom:1.1rem">' + logoLockup("light") + "</a>" +
+            "<p>" + esc(CONFIG.building) + ", " + esc(CONFIG.addressLine) +
+              ". One-room and two-room apartments with a kitchen and washroom.</p>" +
+          "</div>" +
+          '<div class="footer-col"><h4>Explore</h4><ul>' +
+            NAV_ITEMS.map(i => '<li><a href="' + i.href + '">' + esc(i.label) + "</a></li>").join("") +
+          "</ul></div>" +
+          '<div class="footer-col"><h4>Contact</h4><ul>' + bits.join("") +
+            '<li><a href="#/request?type=viewing">Schedule a viewing</a></li>' +
+            '<li><a href="#/admin">Management</a></li>' +
+          "</ul></div>" +
+        "</div>" +
+        '<div class="footer-bottom">' +
+          "<span>&copy; " + new Date().getFullYear() + " " + esc(CONFIG.brand) + ". All rights reserved.</span>" +
+          "<span>Rental terms to be confirmed with management.</span>" +
+        "</div>" +
+        '<p class="footer-note">Photography on this site is illustrative preview material sourced from ' +
+        '<a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a> and will be replaced with ' +
+        "owner-approved photographs of the actual property. Apartment numbers, availability, sizes and rental " +
+        "policies are confirmed by management on request.</p>" +
+      "</div>" +
+    "</footer>";
+}
+function renderMobileBar() {
+  const seg = parseHash().segments;
+  const bar = $("#mobile-bar");
+  document.body.classList.remove("has-mobile-bar");
+  if (seg[0] !== "apartment" || !seg[1]) { bar.innerHTML = ""; return; }
+  const apt = findApartment(seg[1]);
+  if (!apt) { bar.innerHTML = ""; return; }
+  const wa = CONFIG.whatsapp
+    ? '<a class="btn btn-outline btn-sm" href="https://wa.me/' + esc(CONFIG.whatsapp) +
+      "?text=" + encodeURIComponent("Hello, I would like to ask about apartment " + apt.number + " at " + CONFIG.brand + ".") +
+      '" target="_blank" rel="noopener">WhatsApp</a>'
+    : "";
+  bar.innerHTML =
+    '<div class="mobile-bar">' + wa +
+      '<a class="btn btn-primary btn-sm" href="#/request?type=booking&apt=' + encodeURIComponent(apt.id) + '">Request Booking</a>' +
+    "</div>";
+  document.body.classList.add("has-mobile-bar");
+}
+function closeMobileNav() {
+  const nav = $("#primary-nav");
+  const btn = $('[data-action="nav-toggle"]');
+  if (nav) nav.classList.remove("open");
+  if (btn) btn.setAttribute("aria-expanded", "false");
+}
+
+/* ---------------------------------------------------------------------------
+   14. SHARED BLOCKS
+   --------------------------------------------------------------------------- */
+function pageHead(title, sub, crumb) {
+  return '<section class="section section--tight" style="border-bottom:1px solid var(--line)">' +
+    '<div class="container">' +
+      (crumb ? '<p class="eyebrow">' + esc(crumb) + "</p>" : "") +
+      '<h1 style="font-size:clamp(1.95rem,4.2vw,3rem)">' + esc(title) + "</h1>" +
+      (sub ? '<p class="lede" style="margin-top:.9rem">' + esc(sub) + "</p>" : "") +
+    "</div></section>";
+}
+function figure(src, alt, opts) {
+  opts = opts || {};
+  const ratio = opts.ratio || "4x3";
+  const url = resolvePhoto(src, opts.w || 1200);
+  const loading = opts.eager ? "eager" : "lazy";
+  const inner =
+    '<div class="figure figure--' + ratio + '">' +
+      '<img src="' + esc(url) + '" alt="' + esc(alt) + '" loading="' + loading + '" decoding="async">' +
+      (opts.note ? '<span class="img-note">' + esc(opts.note) + "</span>" : "") +
+    "</div>";
+  if (opts.zoom) {
+    return '<button type="button" class="figure-btn" data-action="lightbox" data-group="' +
+      esc(opts.group || "default") + '" data-index="' + (opts.index || 0) + '" aria-label="View larger: ' +
+      esc(alt) + '">' + inner + "</button>";
+  }
+  return inner;
+}
+function apartmentCard(apt) {
+  const t = APARTMENT_TYPES[apt.type] || {};
+  const cover = (apt.photos && apt.photos[0]) || "hero";
+  return '<article class="card reveal">' +
+    figure(cover, typeName(apt.type) + " at " + CONFIG.brand, { ratio: "4x3", w: 900 }) +
+    '<div class="card-body">' +
+      '<div class="card-title">' +
+        "<div>" +
+          "<h3>Apartment " + esc(apt.number) + "</h3>" +
+          '<p class="card-sub">' + esc(floorLabel(apt.floor)) + " · " + esc(typeName(apt.type)) + "</p>" +
+        "</div>" +
+        '<span class="badge badge--' + esc(apt.status) + '">' + esc(statusLabel(apt.status)) + "</span>" +
+      "</div>" +
+      '<div><div class="price">' + esc(priceShort(apt)) + "</div>" +
+        '<div class="price-note">' + esc(pricePeriod(apt)) + "</div></div>" +
+      '<ul class="feature-list">' + (t.features || []).map(f => "<li>" + esc(f) + "</li>").join("") + "</ul>" +
+      (apt.demo ? '<span class="badge badge--demo">Demo listing</span>' : "") +
+      '<div class="card-actions">' +
+        '<a class="btn btn-primary btn-sm" href="#/apartment/' + encodeURIComponent(apt.id) + '">View Apartment</a>' +
+        '<a class="btn btn-outline btn-sm" href="#/request?type=booking&apt=' + encodeURIComponent(apt.id) + '">Request Booking</a>' +
+      "</div>" +
+    "</div>" +
+  "</article>";
+}
+function emptyState(title, text) {
+  return '<div class="empty">' +
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">' +
+      '<path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-5h6v5"/></svg>' +
+    "<h3>" + esc(title) + "</h3><p>" + esc(text) + "</p></div>";
+}
+function demoNotice() {
+  if (!CONFIG.showDemoData) return "";
+  return '<div class="notice notice--warn" style="margin-bottom:2rem"><div>' +
+    "<strong>Preview content</strong>" +
+    "Apartments, photographs and floor details marked “Demo” or “illustrative” are development samples and " +
+    "must be replaced with real inventory and owner-approved photography before the site goes live." +
+    "</div></div>";
+}
+function galleryNote() {
+  return '<p class="gallery-note">' + esc(GALLERY_NOTE) + "</p>";
+}
+
+/* ---------------------------------------------------------------------------
+   15. PAGE — HOME
+   --------------------------------------------------------------------------- */
+function pageHome() {
+  const apts = visibleApartments();
+
+  const typeOpts = Object.keys(APARTMENT_TYPES)
+    .filter(id => apts.some(a => a.type === id))
+    .map(id => '<option value="' + esc(id) + '">' + esc(APARTMENT_TYPES[id].name) + "</option>").join("");
+  const floorOpts = floorsInUse()
+    .map(f => '<option value="' + esc(f.id) + '">' + esc(f.label) + "</option>").join("");
+  const statusOpts = statusesInUse()
+    .map(s => '<option value="' + esc(s) + '">' + esc(statusLabel(s)) + "</option>").join("");
+
+  /* ---- Apartment type rows: photography + copy (not boxes) ---- */
+  const typeRows = Object.keys(APARTMENT_TYPES).map((id, i) => {
+    const t = APARTMENT_TYPES[id];
+    const cover = id === "one-room" ? "oneRoomA" : "twoRoomA";
+    return '<div class="feature-row' + (i % 2 ? " feature-row--flip" : "") + ' reveal" style="margin-bottom:clamp(3rem,7vw,5.5rem)">' +
+      '<div class="feature-row__media">' +
+        figure(cover, t.name + " at " + CONFIG.brand, { ratio: "4x3", w: 1100 }) +
+      "</div>" +
+      "<div>" +
+        '<p class="eyebrow">' + esc(t.name) + "</p>" +
+        "<h2>" + esc(t.name) + "</h2>" +
+        '<ul class="feature-list" style="margin:1.25rem 0 1.5rem">' +
+          t.features.map(f => "<li>" + esc(f) + "</li>").join("") +
+        "</ul>" +
+        '<div class="price">' + esc(money(t.price)) + "</div>" +
+        '<div class="price-note" style="margin-bottom:1.5rem">' + esc(CONFIG.rentalPeriodLabel) + "</div>" +
+        '<div class="card-actions">' +
+          '<a class="btn btn-primary" href="#/request?type=booking&aptType=' + encodeURIComponent(id) + '">Request Booking</a>' +
+          '<a class="btn btn-outline" href="#/apartments?type=' + encodeURIComponent(id) + '">View Apartments</a>' +
+        "</div>" +
+      "</div>" +
+    "</div>";
+  }).join("");
+
+  /* ---- Gallery preview ---- */
+  const preview = visibleGallery().slice(0, 5);
+  const previewGrid = preview.length
+    ? '<div class="gallery-grid">' + preview.map((g, i) =>
+        '<div' + (i === 0 ? ' class="g-feature"' : "") + ">" +
+          figure(g.photo, g.label, { ratio: "4x3", w: 900, zoom: true, group: "preview", index: i }) +
+        "</div>").join("") + "</div>"
+    : emptyState("Photographs coming soon",
+        "Owner-approved photographs of the building and apartments will be published here once supplied.");
+
+  /* ---- Location ---- */
+  const mapBlock = CONFIG.mapEmbedUrl
+    ? '<div class="map-frame"><iframe src="' + esc(CONFIG.mapEmbedUrl) + '" title="Map showing ' +
+      esc(CONFIG.brand) + ' location" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>'
+    : '<div class="map-frame"><div class="map-placeholder">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">' +
+          '<path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>' +
+        '<strong style="color:var(--navy)">Exact map pin pending confirmation</strong>' +
+        "<span>The map will be added once management approves the exact location of " + esc(CONFIG.building) + ".</span>" +
+      "</div></div>";
+
+  return (
+    /* ---------------- HERO ---------------- */
+    '<section class="hero">' +
+      '<img class="hero-bg" src="' + esc(photo("hero", 2000)) + '" alt="" aria-hidden="true" ' +
+        'fetchpriority="high" decoding="async">' +
+      '<div class="container hero-content">' +
+        '<p class="hero-eyebrow">' + esc(CONFIG.brand) + " · Board Bazaar, Peshawar</p>" +
+        "<h1>Find Your Next Home.</h1>" +
+        '<p class="hero-sub">One-room and two-room apartments with a kitchen and washroom.</p>' +
+        '<div class="hero-actions">' +
+          '<a class="btn btn-primary btn-lg" href="#/apartments">Explore Apartments</a>' +
+          '<a class="btn btn-glass btn-lg" href="#/request?type=viewing">Schedule a Viewing</a>' +
+        "</div>" +
+      "</div>" +
+      '<div class="container hero-finder-wrap">' +
+        '<form class="finder" data-form="finder" aria-label="Find an apartment">' +
+          '<div class="field"><label for="f-type">Apartment type</label>' +
+            '<select id="f-type" name="type"><option value="">Any type</option>' + typeOpts + "</select></div>" +
+          '<div class="field"><label for="f-floor">Floor</label>' +
+            '<select id="f-floor" name="floor"><option value="">Any floor</option>' + floorOpts + "</select></div>" +
+          '<div class="field"><label for="f-status">Availability</label>' +
+            '<select id="f-status" name="status"><option value="">Any status</option>' + statusOpts + "</select></div>" +
+          '<button class="btn btn-primary" type="submit">View Apartments</button>' +
+        "</form>" +
+      "</div>" +
+    "</section>" +
+
+    /* ---------------- APARTMENT TYPES ---------------- */
+    '<section class="section"><div class="container">' +
+      '<div class="section-head"><p class="eyebrow">Apartment types</p>' +
+        "<h2>Two layouts, clearly described</h2>" +
+        '<p class="lede">Both apartment types include a kitchen and a washroom. The rental billing period is ' +
+        "being confirmed with management — " + esc(CONFIG.rentalPeriodLabel) + ".</p></div>" +
+      typeRows +
+    "</div></section>" +
+
+    /* ---------------- ABOUT ---------------- */
+    '<section class="section section--surface"><div class="container"><div class="split">' +
+      '<div class="reveal"><p class="eyebrow">About the property</p>' +
+        "<h2>A residential building inside " + esc(CONFIG.building) + "</h2>" +
+        "<p style=\"margin-top:1rem\">" + esc(CONFIG.brand) + " is located in " + esc(CONFIG.building) +
+          ", Board Bazaar, Peshawar. The building has approximately ten floors, and the apartments offered for " +
+          "rent are one-room and two-room units, each with a kitchen and a washroom.</p>" +
+        "<p>Availability changes, so every listing shows its current status. The simplest way to move forward is " +
+          "to request a viewing — management will confirm what is available and arrange a time.</p>" +
+        '<a class="btn btn-outline" href="#/about" style="margin-top:.75rem">Read more</a>' +
+      "</div>" +
+      '<div class="reveal">' +
+        figure("interiorA", "Interior view of a JS Apartments apartment", { ratio: "4x3", w: 1100 }) +
+        '<ul class="fact-list">' +
+          '<li><span class="k">Building</span><span class="v">' + esc(CONFIG.building) + "</span></li>" +
+          '<li><span class="k">Location</span><span class="v">Board Bazaar, Peshawar</span></li>' +
+          '<li><span class="k">Apartment types</span><span class="v">One-room · Two-room</span></li>' +
+          '<li><span class="k">Included</span><span class="v">Kitchen &amp; washroom</span></li>' +
+          '<li><span class="k">Rental terms</span><span class="v">To be confirmed</span></li>' +
+        "</ul>" +
+      "</div>" +
+    "</div></div></section>" +
+
+    /* ---------------- GALLERY PREVIEW ---------------- */
+    '<section class="section"><div class="container">' +
+      '<div class="section-head"><p class="eyebrow">Gallery</p><h2>See the building and apartments</h2>' +
+        '<p class="lede">Photographs are added as management approves them. Anything not yet photographed is ' +
+        "clearly noted as illustrative preview material.</p></div>" +
+      previewGrid +
+      '<div style="margin-top:1.25rem">' + galleryNote() + "</div>" +
+      '<div style="margin-top:2rem"><a class="btn btn-outline" href="#/gallery">Open full gallery</a></div>' +
+    "</div></section>" +
+
+    /* ---------------- LOCATION ---------------- */
+    '<section class="section section--surface"><div class="container">' +
+      '<div class="section-head"><p class="eyebrow">Location</p><h2>Find us in Board Bazaar, Peshawar</h2>' +
+        '<p class="lede">' + esc(CONFIG.addressLine) + "</p></div>" +
+      '<div class="split split--top">' +
+        "<div>" + mapBlock + "</div>" +
+        '<div class="reveal">' +
+          "<h3>Address</h3>" +
+          '<p style="margin-top:.6rem">' + esc(CONFIG.building) + "<br>" + esc(CONFIG.addressLine) + "</p>" +
+          (CONFIG.directionsUrl
+            ? '<a class="btn btn-primary" href="' + esc(CONFIG.directionsUrl) + '" target="_blank" rel="noopener">Get Directions</a>'
+            : '<button class="btn btn-outline" type="button" disabled aria-disabled="true">Get Directions</button>' +
+              '<p class="price-note" style="margin-top:.75rem">Directions will be enabled once the exact map pin is confirmed.</p>') +
+        "</div>" +
+      "</div>" +
+    "</div></section>" +
+
+    /* ---------------- FINAL CTA ---------------- */
+    '<section class="section"><div class="container"><div class="cta-band">' +
+      "<h2>See the Apartment Before You Decide</h2>" +
+      "<p>Send a viewing request and management will confirm a suitable time, availability and the next steps.</p>" +
+      '<div class="cta-actions">' +
+        '<a class="btn btn-primary btn-lg" href="#/request?type=viewing">Request a Viewing</a>' +
+        '<a class="btn btn-glass btn-lg" href="#/contact">Contact Management</a>' +
+      "</div>" +
+    "</div></div></section>"
+  );
+}
+
+/* ---------------------------------------------------------------------------
+   16. PAGE — APARTMENTS
+   --------------------------------------------------------------------------- */
+function pageApartments(params) {
+  const f = {
+    type: params.type || "",
+    floor: params.floor || "",
+    status: params.status || ""
+  };
+  const all = visibleApartments();
+  const filtered = all.filter(a =>
+    (!f.type || a.type === f.type) &&
+    (!f.floor || String(a.floor) === String(f.floor)) &&
+    (!f.status || a.status === f.status)
+  );
+
+  const floors = floorsInUse();
+  const floorChips = floors.length
+    ? '<div class="chips" role="group" aria-label="Filter by floor">' +
+        '<button type="button" class="chip" data-action="floor-filter" data-floor="" aria-pressed="' +
+          (f.floor === "" ? "true" : "false") + '">All floors</button>' +
+        floors.map(fl =>
+          '<button type="button" class="chip" data-action="floor-filter" data-floor="' + esc(fl.id) +
+          '" aria-pressed="' + (String(f.floor) === String(fl.id) ? "true" : "false") + '">' +
+          esc(fl.label) + "</button>").join("") +
+      "</div>"
+    : "";
+
+  const body = all.length
+    ? (filtered.length
+        ? '<div class="grid grid-3">' + filtered.map(apartmentCard).join("") + "</div>"
+        : emptyState("No apartments match these filters",
+            "Try a different floor, apartment type or availability. You can also send a request and management " +
+            "will tell you what is coming available."))
+    : emptyState("Listings are being prepared",
+        "Apartment listings will appear here once management confirms the inventory, apartment numbers and " +
+        "rental terms. In the meantime, you can request a viewing and management will contact you.");
+
+  return pageHead("Apartments at " + CONFIG.brand,
+      "One-room and two-room apartments with a kitchen and washroom. Availability is confirmed by management.",
+      "Inventory") +
+    '<section class="section"><div class="container">' +
+      demoNotice() +
+      '<div class="notice notice--info" style="margin-bottom:2rem"><div>' +
+        "<strong>Rental billing period not yet confirmed</strong>" +
+        "Prices are shown as " + esc(money(25000)) + " and " + esc(money(30000)) +
+        " with “" + esc(CONFIG.rentalPeriodLabel) + "”. Please confirm the billing period, deposit and any " +
+        "additional charges with management." +
+      "</div></div>" +
+      floorChips + body +
+      '<div style="margin-top:3rem" class="cta-band">' +
+        "<h2>Not sure which apartment suits you?</h2>" +
+        "<p>Send a request and management will help you choose between a one-room and a two-room apartment.</p>" +
+        '<div class="cta-actions">' +
+          '<a class="btn btn-primary" href="#/request?type=booking">Request Booking</a>' +
+          '<a class="btn btn-glass" href="#/request?type=viewing">Schedule a Viewing</a>' +
+        "</div>" +
+      "</div>" +
+    "</div></section>";
+}
+
+/* ---------------------------------------------------------------------------
+   17. PAGE — APARTMENT DETAIL
+   --------------------------------------------------------------------------- */
+function pageApartmentDetail(id) {
+  const apt = findApartment(id);
+  if (!apt) {
+    return pageHead("Apartment not found", "This listing may have been removed or is not published.") +
+      '<section class="section"><div class="container">' +
+        emptyState("Listing unavailable",
+          "The apartment you are looking for is not currently published. Browse all apartments or send a request " +
+          "and management will help.") +
+        '<div style="margin-top:1.5rem;display:flex;gap:.6rem;flex-wrap:wrap">' +
+          '<a class="btn btn-primary" href="#/apartments">Browse apartments</a>' +
+          '<a class="btn btn-outline" href="#/contact">Contact management</a>' +
+        "</div>" +
+      "</div></section>";
+  }
+
+  const t = APARTMENT_TYPES[apt.type] || { features: [] };
+  const photos = (apt.photos && apt.photos.length) ? apt.photos : ["hero"];
+
+  const thumbs = photos.length > 1
+    ? '<div class="grid" style="grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;margin-top:.9rem">' +
+        photos.map((p, i) =>
+          figure(p, typeName(apt.type) + " — view " + (i + 1),
+                 { ratio: "1x1", w: 600, zoom: true, group: "apt", index: i })).join("") +
+      "</div>"
+    : "";
+
+  const waLink = CONFIG.whatsapp
+    ? '<a class="btn btn-outline" href="https://wa.me/' + esc(CONFIG.whatsapp) +
+      "?text=" + encodeURIComponent("Hello, I would like to ask about apartment " + apt.number + " at " + CONFIG.brand + ".") +
+      '" target="_blank" rel="noopener">WhatsApp inquiry</a>'
+    : "";
+
+  const facts = [
+    ["Apartment number", apt.number],
+    ["Floor", floorLabel(apt.floor)],
+    ["Apartment type", typeName(apt.type)],
+    ["Availability", statusLabel(apt.status)]
+  ];
+  if (apt.availableFrom) facts.push(["Available from", apt.availableFrom]);
+  if (apt.size) facts.push(["Size", apt.size]);
+  if (apt.furnishing) facts.push(["Furnishing", apt.furnishing]);
+
+  return pageHead("Apartment " + apt.number,
+      floorLabel(apt.floor) + " · " + typeName(apt.type), "Apartment details") +
+    '<section class="section section--tight"><div class="container">' +
+      (apt.demo
+        ? '<div class="notice notice--warn" style="margin-bottom:1.75rem"><div><strong>Demo listing</strong>' +
+          "This apartment is sample content for development. Apartment numbers, descriptions, prices, " +
+          "availability and photographs must be confirmed and replaced by management before publishing.</div></div>"
+        : "") +
+      '<div class="split split--top">' +
+        "<div>" +
+          figure(photos[0], typeName(apt.type) + " at " + CONFIG.brand,
+                 { ratio: "3x2", w: 1400, eager: true, zoom: true, group: "apt", index: 0 }) +
+          thumbs +
+        "</div>" +
+        '<div class="reveal">' +
+          '<div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1rem">' +
+            '<span class="badge badge--' + esc(apt.status) + '">' + esc(statusLabel(apt.status)) + "</span>" +
+            '<span class="badge badge--demo">' + esc(floorLabel(apt.floor)) + "</span>" +
+          "</div>" +
+          '<div class="price">' + esc(priceShort(apt)) + "</div>" +
+          '<div class="price-note" style="margin-bottom:1.5rem">' + esc(pricePeriod(apt)) + "</div>" +
+          "<h3>Confirmed facilities</h3>" +
+          '<ul class="feature-list" style="margin:.75rem 0 1.5rem">' +
+            (apt.kitchen ? "<li>" + esc(apt.kitchen) + "</li>" : "") +
+            (apt.washroom ? "<li>" + esc(apt.washroom) + "</li>" : "") +
+            (t.features || []).map(x => "<li>" + esc(x) + "</li>").join("") +
+          "</ul>" +
+          "<h3>Description</h3>" +
+          '<p style="margin:.6rem 0 1.5rem">' + esc(apt.description || "Description to be provided by management.") + "</p>" +
+          "<h3>Details</h3>" +
+          '<ul class="fact-list" style="margin-top:.75rem">' +
+            facts.map(row => '<li><span class="k">' + esc(row[0]) + '</span><span class="v">' + esc(row[1]) + "</span></li>").join("") +
+          "</ul>" +
+          '<div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.75rem">' +
+            '<a class="btn btn-primary" href="#/request?type=booking&apt=' + encodeURIComponent(apt.id) + '">Request Booking</a>' +
+            '<a class="btn btn-outline" href="#/request?type=viewing&apt=' + encodeURIComponent(apt.id) + '">Schedule a Viewing</a>' +
+            waLink +
+          "</div>" +
+          '<p class="price-note" style="margin-top:1.25rem">Deposits, utility charges, maintenance and minimum ' +
+          "stay are shown only when supplied by management. None have been confirmed for this apartment yet.</p>" +
+        "</div>" +
+      "</div>" +
+    "</div></section>" +
+    '<section class="section section--surface"><div class="container">' +
+      '<div class="section-head"><h2>How requesting works</h2>' +
+        '<p class="lede">A request is not a confirmed reservation. Management checks availability and contacts you ' +
+        "to confirm the next steps.</p></div>" +
+      '<div class="grid grid-3">' +
+        '<div class="card"><div class="card-body"><h3>1. Send a request</h3><p class="card-sub">Share your preferred move-in date and rental duration.</p></div></div>' +
+        '<div class="card"><div class="card-body"><h3>2. Management confirms</h3><p class="card-sub">We check that the apartment is still available and contact you.</p></div></div>' +
+        '<div class="card"><div class="card-body"><h3>3. View and decide</h3><p class="card-sub">Arrange a viewing, then confirm the rental terms directly with management.</p></div></div>' +
+      "</div>" +
+    "</div></section>";
+}
+
+/* ---------------------------------------------------------------------------
+   18. PAGE — GALLERY
+   --------------------------------------------------------------------------- */
+function pageGallery() {
+  const cats = galleryCategoriesInUse();
+  const items = visibleGallery().filter(g => state.galleryFilter === "all" || g.cat === state.galleryFilter);
+
+  if (!cats.length) {
+    return pageHead("Gallery", "Photographs of the building and apartments.", "Gallery") +
+      '<section class="section"><div class="container">' +
+        emptyState("Photographs coming soon",
+          "Owner-approved photographs of the building exterior, apartments, kitchens and washrooms will be " +
+          "published here once supplied. We do not publish stock or third-party photographs as if they were " +
+          "the real property.") +
+      "</div></section>";
+  }
+
+  const chips =
+    '<div class="chips" role="group" aria-label="Filter gallery by category">' +
+      '<button type="button" class="chip" data-action="gallery-filter" data-cat="all" aria-pressed="' +
+        (state.galleryFilter === "all" ? "true" : "false") + '">All photos</button>' +
+      cats.map(c =>
+        '<button type="button" class="chip" data-action="gallery-filter" data-cat="' + esc(c.id) +
+        '" aria-pressed="' + (state.galleryFilter === c.id ? "true" : "false") + '">' + esc(c.name) + "</button>").join("") +
+    "</div>";
+
+  const grid = items.length
+    ? '<div class="gallery-grid">' + items.map((g, i) =>
+        '<div' + (i === 0 ? ' class="g-feature"' : "") + ">" +
+          figure(g.photo, g.label, { ratio: "4x3", w: 900, zoom: true, group: "gallery", index: i }) +
+        "</div>").join("") + "</div>"
+    : emptyState("No photos in this category yet", "Choose another category or view all photos.");
+
+  return pageHead("Gallery", "Living spaces, apartments, kitchens, washrooms and common areas.", "Gallery") +
+    '<section class="section"><div class="container">' +
+      chips + grid +
+      '<div style="margin-top:1.5rem">' + galleryNote() + "</div>" +
+    "</div></section>";
+}
+
+/* ---------------------------------------------------------------------------
+   19. PAGE — ABOUT
+   --------------------------------------------------------------------------- */
+function pageAbout() {
+  return pageHead("About " + CONFIG.brand,
+      "A residential building in JS Mall, Board Bazaar, Peshawar.", "About") +
+    '<section class="section"><div class="container"><div class="split">' +
+      '<div class="reveal">' +
+        "<h2>Straightforward rental apartments in the heart of Board Bazaar</h2>" +
+        "<p style=\"margin-top:1rem\">" + esc(CONFIG.brand) + " offers apartments inside " + esc(CONFIG.building) +
+          ", located in Board Bazaar, Peshawar. The building has approximately ten floors. The apartments " +
+          "available for rent are one-room and two-room units, and every apartment includes a kitchen and a washroom.</p>" +
+        "<p>We keep the information on this site limited to what has been confirmed. Apartment numbers, sizes, " +
+          "furnishing, deposits and rental policies are published only once management supplies them — so " +
+          "nothing here is guessed.</p>" +
+        "<p>The best next step is to request a viewing. Management will confirm current availability and arrange " +
+          "a time for you to see the apartment before you decide.</p>" +
+        '<div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.5rem">' +
+          '<a class="btn btn-primary" href="#/request?type=viewing">Schedule a Viewing</a>' +
+          '<a class="btn btn-outline" href="#/apartments">Browse Apartments</a>' +
+        "</div>" +
+      "</div>" +
+      '<div class="reveal">' +
+        figure("twoRoomB", "JS Apartments apartment interior", { ratio: "4x5", w: 1100 }) +
+      "</div>" +
+    "</div></div></section>" +
+
+    '<section class="section section--surface"><div class="container">' +
+      '<div class="section-head"><p class="eyebrow">What we can confirm</p><h2>Facts, not marketing claims</h2>' +
+        '<p class="lede">Everything below is confirmed by the business. Anything not listed here has not yet ' +
+        "been verified.</p></div>" +
+      '<div class="grid grid-3">' +
+        '<div class="card"><div class="card-body"><h3>Two apartment types</h3>' +
+          '<ul class="feature-list"><li>One-room apartment — ' + esc(money(25000)) + "</li>" +
+          "<li>Two-room apartment — " + esc(money(30000)) + "</li></ul></div></div>" +
+        '<div class="card"><div class="card-body"><h3>Included in both</h3>' +
+          '<ul class="feature-list"><li>Kitchen</li><li>Washroom</li></ul></div></div>' +
+        '<div class="card"><div class="card-body"><h3>Location</h3>' +
+          '<ul class="feature-list"><li>' + esc(CONFIG.building) + "</li><li>Board Bazaar, Peshawar</li></ul></div></div>" +
+      "</div>" +
+      '<div class="notice notice--warn" style="margin-top:2rem"><div>' +
+        "<strong>Still to be confirmed by management</strong>" +
+        "Rental billing period, deposit amount, utility and maintenance charges, minimum stay, parking, " +
+        "security arrangements, backup electricity, lifts and internet are not stated here because they have " +
+        "not been confirmed. Please ask management directly." +
+      "</div></div>" +
+    "</div></section>";
+}
+
+/* ---------------------------------------------------------------------------
+   20. PAGE — LOCATION
+   --------------------------------------------------------------------------- */
+function pageLocation() {
+  const mapBlock = CONFIG.mapEmbedUrl
+    ? '<div class="map-frame"><iframe src="' + esc(CONFIG.mapEmbedUrl) + '" title="Map showing ' +
+      esc(CONFIG.brand) + ' location" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>'
+    : '<div class="map-frame"><div class="map-placeholder">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">' +
+          '<path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>' +
+        '<strong style="color:var(--navy)">Approved map pin pending</strong>' +
+        "<span>An embedded map will appear here once management confirms the exact location. " +
+        "We do not publish an unverified pin.</span>" +
+      "</div></div>";
+
+  return pageHead("Location", CONFIG.addressLine, "Location") +
+    '<section class="section"><div class="container"><div class="split split--top">' +
+      "<div>" + mapBlock + "</div>" +
+      '<div class="reveal">' +
+        "<h2>" + esc(CONFIG.building) + "</h2>" +
+        '<p style="margin-top:1rem">' + esc(CONFIG.addressLine) + "</p>" +
+        '<ul class="fact-list">' +
+          '<li><span class="k">Building</span><span class="v">' + esc(CONFIG.building) + "</span></li>" +
+          '<li><span class="k">Area</span><span class="v">Board Bazaar</span></li>' +
+          '<li><span class="k">City</span><span class="v">Peshawar, Pakistan</span></li>' +
+          '<li><span class="k">Map pin</span><span class="v">To be confirmed</span></li>' +
+        "</ul>" +
+        '<div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.75rem">' +
+          (CONFIG.directionsUrl
+            ? '<a class="btn btn-primary" href="' + esc(CONFIG.directionsUrl) + '" target="_blank" rel="noopener">Get Directions</a>'
+            : '<button class="btn btn-outline" type="button" disabled aria-disabled="true">Get Directions</button>') +
+          '<a class="btn btn-outline" href="#/request?type=viewing">Schedule a Viewing</a>' +
+        "</div>" +
+        (!CONFIG.directionsUrl
+          ? '<p class="price-note" style="margin-top:1rem">Directions become available once the verified map link is added in the management dashboard.</p>'
+          : "") +
+      "</div>" +
+    "</div></div></section>";
+}
+
+/* ---------------------------------------------------------------------------
+   21. PAGE — CONTACT
+   --------------------------------------------------------------------------- */
+function pageContact() {
+  const rows = [];
+  if (CONFIG.phone) rows.push(["Phone", CONFIG.phone]);
+  if (CONFIG.whatsapp) rows.push(["WhatsApp", "Available"]);
+  if (CONFIG.email) rows.push(["Email", CONFIG.email]);
+
+  const contactBlock = rows.length
+    ? '<ul class="fact-list">' + rows.map(r =>
+        '<li><span class="k">' + esc(r[0]) + '</span><span class="v">' + esc(r[1]) + "</span></li>").join("") + "</ul>" +
+      '<div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.5rem">' +
+        (CONFIG.phone ? '<a class="btn btn-primary" href="tel:' + esc(CONFIG.phone.replace(/\s/g, "")) + '">Call management</a>' : "") +
+        (CONFIG.whatsapp ? '<a class="btn btn-outline" href="https://wa.me/' + esc(CONFIG.whatsapp) + '" target="_blank" rel="noopener">WhatsApp</a>' : "") +
+      "</div>"
+    : '<div class="notice notice--info"><div><strong>Contact details are being confirmed</strong>' +
+      "A verified phone number and WhatsApp number have not been supplied yet, so they are not published here. " +
+      "Please use the request form and management will contact you.</div></div>";
+
+  return pageHead("Contact Management",
+      "Send a booking or viewing request and management will get back to you.", "Contact") +
+    '<section class="section"><div class="container"><div class="split split--top">' +
+      '<div class="reveal">' +
+        "<h2>Get in touch</h2>" +
+        '<p style="margin-top:1rem">' + esc(CONFIG.brand) + ", " + esc(CONFIG.addressLine) + "</p>" +
+        contactBlock +
+        '<div class="notice notice--warn" style="margin-top:2rem"><div><strong>Please note</strong>' +
+          "We never ask for identity documents, bank details or payments at the enquiry stage. Any payment is " +
+          "arranged directly with management after a viewing and written confirmation.</div></div>" +
+      "</div>" +
+      '<div class="reveal">' + requestForm("booking", "", "") + "</div>" +
+    "</div></div></section>";
+}
+
+/* ---------------------------------------------------------------------------
+   22. PAGE — REQUEST
+   --------------------------------------------------------------------------- */
+function pageRequest(params) {
+  const mode = params.type === "viewing" ? "viewing" : "booking";
+  const title = mode === "viewing" ? "Schedule a Viewing" : "Request a Booking";
+  const sub = mode === "viewing"
+    ? "Choose a preferred date and time. Management will confirm the appointment."
+    : "Tell us which apartment you are interested in. Management will confirm availability and the next steps.";
+  return pageHead(title, sub, mode === "viewing" ? "Viewing request" : "Booking request") +
+    '<section class="section"><div class="container" style="max-width:860px">' +
+      requestForm(mode, params.apt || "", params.aptType || "") +
+    "</div></section>";
+}
+
+function requestForm(mode, aptId, aptType) {
+  const apts = visibleApartments();
+  const optionGroups = Object.keys(APARTMENT_TYPES).map(id => {
+    const list = apts.filter(a => a.type === id);
+    if (!list.length) return "";
+    return '<optgroup label="' + esc(APARTMENT_TYPES[id].name) + '">' +
+      list.map(a => '<option value="' + esc(a.id) + '"' + (aptId === a.id ? " selected" : "") + ">Apartment " +
+        esc(a.number) + " — " + esc(floorLabel(a.floor)) + " (" + esc(statusLabel(a.status)) + ")</option>").join("") +
+      "</optgroup>";
+  }).join("");
+
+  const typeOptions = Object.keys(APARTMENT_TYPES).map(id =>
+    '<option value="' + esc(id) + '"' + (aptType === id ? " selected" : "") + ">" +
+      esc(APARTMENT_TYPES[id].name) + "</option>").join("");
+
+  const viewingFields = mode === "viewing"
+    ? '<div class="field"><label for="r-date">Preferred viewing date</label>' +
+        '<input id="r-date" name="preferredDate" type="date" required aria-describedby="r-date-err">' +
+        '<span class="err" id="r-date-err" role="alert"></span></div>' +
+      '<div class="field"><label for="r-time">Preferred time</label>' +
+        '<input id="r-time" name="preferredTime" type="time" required aria-describedby="r-time-err">' +
+        '<span class="err" id="r-time-err" role="alert"></span></div>'
+    : "";
+
+  const bookingFields = mode === "booking"
+    ? '<div class="field"><label for="r-movein">Preferred move-in date</label>' +
+        '<input id="r-movein" name="moveInDate" type="date" required aria-describedby="r-movein-err">' +
+        '<span class="err" id="r-movein-err" role="alert"></span></div>' +
+      '<div class="field"><label for="r-duration">Intended rental duration</label>' +
+        '<select id="r-duration" name="duration" required aria-describedby="r-duration-err">' +
+          '<option value="">Select a duration</option>' +
+          "<option>1–3 months</option><option>4–6 months</option><option>7–12 months</option>" +
+          "<option>More than 12 months</option><option>Not sure yet</option>" +
+        "</select>" +
+        '<span class="err" id="r-duration-err" role="alert"></span></div>'
+    : "";
+
+  const previewNote = !state.apiOnline
+    ? '<div class="notice notice--warn" style="margin-bottom:1.5rem"><div><strong>Preview mode — form not connected</strong>' +
+      "This website is running without a server, so submitted requests cannot be stored or sent. Nothing you " +
+      "type here is saved or transmitted. Connect the backend (see the README) or contact management directly " +
+      "to receive real requests.</div></div>"
+    : "";
+
+  return '<form class="form-card" data-form="request" data-mode="' + esc(mode) + '" novalidate>' +
+    previewNote +
+    '<div class="form-grid">' +
+      '<div class="field span-2"><label for="r-name">Full name</label>' +
+        '<input id="r-name" name="fullName" type="text" autocomplete="name" required aria-describedby="r-name-err">' +
+        '<span class="err" id="r-name-err" role="alert"></span></div>' +
+      '<div class="field span-2"><label for="r-phone">Phone or WhatsApp number</label>' +
+        '<input id="r-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required ' +
+          'placeholder="e.g. 0300 0000000" aria-describedby="r-phone-err">' +
+        '<span class="err" id="r-phone-err" role="alert"></span></div>' +
+
+      (apts.length
+        ? '<div class="field span-2"><label for="r-apt">Preferred apartment</label>' +
+            '<select id="r-apt" name="apartmentId">' +
+              '<option value="">No specific apartment — recommend one for me</option>' +
+              optionGroups +
+            "</select>" +
+            '<span class="hint">Optional. If you are not sure, leave this blank.</span></div>'
+        : "") +
+
+      '<div class="field span-2"><label for="r-apttype">Preferred apartment type</label>' +
+        '<select id="r-apttype" name="apartmentType">' +
+          '<option value="">Either type</option>' + typeOptions + "</select></div>" +
+
+      viewingFields + bookingFields +
+
+      '<div class="field span-2"><label for="r-message">Message <span class="hint">(optional)</span></label>' +
+        '<textarea id="r-message" name="message" placeholder="Anything management should know — number of occupants, questions about the apartment, and so on."></textarea></div>' +
+
+      '<div class="field span-2" style="gap:.6rem">' +
+        '<label id="r-consent-label">Contact preference</label>' +
+        '<div class="radio-row" role="radiogroup" aria-labelledby="r-consent-label">' +
+          '<label class="radio-pill"><input type="radio" name="contactPref" value="call" checked><span>Call me</span></label>' +
+          '<label class="radio-pill"><input type="radio" name="contactPref" value="whatsapp"><span>WhatsApp</span></label>' +
+          '<label class="radio-pill"><input type="radio" name="contactPref" value="either"><span>Either</span></label>' +
+        "</div>" +
+      "</div>" +
+    "</div>" +
+
+    '<p class="privacy">We use the details you provide only to respond to this request and arrange a viewing or ' +
+      "booking. We do not ask for identity documents or payment details at this stage. Your information is kept " +
+      "private and is not shared publicly.</p>" +
+
+    '<div id="r-status" aria-live="polite" style="margin-top:1.25rem"></div>' +
+
+    '<div style="margin-top:1.5rem;display:flex;gap:.75rem;flex-wrap:wrap">' +
+      '<button class="btn btn-primary btn-lg" type="submit">' +
+        (mode === "viewing" ? "Send Viewing Request" : "Send Booking Request") + "</button>" +
+      '<a class="btn btn-outline btn-lg" href="#/apartments">Browse apartments</a>' +
+    "</div>" +
+    '<p class="price-note" style="margin-top:1rem">A request is not a confirmed reservation. ' +
+      "Management will check availability and contact you to confirm the next steps.</p>" +
+  "</form>";
+}
+
+/* ---------------------------------------------------------------------------
+   23. PAGE — NOT FOUND
+   --------------------------------------------------------------------------- */
+function pageNotFound() {
+  return pageHead("Page not found", "The page you are looking for does not exist.", "404") +
+    '<section class="section"><div class="container">' +
+      emptyState("Nothing here", "The link may be outdated. Try the apartments page or contact management.") +
+      '<div style="margin-top:1.5rem;display:flex;gap:.6rem;flex-wrap:wrap">' +
+        '<a class="btn btn-primary" href="#/">Back to home</a>' +
+        '<a class="btn btn-outline" href="#/apartments">Browse apartments</a>' +
+      "</div>" +
+    "</div></section>";
+}
+
+/* ---------------------------------------------------------------------------
+   24. FORM HANDLING — REQUEST
+   --------------------------------------------------------------------------- */
+function setFieldError(form, name, message) {
+  const input = form.querySelector('[name="' + name + '"]');
+  const err = form.querySelector("#" + (input ? input.id : "") + "-err");
+  if (input) input.setAttribute("aria-invalid", message ? "true" : "false");
+  if (err) err.textContent = message || "";
+}
+function validateRequestForm(form) {
+  const data = {};
+  let ok = true;
+  new FormData(form).forEach((v, k) => { data[k] = typeof v === "string" ? v.trim() : v; });
+
+  ["fullName", "phone", "moveInDate", "duration", "preferredDate", "preferredTime"]
+    .forEach(k => setFieldError(form, k, ""));
+
+  if (!data.fullName || data.fullName.length < 2) {
+    setFieldError(form, "fullName", "Please enter your full name.");
+    ok = false;
+  }
+  const digits = (data.phone || "").replace(/[^\d]/g, "");
+  if (!data.phone) {
+    setFieldError(form, "phone", "Please enter a phone or WhatsApp number so we can reach you.");
+    ok = false;
+  } else if (digits.length < 7 || digits.length > 15) {
+    setFieldError(form, "phone", "Please enter a valid phone number (7–15 digits).");
+    ok = false;
+  }
+
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  if (form.dataset.mode === "booking") {
+    if (!data.moveInDate) {
+      setFieldError(form, "moveInDate", "Please choose a preferred move-in date.");
+      ok = false;
+    } else if (new Date(data.moveInDate) < today) {
+      setFieldError(form, "moveInDate", "Please choose today or a future date.");
+      ok = false;
+    }
+    if (!data.duration) {
+      setFieldError(form, "duration", "Please select an intended rental duration.");
+      ok = false;
+    }
+  } else {
+    if (!data.preferredDate) {
+      setFieldError(form, "preferredDate", "Please choose a preferred viewing date.");
+      ok = false;
+    } else if (new Date(data.preferredDate) < today) {
+      setFieldError(form, "preferredDate", "Please choose today or a future date.");
+      ok = false;
+    }
+    if (!data.preferredTime) {
+      setFieldError(form, "preferredTime", "Please choose a preferred time.");
+      ok = false;
+    }
+  }
+
+  const firstBad = form.querySelector('[aria-invalid="true"]');
+  if (firstBad) firstBad.focus();
+  return ok ? data : null;
+}
+async function submitRequest(form) {
+  const status = form.querySelector("#r-status");
+  const data = validateRequestForm(form);
+  if (!data) return;
+
+  const mode = form.dataset.mode;
+  const submitBtn = form.querySelector('button[type="submit"]');
+  submitBtn.disabled = true;
+  status.innerHTML = '<div class="notice notice--info"><div>Checking your request…</div></div>';
+
+  if (!state.apiOnline) {
+    /* Preview mode: never fake a success. */
+    status.innerHTML =
+      '<div class="notice notice--warn"><div><strong>Not sent — preview mode</strong>' +
+      "This site is not connected to a server, so your request could not be stored and management has not been " +
+      "notified. Your details were not saved or transmitted. To make this form work, connect the backend " +
+      "(see the README) or contact management directly.</div></div>";
+    submitBtn.disabled = false;
+    return;
+  }
+
+  try {
+    await API.req("/api/requests", {
+      method: "POST",
+      body: {
+        kind: mode,
+        fullName: data.fullName,
+        phone: data.phone,
+        apartmentId: data.apartmentId || "",
+        apartmentType: data.apartmentType || "",
+        moveInDate: data.moveInDate || "",
+        duration: data.duration || "",
+        preferredDate: data.preferredDate || "",
+        preferredTime: data.preferredTime || "",
+        contactPref: data.contactPref || "either",
+        message: data.message || ""
+      }
+    });
+    form.reset();
+    status.innerHTML =
+      '<div class="notice notice--ok"><div><strong>Request received</strong>' +
+      "Your request has been received. Management will contact you to confirm availability and the next steps." +
+      "</div></div>";
+  } catch (err) {
+    status.innerHTML =
+      '<div class="notice notice--err"><div><strong>We could not send your request</strong>' +
+      esc(err.message || "Please try again in a moment, or contact management directly.") +
+      "</div></div>";
+  } finally {
+    submitBtn.disabled = false;
+  }
+}
+function afterRequest() {
+  const form = $('[data-form="request"]');
+  if (!form) return;
+  const params = parseHash().params;
+  if (params.apt) {
+    const sel = form.querySelector('[name="apartmentId"]');
+    if (sel) sel.value = params.apt;
+  }
+  const todayISO = new Date().toISOString().slice(0, 10);
+  form.querySelectorAll('input[type="date"]').forEach(i => { i.min = todayISO; });
+}
+
+/* ---------------------------------------------------------------------------
+   25. LIGHTBOX
+   --------------------------------------------------------------------------- */
+let lbState = { items: [], index: 0, opener: null };
+
+function lightboxItemsForGroup(group) {
+  if (group === "gallery") {
+    const cat = state.galleryFilter;
+    return visibleGallery()
+      .filter(g => cat === "all" || g.cat === cat)
+      .map(g => ({ url: photo(g.photo, 1600), label: g.label }));
+  }
+  if (group === "apt") {
+    const id = parseHash().segments[1];
+    const apt = findApartment(id);
+    const photos = apt && apt.photos && apt.photos.length ? apt.photos : ["hero"];
+    return photos.map((p, i) => ({
+      url: resolvePhoto(p, 1600),
+      label: typeName(apt.type) + " — view " + (i + 1)
+    }));
+  }
+  return visibleGallery().slice(0, 5).map(g => ({ url: photo(g.photo, 1600), label: g.label }));
+}
+function openLightbox(group, index, opener) {
+  const items = lightboxItemsForGroup(group);
+  if (!items.length) return;
+  lbState = { items: items, index: Math.max(0, Math.min(index, items.length - 1)), opener: opener || null };
+  renderLightbox();
+  $("#lightbox").classList.add("open");
+  document.body.classList.add("no-scroll");
+  const closeBtn = $("#lightbox").querySelector('[data-action="lb-close"]');
+  if (closeBtn) closeBtn.focus();
+}
+function closeLightbox() {
+  const lb = $("#lightbox");
+  lb.classList.remove("open");
+  lb.innerHTML = "";
+  document.body.classList.remove("no-scroll");
+  if (lbState.opener) lbState.opener.focus();
+}
+function moveLightbox(delta) {
+  const n = lbState.items.length;
+  if (!n) return;
+  lbState.index = (lbState.index + delta + n) % n;
+  renderLightbox();
+}
+function renderLightbox() {
+  const lb = $("#lightbox");
+  const item = lbState.items[lbState.index];
+  lb.innerHTML =
+    '<div class="lb-bar">' +
+      '<span class="lb-counter">' + (lbState.index + 1) + " / " + lbState.items.length + "</span>" +
+      '<button type="button" class="lb-btn" data-action="lb-close" aria-label="Close image viewer">&#10005;</button>' +
+    "</div>" +
+    (lbState.items.length > 1
+      ? '<div class="lb-nav lb-prev"><button type="button" class="lb-btn" data-action="lb-prev" aria-label="Previous image">&#8249;</button></div>' +
+        '<div class="lb-nav lb-next"><button type="button" class="lb-btn" data-action="lb-next" aria-label="Next image">&#8250;</button></div>'
+      : "") +
+    '<img src="' + esc(item.url) + '" alt="' + esc(item.label) + '">' +
+    '<p class="lb-caption">' + esc(item.label) + "</p>";
+}
+
+/* ---------------------------------------------------------------------------
+   26. ADMIN — PREVIEW DASHBOARD (must be replaced by the server dashboard)
+   --------------------------------------------------------------------------- */
+const PREVIEW_CREDENTIALS = { user: "admin", pass: "jspreview" };
+
+function pageAdmin() {
+  if (!state.authed) {
+    return pageHead("Management dashboard", "Sign in to manage listings and requests.", "Management") +
+      '<section class="admin-shell"><div class="container" style="max-width:460px">' +
+        '<div class="notice notice--warn" style="margin-bottom:1.5rem"><div><strong>Preview login — not secure</strong>' +
+          "This dashboard runs in the browser without a server. It must not be used with real applicant data. " +
+          "The production dashboard requires server-side authentication (see server.js).</div></div>" +
+        '<form class="form-card" data-form="login" novalidate>' +
+          '<div class="form-grid" style="grid-template-columns:1fr">' +
+            '<div class="field"><label for="a-user">Username</label>' +
+              '<input id="a-user" name="username" type="text" autocomplete="username" required></div>' +
+            '<div class="field"><label for="a-pass">Password</label>' +
+              '<input id="a-pass" name="password" type="password" autocomplete="current-password" required></div>' +
+          "</div>" +
+          '<div id="a-status" aria-live="polite" style="margin-top:1rem"></div>' +
+          '<button class="btn btn-primary btn-block" type="submit" style="margin-top:1.25rem">Sign in</button>' +
+          '<p class="price-note" style="margin-top:1rem">Preview credentials: <strong>admin</strong> / <strong>jspreview</strong></p>' +
+        "</form>" +
+      "</div></section>";
+  }
+
+  const tab = state.adminTab;
+  const tabs = [
+    { id: "listings", label: "Listings" },
+    { id: "requests", label: "Requests" },
+    { id: "settings", label: "Settings" }
+  ];
+  let panel = "";
+  if (tab === "listings") panel = adminListings();
+  else if (tab === "requests") panel = adminRequests();
+  else panel = adminSettings();
+
+  return pageHead("Management dashboard", "Manage apartments, requests and site settings.", "Management") +
+    '<section class="admin-shell"><div class="container">' +
+      '<div class="notice notice--warn" style="margin-bottom:1.5rem"><div><strong>Preview mode</strong>' +
+        "Changes made here are held in memory for this browser session only and are not saved. " +
+        (state.apiOnline ? "" : "No backend detected at /api. ") +
+        "Connect the server for persistent storage and secure access.</div></div>" +
+      '<div class="admin-tabs" role="tablist">' +
+        tabs.map(t =>
+          '<button role="tab" aria-selected="' + (tab === t.id) + '" data-action="admin-tab" data-tab="' + t.id + '">' +
+          esc(t.label) + "</button>").join("") +
+      "</div>" +
+      '<div class="panel">' + panel + "</div>" +
+      '<div style="margin-top:1.5rem"><button class="btn btn-outline btn-sm" data-action="logout">Sign out</button></div>' +
+    "</div></section>";
+}
+function adminListings() {
+  const apts = state.apartments;
+  if (!apts.length) {
+    return emptyState("No apartments yet", "Add your first apartment to start building the public inventory.") +
+      '<div style="margin-top:1.5rem"><button class="btn btn-primary" data-action="apt-new">Add apartment</button></div>';
+  }
+  return (
+    '<div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.25rem">' +
+      '<div><h3 style="margin-bottom:.15rem">Apartments</h3>' +
+      '<p class="card-sub">' + apts.length + " listing" + (apts.length === 1 ? "" : "s") + " in this session</p></div>" +
+      '<button class="btn btn-primary btn-sm" data-action="apt-new">Add apartment</button>' +
+    "</div>" +
+    '<div class="table-wrap"><table class="data">' +
+      "<thead><tr><th>Number</th><th>Floor</th><th>Type</th><th>Price</th><th>Status</th><th></th></tr></thead><tbody>" +
+      apts.map(a =>
+        "<tr>" +
+          "<td><strong>" + esc(a.number) + "</strong>" + (a.demo ? ' <span class="badge badge--demo">Demo</span>' : "") + "</td>" +
+          "<td>" + esc(floorLabel(a.floor)) + "</td>" +
+          "<td>" + esc(typeName(a.type)) + "</td>" +
+          "<td>" + esc(money(a.price)) + "</td>" +
+          '<td><span class="badge badge--' + esc(a.status) + '">' + esc(statusLabel(a.status)) + "</span></td>" +
+          '<td><div class="row-actions">' +
+            '<button class="icon-btn" data-action="apt-edit" data-id="' + esc(a.id) + '">Edit</button>' +
+            '<button class="icon-btn icon-btn--danger" data-action="apt-delete" data-id="' + esc(a.id) + '">Delete</button>' +
+          "</div></td>" +
+        "</tr>").join("") +
+      "</tbody></table></div>"
+  );
+}
+function adminRequests() {
+  if (!state.apiOnline) {
+    return emptyState("Requests are not available in preview mode",
+      "Booking and viewing requests require a persistent server-side database. Start the backend in server.js " +
+      "and requests will appear here with statuses you can update.");
+  }
+  return '<div id="requests-list"><p class="card-sub">Loading requests…</p></div>';
+}
+function adminSettings() {
+  return (
+    "<h3>Business and contact details</h3>" +
+    '<p class="card-sub" style="margin-bottom:1.5rem">Anything left blank is not published on the site. ' +
+      "Never guess a phone number or map pin.</p>" +
+    '<form class="form-grid" data-form="settings">' +
+      '<div class="field"><label for="s-building">Building name</label>' +
+        '<input id="s-building" name="building" type="text" value="' + esc(CONFIG.building) + '"></div>' +
+      '<div class="field"><label for="s-brand">Brand name</label>' +
+        '<input id="s-brand" name="brand" type="text" value="' + esc(CONFIG.brand) + '"></div>' +
+      '<div class="field span-2"><label for="s-address">Address line</label>' +
+        '<input id="s-address" name="addressLine" type="text" value="' + esc(CONFIG.addressLine) + '"></div>' +
+      '<div class="field"><label for="s-phone">Phone number</label>' +
+        '<input id="s-phone" name="phone" type="text" value="' + esc(CONFIG.phone) + '" placeholder="Not yet supplied"></div>' +
+      '<div class="field"><label for="s-whatsapp">WhatsApp number <span class="hint">(digits only)</span></label>' +
+        '<input id="s-whatsapp" name="whatsapp" type="text" value="' + esc(CONFIG.whatsapp) + '" placeholder="e.g. 923001234567"></div>' +
+      '<div class="field"><label for="s-email">Email</label>' +
+        '<input id="s-email" name="email" type="email" value="' + esc(CONFIG.email) + '" placeholder="Not yet supplied"></div>' +
+      '<div class="field"><label for="s-period">Rental period wording</label>' +
+        '<input id="s-period" name="rentalPeriodLabel" type="text" value="' + esc(CONFIG.rentalPeriodLabel) + '">' +
+        '<span class="hint">Shown after every price until the billing period is confirmed.</span></div>' +
+      '<div class="field span-2"><label for="s-map">Approved Google Maps embed URL</label>' +
+        '<input id="s-map" name="mapEmbedUrl" type="url" value="' + esc(CONFIG.mapEmbedUrl) + '" placeholder="https://www.google.com/maps/embed?..."></div>' +
+      '<div class="field span-2"><label for="s-dir">Get Directions link</label>' +
+        '<input id="s-dir" name="directionsUrl" type="url" value="' + esc(CONFIG.directionsUrl) + '" placeholder="https://maps.app.goo.gl/..."></div>' +
+      '<div class="field span-2">' +
+        '<label class="radio-pill" style="display:inline-flex;align-items:center;gap:.6rem">' +
+          '<input type="checkbox" name="showDemoData" ' + (CONFIG.showDemoData ? "checked" : "") + ">" +
+          "<span>Show demo listings and illustrative photos</span></label>" +
+        '<span class="hint">Turn this off before publishing. Demo content must never appear on the live site.</span>' +
+      "</div>" +
+      '<div class="span-2" id="s-status" aria-live="polite"></div>' +
+      '<div class="span-2"><button class="btn btn-primary" type="submit">Save settings</button></div>' +
+    "</form>" +
+    '<hr class="rule" style="margin:2.5rem 0">' +
+    "<h3>Floor structure</h3>" +
+    '<p class="card-sub" style="margin-bottom:1rem">Floor labels are editable in the FLOORS array in index.html. ' +
+      "Residential status is unconfirmed and is never presented as fact.</p>" +
+    '<div class="table-wrap"><table class="data"><thead><tr><th>Floor</th><th>Label</th><th>Residential</th><th>Listings</th></tr></thead><tbody>' +
+      FLOORS.map(f => {
+        const count = state.apartments.filter(a => String(a.floor) === String(f.id)).length;
+        return "<tr><td>" + esc(f.id) + "</td><td>" + esc(f.label) + "</td><td>" +
+          (f.residential === null ? "Unconfirmed" : f.residential ? "Yes" : "No") +
+          "</td><td>" + count + "</td></tr>";
+      }).join("") +
+    "</tbody></table></div>"
+  );
+}
+function openApartmentModal(id) {
+  const apt = id ? state.apartments.filter(a => a.id === id)[0] : null;
+  const isNew = !apt;
+  const a = apt || {
+    id: "", number: "", floor: "2", type: "one-room", price: 25000, pricePeriod: "",
+    status: "available", availableFrom: "", kitchen: "Kitchen included", washroom: "Washroom included",
+    size: "", furnishing: "", description: "", photos: [], demo: false
+  };
+  const floorOpts = FLOORS.map(f =>
+    '<option value="' + esc(f.id) + '"' + (String(a.floor) === String(f.id) ? " selected" : "") + ">" +
+    esc(f.label) + "</option>").join("");
+  const typeOpts = Object.keys(APARTMENT_TYPES).map(t =>
+    '<option value="' + esc(t) + '"' + (a.type === t ? " selected" : "") + ">" +
+    esc(APARTMENT_TYPES[t].name) + "</option>").join("");
+  const statusOpts = ["available", "pending", "occupied"].map(s =>
+    '<option value="' + esc(s) + '"' + (a.status === s ? " selected" : "") + ">" + esc(statusLabel(s)) + "</option>").join("");
+
+  const modal = $("#modal");
+  modal.innerHTML =
+    '<div class="modal-card">' +
+      '<div class="modal-head"><h3 id="modal-title">' + (isNew ? "Add apartment" : "Edit apartment " + esc(a.number)) + "</h3>" +
+        '<button class="icon-btn" data-action="modal-close" aria-label="Close">&#10005;</button></div>' +
+      '<form data-form="apartment" data-id="' + esc(a.id) + '">' +
+        '<div class="modal-body"><div class="form-grid">' +
+          '<div class="field"><label for="m-number">Apartment number</label>' +
+            '<input id="m-number" name="number" type="text" required value="' + esc(a.number) + '"></div>' +
+          '<div class="field"><label for="m-floor">Floor</label>' +
+            '<select id="m-floor" name="floor">' + floorOpts + "</select></div>" +
+          '<div class="field"><label for="m-type">Apartment type</label>' +
+            '<select id="m-type" name="type">' + typeOpts + "</select></div>" +
+          '<div class="field"><label for="m-price">Price (PKR)</label>' +
+            '<input id="m-price" name="price" type="number" min="0" step="500" required value="' + esc(a.price) + '"></div>' +
+          '<div class="field"><label for="m-period">Price period wording <span class="hint">(blank = default)</span></label>' +
+            '<input id="m-period" name="pricePeriod" type="text" value="' + esc(a.pricePeriod) + '" placeholder="' + esc(CONFIG.rentalPeriodLabel) + '"></div>' +
+          '<div class="field"><label for="m-status">Availability</label>' +
+            '<select id="m-status" name="status">' + statusOpts + "</select></div>" +
+          '<div class="field"><label for="m-from">Available from <span class="hint">(optional)</span></label>' +
+            '<input id="m-from" name="availableFrom" type="date" value="' + esc(a.availableFrom) + '"></div>' +
+          '<div class="field"><label for="m-size">Size <span class="hint">(only if confirmed)</span></label>' +
+            '<input id="m-size" name="size" type="text" value="' + esc(a.size) + '"></div>' +
+          '<div class="field"><label for="m-furn">Furnishing <span class="hint">(only if confirmed)</span></label>' +
+            '<input id="m-furn" name="furnishing" type="text" value="' + esc(a.furnishing) + '"></div>' +
+          '<div class="field"><label for="m-kitchen">Kitchen</label>' +
+            '<input id="m-kitchen" name="kitchen" type="text" value="' + esc(a.kitchen) + '"></div>' +
+          '<div class="field"><label for="m-wash">Washroom</label>' +
+            '<input id="m-wash" name="washroom" type="text" value="' + esc(a.washroom) + '"></div>' +
+          '<div class="field span-2"><label for="m-desc">Description</label>' +
+            '<textarea id="m-desc" name="description">' + esc(a.description) + "</textarea></div>" +
+          '<div class="field span-2"><label for="m-photos">Photo references <span class="hint">(one per line — a photo key or a full URL)</span></label>' +
+            '<textarea id="m-photos" name="photos" placeholder="oneRoomA&#10;https://...">' +
+            esc((a.photos || []).join("\n")) + "</textarea></div>" +
+          '<div class="field span-2"><label class="radio-pill" style="display:inline-flex;align-items:center;gap:.6rem">' +
+            '<input type="checkbox" name="demo" ' + (a.demo ? "checked" : "") + ">" +
+            "<span>Mark as demo content</span></label></div>" +
+        "</div></div>" +
+        '<div class="modal-foot">' +
+          '<button type="button" class="btn btn-outline" data-action="modal-close">Cancel</button>' +
+          '<button type="submit" class="btn btn-primary">' + (isNew ? "Add apartment" : "Save changes") + "</button>" +
+        "</div>" +
+      "</form>" +
+    "</div>";
+  modal.classList.add("open");
+  document.body.classList.add("no-scroll");
+  const first = modal.querySelector("input,select,textarea");
+  if (first) first.focus();
+}
+function closeModal() {
+  const modal = $("#modal");
+  modal.classList.remove("open");
+  modal.innerHTML = "";
+  document.body.classList.remove("no-scroll");
+}
+function afterAdmin() {
+  if (!state.authed) return;
+  if (state.adminTab === "requests" && state.apiOnline) loadRequests();
+}
+async function loadRequests() {
+  const wrap = $("#requests-list");
+  if (!wrap) return;
+  try {
+    const data = await API.req("/api/requests");
+    const items = data.requests || [];
+    if (!items.length) {
+      wrap.innerHTML = emptyState("No requests yet",
+        "Booking and viewing requests submitted through the website will appear here.");
+      return;
+    }
+    wrap.innerHTML = '<div class="table-wrap"><table class="data">' +
+      "<thead><tr><th>Received</th><th>Name</th><th>Contact</th><th>Type</th><th>Apartment</th><th>Status</th><th></th></tr></thead><tbody>" +
+      items.map(r =>
+        "<tr><td>" + esc(new Date(r.createdAt).toLocaleDateString()) + "</td>" +
+        "<td>" + esc(r.fullName) + "</td><td>" + esc(r.phone) + "</td>" +
+        "<td>" + esc(r.kind === "viewing" ? "Viewing" : "Booking") + "</td>" +
+        "<td>" + esc(r.apartmentId || r.apartmentType || "—") + "</td>" +
+        '<td><span class="badge badge--' + esc(r.status === "approved" ? "available" : r.status === "declined" ? "occupied" : "pending") +
+          '">' + esc(r.status || "new") + "</span></td>" +
+        '<td><div class="row-actions">' +
+          '<button class="icon-btn" data-action="req-status" data-id="' + esc(r.id) + '" data-status="contacted">Contacted</button>' +
+          '<button class="icon-btn" data-action="req-status" data-id="' + esc(r.id) + '" data-status="approved">Approve</button>' +
+          '<button class="icon-btn icon-btn--danger" data-action="req-status" data-id="' + esc(r.id) + '" data-status="declined">Decline</button>' +
+        "</div></td></tr>").join("") +
+      "</tbody></table></div>";
+  } catch (err) {
+    wrap.innerHTML = '<div class="notice notice--err"><div><strong>Could not load requests</strong>' +
+      esc(err.message) + "</div></div>";
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   27. GLOBAL EVENT DELEGATION
+   --------------------------------------------------------------------------- */
+document.addEventListener("click", function (e) {
+  const t = e.target.closest("[data-action]");
+  if (!t) return;
+  const action = t.dataset.action;
+
+  if (action === "nav-toggle") {
+    const nav = $("#primary-nav");
+    const open = nav.classList.toggle("open");
+    t.setAttribute("aria-expanded", open ? "true" : "false");
+    return;
+  }
+  if (action === "lightbox") {
+    openLightbox(t.dataset.group || "default", parseInt(t.dataset.index, 10) || 0, t);
+    return;
+  }
+  if (action === "lb-close") { closeLightbox(); return; }
+  if (action === "lb-prev")  { moveLightbox(-1); return; }
+  if (action === "lb-next")  { moveLightbox(1);  return; }
+
+  if (action === "gallery-filter") {
+    state.galleryFilter = t.dataset.cat;
+    $("#main").innerHTML = pageGallery();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    observeReveals();
+    return;
+  }
+  if (action === "floor-filter") {
+    const params = parseHash().params;
+    const next = Object.assign({}, params);
+    if (t.dataset.floor) next.floor = t.dataset.floor; else delete next.floor;
+    const qs = Object.keys(next).filter(k => next[k]).map(k =>
+      encodeURIComponent(k) + "=" + encodeURIComponent(next[k])).join("&");
+    go("#/apartments" + (qs ? "?" + qs : ""));
+    return;
+  }
+
+  if (action === "admin-tab") {
+    state.adminTab = t.dataset.tab;
+    $("#main").innerHTML = pageAdmin();
+    afterAdmin();
+    return;
+  }
+  if (action === "logout") { state.authed = false; $("#main").innerHTML = pageAdmin(); return; }
+  if (action === "apt-new") { openApartmentModal(null); return; }
+  if (action === "apt-edit") { openApartmentModal(t.dataset.id); return; }
+  if (action === "apt-delete") {
+    const id = t.dataset.id;
+    const apt = state.apartments.filter(a => a.id === id)[0];
+    if (!apt) return;
+    if (window.confirm('Remove apartment "' + apt.number + '" from the listings? This cannot be undone.')) {
+      state.apartments = state.apartments.filter(a => a.id !== id);
+      $("#main").innerHTML = pageAdmin();
+    }
+    return;
+  }
+  if (action === "modal-close") { closeModal(); return; }
+  if (action === "req-status") {
+    API.req("/api/requests/" + encodeURIComponent(t.dataset.id), {
+      method: "PATCH",
+      body: { status: t.dataset.status }
+    }).then(loadRequests).catch(err => window.alert(err.message));
+    return;
+  }
+});
+
+$("#modal").addEventListener("click", e => { if (e.target.id === "modal") closeModal(); });
+$("#lightbox").addEventListener("click", e => { if (e.target.id === "lightbox") closeLightbox(); });
+
+document.addEventListener("keydown", function (e) {
+  const lb = $("#lightbox");
+  if (lb.classList.contains("open")) {
+    if (e.key === "Escape")     { e.preventDefault(); closeLightbox(); }
+    if (e.key === "ArrowLeft")  { e.preventDefault(); moveLightbox(-1); }
+    if (e.key === "ArrowRight") { e.preventDefault(); moveLightbox(1); }
+    return;
+  }
+  if ($("#modal").classList.contains("open") && e.key === "Escape") { closeModal(); return; }
+  if (e.key === "Escape") closeMobileNav();
+});
+
+/* Forms */
+document.addEventListener("submit", function (e) {
+  const form = e.target;
+
+  if (form.matches('[data-form="finder"]')) {
+    e.preventDefault();
+    const fd = new FormData(form);
+    const qs = ["type", "floor", "status"].map(k => {
+      const v = (fd.get(k) || "").toString().trim();
+      return v ? encodeURIComponent(k) + "=" + encodeURIComponent(v) : "";
+    }).filter(Boolean).join("&");
+    go("#/apartments" + (qs ? "?" + qs : ""));
+    return;
+  }
+
+  if (form.matches('[data-form="request"]')) { e.preventDefault(); submitRequest(form); return; }
+
+  if (form.matches('[data-form="login"]')) {
+    e.preventDefault();
+    const fd = new FormData(form);
+    const status = form.querySelector("#a-status");
+
+    if (state.apiOnline) {
+      API.req("/api/auth/login", {
+        method: "POST",
+        body: { username: fd.get("username"), password: fd.get("password") }
+      }).then(() => {
+        state.authed = true;
+        $("#main").innerHTML = pageAdmin();
+        afterAdmin();
+      }).catch(err => {
+        status.innerHTML = '<div class="notice notice--err"><div>' + esc(err.message) + "</div></div>";
+      });
+      return;
+    }
+
+    if (fd.get("username") === PREVIEW_CREDENTIALS.user && fd.get("password") === PREVIEW_CREDENTIALS.pass) {
+      state.authed = true;
+      $("#main").innerHTML = pageAdmin();
+      afterAdmin();
+    } else {
+      status.innerHTML = '<div class="notice notice--err"><div><strong>Incorrect credentials</strong>' +
+        "Preview username and password are admin / jspreview.</div></div>";
+    }
+    return;
+  }
+
+  if (form.matches('[data-form="settings"]')) {
+    e.preventDefault();
+    const fd = new FormData(form);
+    CONFIG.brand = (fd.get("brand") || "").toString().trim() || CONFIG.brand;
+    CONFIG.building = (fd.get("building") || "").toString().trim() || CONFIG.building;
+    CONFIG.addressLine = (fd.get("addressLine") || "").toString().trim();
+    CONFIG.phone = (fd.get("phone") || "").toString().trim();
+    CONFIG.whatsapp = (fd.get("whatsapp") || "").toString().replace(/[^\d]/g, "");
+    CONFIG.email = (fd.get("email") || "").toString().trim();
+    CONFIG.rentalPeriodLabel = (fd.get("rentalPeriodLabel") || "").toString().trim();
+    CONFIG.mapEmbedUrl = (fd.get("mapEmbedUrl") || "").toString().trim();
+    CONFIG.directionsUrl = (fd.get("directionsUrl") || "").toString().trim();
+    CONFIG.showDemoData = fd.get("showDemoData") === "on";
+    form.querySelector("#s-status").innerHTML =
+      '<div class="notice notice--info"><div><strong>Saved for this session only</strong>' +
+      "These settings are held in memory and will reset on refresh. The production dashboard saves them to the database.</div></div>";
+    renderHeader(true); renderFooter(true);
+    return;
+  }
+
+  if (form.matches('[data-form="apartment"]')) {
+    e.preventDefault();
+    const fd = new FormData(form);
+    const id = form.dataset.id;
+    const existing = id ? state.apartments.filter(a => a.id === id)[0] : null;
+    const photosRaw = (fd.get("photos") || "").toString().split("\n").map(s => s.trim()).filter(Boolean);
+    const record = {
+      id: existing ? existing.id : "apt-" + Date.now(),
+      number: (fd.get("number") || "").toString().trim(),
+      floor: (fd.get("floor") || "").toString(),
+      type: (fd.get("type") || "one-room").toString(),
+      price: Number(fd.get("price")) || 0,
+      pricePeriod: (fd.get("pricePeriod") || "").toString().trim(),
+      status: (fd.get("status") || "available").toString(),
+      availableFrom: (fd.get("availableFrom") || "").toString(),
+      kitchen: (fd.get("kitchen") || "").toString().trim(),
+      washroom: (fd.get("washroom") || "").toString().trim(),
+      size: (fd.get("size") || "").toString().trim(),
+      furnishing: (fd.get("furnishing") || "").toString().trim(),
+      description: (fd.get("description") || "").toString().trim(),
+      photos: photosRaw,
+      demo: fd.get("demo") === "on"
+    };
+    if (existing) state.apartments = state.apartments.map(a => a.id === id ? record : a);
+    else state.apartments = state.apartments.concat([record]);
+    closeModal();
+    $("#main").innerHTML = pageAdmin();
+    return;
+  }
+});
+
+/* ---------------------------------------------------------------------------
+   28. SCROLL REVEAL
+   --------------------------------------------------------------------------- */
+let revealObserver = null;
+function observeReveals() {
+  const nodes = $$(".reveal");
+  if (!("IntersectionObserver" in window) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    nodes.forEach(n => n.classList.add("in"));
+    return;
+  }
+  if (!revealObserver) {
+    revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
+  }
+  nodes.forEach(n => { if (!n.classList.contains("in")) revealObserver.observe(n); });
+}
+
+/* ---------------------------------------------------------------------------
+   29. BOOT
+   --------------------------------------------------------------------------- */
+(function boot() {
+  state.apartments = DEMO_APARTMENTS.slice();
+  renderHeader();
+  renderFooter();
+  route();
+
+  API.probe().then(online => {
+    if (!online) return;
+    API.req("/api/apartments").then(data => {
+      if (Array.isArray(data.apartments) && data.apartments.length) {
+        state.apartments = data.apartments;
+        route();
+      }
+    }).catch(() => {});
+    API.req("/api/auth/session").then(s => {
+      if (s && s.authenticated) {
+        state.authed = true;
+        if (parseHash().segments[0] === "admin") route();
+      }
+    }).catch(() => {});
+  });
+})();
 </script>
 </body>
 </html>
