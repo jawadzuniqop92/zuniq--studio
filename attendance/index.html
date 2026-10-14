@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f5f8fd" />
+  <title>ZUNIQ Studio | Team Attendance</title>
+  <style>
+    :root{--blue:#1767ef;--dark:#132640;--text:#263951;--muted:#71839b;--line:#e5ebf5;--bg:#f5f8fd;--white:#fff;--good:#0c936c;--orange:#ae691d;--red:#c84d56;--radius:18px}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,textarea{font:inherit}button{cursor:pointer}a{color:var(--blue)}.hide{display:none!important}.layout{min-height:100vh;display:flex}.side{width:252px;background:#fff;border-right:1px solid var(--line);padding:28px 16px;position:sticky;top:0;height:100vh;flex-shrink:0;display:flex;flex-direction:column}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--dark);margin:0 9px 32px}.brand-icon{width:45px;height:45px;border-radius:14px;background:#e7f0ff;display:grid;place-items:center;color:var(--blue);font-size:23px;font-weight:900;flex-shrink:0}.brand img{width:45px;height:45px;object-fit:contain}.brand strong{display:block;font-size:20px;letter-spacing:1px;line-height:1.1}.brand small{color:var(--muted);font-size:11px;letter-spacing:.5px}.nav{display:grid;gap:7px}.nav button{border:0;text-align:left;border-radius:12px;padding:12px 15px;background:transparent;color:#60718b;font-weight:700;display:flex;align-items:center;gap:12px}.nav button.active,.nav button:hover{background:#eaf2ff;color:var(--blue)}.nav button span{font-size:19px}.side-foot{margin-top:auto;padding:16px 8px 0;border-top:1px solid var(--line);color:var(--muted);font-size:12px}.main{padding:32px min(4vw,55px) 70px;width:100%;min-width:0;max-width:1500px;margin:auto}.top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:27px}.eyebrow{text-transform:uppercase;letter-spacing:1.8px;font-size:11px;font-weight:800;color:var(--blue)}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(26px,3vw,38px);line-height:1.16;margin-bottom:7px;color:var(--dark);letter-spacing:-1px}h2{font-size:20px;color:var(--dark)}h3{font-size:16px;color:var(--dark)}.muted{color:var(--muted)}.top p{margin:0}.header-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}.pill{display:inline-flex;align-items:center;gap:6px;background:#e9f6ef;color:#187554;border-radius:30px;padding:8px 12px;font-size:12px;font-weight:750}.pill.pending{background:#fff4e7;color:#94641e}.pill.bad{background:#fff0f0;color:#ae3c43}.btn{border:1px solid transparent;border-radius:11px;padding:11px 15px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:7px}.btn.primary{background:var(--blue);color:#fff}.btn.secondary{background:#fff;color:var(--text);border-color:var(--line)}.btn.good{background:#def8ec;color:#087450}.btn.warn{background:#fff2e6;color:#9c591a}.btn.danger{background:#ffeded;color:#a83a42}.btn:disabled{opacity:.43;cursor:not-allowed}.btn.small{padding:7px 10px;font-size:12px}.grid{display:grid;gap:18px}.stats{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:20px}.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:0 10px 30px rgba(32,58,101,.035);min-width:0}.stat-label{font-size:13px;color:var(--muted);font-weight:700}.stat-value{font-size:30px;font-weight:900;line-height:1.35;color:var(--dark);letter-spacing:-1px}.stat-foot{color:var(--muted);font-size:12px}.two{grid-template-columns:minmax(0,1.18fr) minmax(0,1fr)}.three{grid-template-columns:repeat(3,minmax(0,1fr))}.card-title{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}.card-title h2{margin:0}.field{display:grid;gap:7px;margin:0 0 15px}.field label{font-size:13px;font-weight:800;color:#3a4c62}.field input,.field textarea{width:100%;padding:12px 13px;border:1px solid #dbe4f0;border-radius:11px;background:#fbfcff;color:var(--dark);outline:0}.field input:focus,.field textarea:focus{border-color:#5e9af8;box-shadow:0 0 0 3px #e7f0ff}.field textarea{resize:vertical;min-height:94px}.field input:disabled,.field textarea:disabled{background:#f2f4f8;color:#748299}.flex{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.steps{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.step{border-radius:30px;padding:7px 11px;background:#f0f4fa;color:#77869a;font-weight:700;font-size:12px}.step.done{background:#e7f8ef;color:#06754e}.banner{padding:15px 18px;background:#eaf2ff;border:1px solid #d5e7ff;border-radius:14px;color:#285586;margin-bottom:20px}.banner strong{color:#133e72}.bar{height:11px;background:#e9eef8;border-radius:20px;overflow:hidden}.bar>div{height:100%;background:linear-gradient(90deg,#1471f4,#4eabff);border-radius:20px;transition:width .3s}.progress-top{display:flex;justify-content:space-between;align-items:end;margin-bottom:12px}.progress-top strong{font-size:36px;color:var(--blue)}.mini{font-size:12px;color:var(--muted)}.table-wrap{overflow:auto}.table{border-collapse:collapse;width:100%;min-width:640px}.table th{text-align:left;background:#f8faff;font-size:11px;letter-spacing:.7px;text-transform:uppercase;color:#8491a4;padding:12px;border-bottom:1px solid var(--line)}.table td{padding:14px 12px;border-bottom:1px solid #f0f2f6;vertical-align:middle;font-size:13px}.table tr:last-child td{border:0}.name{font-weight:800;color:#213750}.status{font-size:11px;font-weight:800;border-radius:25px;padding:5px 9px;white-space:nowrap;background:#f1f4f7;color:#64768b}.status.approved{background:#e1f8ee;color:#0d825e}.status.pending{background:#fff3df;color:#95651c}.status.rejected{background:#ffeaea;color:#b1464e}.text-truncate{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:210px}.rule{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}.rule:last-child{border:0}.rule b{color:var(--dark)}.rule-number{width:29px;height:29px;background:#eaf2ff;color:var(--blue);border-radius:9px;display:grid;place-items:center;font-weight:900;flex-shrink:0}.reward{background:linear-gradient(135deg,#122b53,#1659b4);color:white;border:0}.reward h2,.reward h3{color:#fff}.reward p,.reward .mini{color:#d4e4ff}.reward .bar{background:rgba(255,255,255,.2)}.reward .bar>div{background:#ffd16f}.empty{color:var(--muted);text-align:center;padding:35px 14px}.message{padding:11px 13px;border-radius:10px;background:#e9f8f1;color:#086b49;margin-bottom:16px;font-size:13px}.message.error{background:#fff0f0;color:#ae343d}.login-shell{min-height:100vh;display:grid;place-items:center;padding:25px;background:radial-gradient(circle at 10% 5%,#e1edff,transparent 55%),#f5f8fd}.login-card{width:min(100%,440px);padding:38px;background:#fff;border:1px solid var(--line);border-radius:25px;box-shadow:0 22px 75px #1c42851a}.login-card .brand{margin:0 0 28px}.login-card h1{font-size:30px}.login-card .btn{width:100%}.login-help{font-size:12px;color:var(--muted);margin-top:13px}.tab{display:none}.tab.on{display:block}.footer{font-size:12px;color:var(--muted);margin-top:30px;text-align:center}.modal-cover{position:fixed;inset:0;background:#10243d9e;z-index:10;display:flex;align-items:center;justify-content:center;padding:20px}.modal{background:#fff;width:min(100%,640px);max-height:88vh;overflow-y:auto;border-radius:21px;padding:25px;box-shadow:0 30px 70px #0f264b30}.report-box{border:1px solid var(--line);border-radius:11px;padding:13px;margin-bottom:10px;white-space:pre-wrap;overflow-wrap:anywhere}.report-box strong{display:block;margin-bottom:4px;color:var(--dark)}.kbd{padding:3px 7px;background:#eef3fa;border:1px solid #dbe6f4;border-radius:5px;font:12px monospace}.loading{opacity:.55;pointer-events:none}.mobile-nav{display:none}.off{color:var(--red)}@media(max-width:1050px){.stats{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}}@media(max-width:690px){.side{display:none}.main{padding:22px 16px 105px}.top{display:block}.header-right{justify-content:flex-start;margin-top:14px}.stats{gap:10px}.card{padding:17px}.stats .card{padding:15px}.stat-value{font-size:26px}.three{grid-template-columns:1fr}.mobile-nav{position:fixed;z-index:5;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:space-around;background:#fff;border-top:1px solid var(--line);padding:8px 4px env(safe-area-inset-bottom)}.mobile-nav button{border:0;background:transparent;color:#71849e;font-size:11px;font-weight:750;display:grid;gap:2px;place-items:center;padding:7px}.mobile-nav button b{font-size:19px}.mobile-nav button.active{color:var(--blue)}.login-card{padding:26px}}
+  </style>
+</head>
+<body>
+<div id="login" class="login-shell">
+  <section class="login-card">
+    <a class="brand" href="https://zuniq.studio" target="_blank" rel="noopener">
+      <span class="brand-icon"><img src="./logo.png" alt="ZUNIQ symbol" onerror="this.style.display='none';this.parentElement.textContent='◆'"></span>
+      <span><strong>ZUNIQ</strong><small>STUDIO · TEAM PORTAL</small></span>
+    </a>
+    <div class="eyebrow">Private staff workspace</div>
+    <h1>Welcome back.</h1>
+    <p class="muted">Your work. Your growth. Your consistency.</p>
+    <div id="loginMsg"></div>
+    <div id="setupMsg" class="banner hide"><strong>Setup required:</strong> Edit this file and replace the Supabase URL and publishable key near the bottom of the code. Then follow README.md.</div>
+    <form id="loginForm">
+      <div class="field"><label for="email">Work email</label><input id="email" type="email" autocomplete="username" required placeholder="employee@example.com" /></div>
+      <div class="field"><label for="password">Password</label><input id="password" type="password" autocomplete="current-password" required minlength="8" placeholder="Enter your password" /></div>
+      <button class="btn primary" id="loginBtn" type="submit">Sign in securely →</button>
+    </form>
+    <p class="login-help">Access is created by the ZUNIQ administrator. Ask your manager for an account. Do not share passwords.</p>
+  </section>
+</div>
+
+<div id="app" class="layout hide">
+  <aside class="side">
+    <a class="brand" href="https://zuniq.studio" target="_blank" rel="noopener">
+      <span class="brand-icon"><img src="./logo.png" alt="ZUNIQ symbol" onerror="this.style.display='none';this.parentElement.textContent='◆'"></span><span><strong>ZUNIQ</strong><small>STUDIO · TEAM PORTAL</small></span>
+    </a>
+    <nav class="nav" id="nav">
+      <button data-tab="home" class="active"><span>◫</span> Overview</button>
+      <button data-tab="myday"><span>◷</span> My workday</button>
+      <button data-tab="challenge"><span>★</span> 25-day challenge</button>
+      <button data-tab="team" data-admin class="hide"><span>♙</span> Team & approvals</button>
+      <button data-tab="rules"><span>◎</span> Team rules</button>
+      <button data-tab="account"><span>⚙</span> My account</button>
+    </nav>
+    <div class="side-foot">Board Bazaar, Peshawar<br/>Office No. 27, JS Mall & Apartments<br/><br/>© <span id="year"></span> ZUNIQ Studio</div>
+  </aside>
+  <main class="main">
+    <header class="top"><div><div class="eyebrow" id="greeting">TEAM WORKSPACE</div><h1 id="pageTitle">Overview</h1><p class="muted" id="subtitle"></p></div>
+      <div class="header-right"><span class="pill" id="rolePill">Team member</span><button id="refreshBtn" class="btn secondary">↻ Refresh</button><button id="logoutBtn" class="btn secondary">Sign out</button></div></header>
+    <div id="appMsg"></div>
+    <section class="tab on" id="tab-home"></section>
+    <section class="tab" id="tab-myday"></section>
+    <section class="tab" id="tab-challenge"></section>
+    <section class="tab" id="tab-team"></section>
+    <section class="tab" id="tab-rules"></section>
+    <section class="tab" id="tab-account"></section>
+    <div class="footer">ZUNIQ Studio · Built to recognize learning, teamwork and reliable attendance · Times shown in Pakistan Standard Time (PKT)</div>
+  </main>
+  <nav class="mobile-nav" id="mobileNav">
+    <button class="active" data-tab="home"><b>◫</b>Overview</button><button data-tab="myday"><b>◷</b>My day</button><button data-tab="challenge"><b>★</b>Challenge</button><button data-tab="team" data-admin class="hide"><b>♙</b>Team</button><button data-tab="rules"><b>◎</b>Rules</button>
+  </nav>
+</div>
+<div id="modalRoot"></div>
+<script type="module">
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+  // 1) Replace ONLY the two values below using Supabase → Project Settings → API.
+  // 2) Use the PUBLISHABLE / ANON key; NEVER paste a service_role or secret key in GitHub.
+  const SUPABASE_URL = 'PASTE_SUPABASE_PROJECT_URL_HERE';
+  const SUPABASE_PUBLISHABLE_KEY = 'PASTE_SUPABASE_PUBLISHABLE_KEY_HERE';
+  const AWARD_TARGET = 25;
+  const OFFICE_TIMEZONE = 'Asia/Karachi';
+
+  const $ = (s, root=document) => root.querySelector(s);
+  const $$ = (s, root=document) => [...root.querySelectorAll(s)];
+  const esc = (v='') => String(v ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const configured = /^https:\/\/.+\.supabase\.co$/.test(SUPABASE_URL) && SUPABASE_PUBLISHABLE_KEY.length > 40 && !SUPABASE_PUBLISHABLE_KEY.includes('PASTE_');
+  const db = configured ? createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true}}) : null;
+  let me=null, user=null, profiles=[], rows=[], tab='home', busy=false, editDate=null;
+  const today = () => { const parts=new Intl.DateTimeFormat('en-US',{timeZone:OFFICE_TIMEZONE,year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());const p=Object.fromEntries(parts.map(x=>[x.type,x.value]));return `${p.year}-${p.month}-${p.day}`; };
+  const monthString=()=>today().slice(0,7);
+  const fmtTime = iso => iso? new Intl.DateTimeFormat('en-PK',{timeZone:OFFICE_TIMEZONE,hour:'numeric',minute:'2-digit',hour12:true}).format(new Date(iso)):'—';
+  const fmtDate = s => s? new Date(`${s}T12:00:00Z`).toLocaleDateString('en-PK',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}):'—';
+  const isAdmin=()=>me?.role==='admin';
+  const myToday=()=>rows.find(r=>r.employee_id===user?.id&&r.work_date===today());
+  const ownMonth=()=>rows.filter(r=>r.employee_id===user?.id&&r.work_date.startsWith(monthString()));
+  const verified=r=>r.review_status==='approved' && !!r.checked_out_at && !!r.work_done?.trim() && !!r.learned?.trim();
+  const countVerified=(id)=>rows.filter(r=>r.employee_id===id&&r.work_date.startsWith(monthString())&&verified(r)).length;
+  const reviewPill=(status)=>`<span class="status ${esc(status)}">${esc(status==='approved'?'✓ Approved':status==='rejected'?'✕ Needs changes':'◷ Pending')}</span>`;
+  const nameOf=id=>profiles.find(p=>p.id===id)?.full_name||'Unknown member';
+  function flash(text,error=false,login=false){const root=$(login?'#loginMsg':'#appMsg');root.innerHTML=`<div class="message ${error?'error':''}">${esc(text)}</div>`;window.setTimeout(()=>{if(root)root.innerHTML='';},7000);}
+  function loading(on){busy=on;$$('button').forEach(b=>{if(b.dataset.action || b.id==='loginBtn')b.disabled=on;});}
+  const monthStart=()=>monthString()+'-01';
+  const monthEnd=()=>monthString()+'-31';
+
+  async function init(){
+    if(!configured){$('#setupMsg').classList.remove('hide');$('#loginBtn').disabled=true;return;}
+    const {data:{session},error}=await db.auth.getSession();
+    if(error){flash(error.message,true,true);return;}
+    if(session)await enter();
+  }
+  async function enter(){
+    const {data:{user:u},error:e}=await db.auth.getUser();
+    if(e||!u){await db.auth.signOut();return;}
+    user=u;
+    const {data:p,error:pe}=await db.from('profiles').select('id,full_name,email,role,is_active').eq('id',user.id).single();
+    if(pe||!p){flash('Your account has no staff profile. Ask the administrator to run the database setup.',true,true);await db.auth.signOut();return;}
+    if(!p.is_active){flash('Your account is inactive. Please contact the administrator.',true,true);await db.auth.signOut();return;}
+    me=p;
+    $('#login').classList.add('hide');$('#app').classList.remove('hide');
+    $('[data-admin]',document)?.classList.toggle('hide',!isAdmin());
+    $$('[data-admin]').forEach(x=>x.classList.toggle('hide',!isAdmin()));
+    $('#rolePill').textContent=isAdmin()?'★ Administrator':'● Team member';
+    $('#greeting').textContent=`HELLO, ${me.full_name.split(' ')[0].toUpperCase()}`;
+    await load();setTab('home');
+  }
+  async function load(){
+    const start=monthStart(),end=monthEnd();
+    const [p,a]=await Promise.all([
+      db.from('profiles').select('id,full_name,email,role,is_active').order('full_name'),
+      db.from('attendance').select('id,employee_id,work_date,checked_in_at,checked_out_at,work_done,learned,challenge,tomorrow_plan,review_status,review_note').gte('work_date',start).lte('work_date',end).order('work_date',{ascending:false}).limit(2000)
+    ]);
+    if(p.error||a.error){flash('Could not load data: '+(p.error?.message||a.error?.message),true);return;}
+    profiles=p.data||[];rows=a.data||[];render();
+  }
+  const cardStat=(label,value,foot)=>`<div class="card"><div class="stat-label">${label}</div><div class="stat-value">${value}</div><div class="stat-foot">${foot}</div></div>`;
+  const progress=(count,light=false)=>`<div class="progress-top"><div><span class="mini" style="${light?'color:#d5e5ff':''}">Monthly approved days</span><div><strong>${count}</strong><span style="opacity:.6"> / ${AWARD_TARGET}</span></div></div><span class="pill ${count>=AWARD_TARGET?'':'pending'}">${count>=AWARD_TARGET?'🏆 Goal reached':'★ Consistency'}</span></div><div class="bar"><div style="width:${Math.min(100,Math.round(count/AWARD_TARGET*100))}%"></div></div><p class="mini" style="margin:12px 0 0;${light?'color:#d5e5ff':''}">${Math.max(0,AWARD_TARGET-count)} approved days left. Only checked-out, completed reports approved by admin count.</p>`;
+
+  function renderHome(){
+    const mine=ownMonth(),t=myToday(),mineApproved=countVerified(user.id),pending=rows.filter(r=>r.review_status==='pending'&&r.checked_out_at).length;
+    const total=isAdmin()?profiles.filter(p=>p.is_active).length:mine.length;
+    const approved=isAdmin()?rows.filter(verified).length:mineApproved;
+    const recent=(isAdmin()?rows:mine).slice(0,7);
+    $('#tab-home').innerHTML=`<div class="banner"><strong>Today's focus:</strong> Check in → do meaningful work → record what you completed and learned → check out. Recognition is based on admin-approved entries, not just clicks.</div>
+      <div class="grid stats">${cardStat('Today',t?(t.checked_out_at?'Checked out':'Checked in'):'Not started','Pakistan Standard Time')}${cardStat(isAdmin()?'Active team':'My attendance',total,isAdmin()?'Authorized staff':'Days checked in this month')}${cardStat('Approved workdays',approved,'Current month')}${cardStat(isAdmin()?'Pending reviews':'My pending reviews',isAdmin()?pending:mine.filter(r=>r.review_status==='pending'&&r.checked_out_at).length,'Reports awaiting approval')}</div>
+      <div class="grid two"><div class="card"><div class="card-title"><h2>Recent activity</h2><button class="btn secondary small" data-action="go" data-target="${isAdmin()?'team':'myday'}">View details →</button></div>${activityTable(recent)}</div>
+      <div class="card reward"><h2>🏆 25-Day Consistency Challenge</h2><p>Show up for your scheduled shifts, make progress, and document one thing learned.</p>${progress(mineApproved,true)}<p style="font-size:12px;margin-top:20px">Award eligibility is confirmed by management. Days off and approved leave should be treated fairly.</p><button class="btn secondary" data-action="go" data-target="challenge">See challenge details →</button></div></div>`;
+  }
+  function activityTable(items){if(!items.length)return '<div class="empty">No entries yet. Your first workday will appear here.</div>';
+    return `<div class="table-wrap"><table class="table"><thead><tr>${isAdmin()?'<th>Employee</th>':''}<th>Date</th><th>Check-in</th><th>Check-out</th><th>Review</th></tr></thead><tbody>${items.map(r=>`<tr>${isAdmin()?`<td class="name">${esc(nameOf(r.employee_id))}</td>`:''}<td>${fmtDate(r.work_date)}</td><td>${fmtTime(r.checked_in_at)}</td><td>${fmtTime(r.checked_out_at)}</td><td>${reviewPill(r.review_status)}</td></tr>`).join('')}</tbody></table></div>`;
+  }
+  function renderDay(){
+    const t=myToday(),done=!!t?.checked_out_at,started=!!t;
+    if(!editDate)editDate=today();
+    const selected=editDate===today()?t:ownMonth().find(r=>r.work_date===editDate);
+    const editable=!!selected && selected.review_status!=='approved';
+    $('#tab-myday').innerHTML=`<div class="grid two"><div class="card"><div class="card-title"><h2>My workday · ${fmtDate(today())}</h2>${started?reviewPill(t.review_status):'<span class="status">Not started</span>'}</div>
+      <p class="muted">Check-in and check-out use server time in PKT. Your manager must verify the day before it counts toward the award.</p>
+      <div class="flex"><button class="btn primary" data-action="checkin" ${started?'disabled':''}>◷ Check in</button><button class="btn secondary" data-action="checkout" ${!started||done?'disabled':''}>✓ Check out</button></div>
+      <div class="steps"><span class="step ${started?'done':''}">1 · Checked in ${started?fmtTime(t.checked_in_at):''}</span><span class="step ${t?.work_done&&t?.learned?'done':''}">2 · Daily report</span><span class="step ${done?'done':''}">3 · Checked out ${done?fmtTime(t.checked_out_at):''}</span></div>
+      ${t?.review_note?`<div class="banner" style="margin-top:18px"><strong>Manager feedback:</strong> ${esc(t.review_note)}</div>`:''}
+      <div class="banner" style="margin-top:18px;margin-bottom:0"><strong>Honesty first:</strong> Only check in when you start a real scheduled shift. Reports should describe actual work and learning.</div></div>
+      <div class="card"><h2>Daily work & learning report</h2><p class="muted">Keep it specific. A manager can review your submission.</p><div class="field"><label for="dayPick">Report date</label><select id="dayPick" style="padding:12px 13px;border:1px solid #dbe4f0;border-radius:11px;background:#fbfcff;color:#132640;width:100%">${[...new Set([today(),...ownMonth().map(x=>x.work_date)])].sort().reverse().map(d=>`<option value="${d}" ${editDate===d?'selected':''}>${fmtDate(d)}</option>`).join('')}</select></div>${selected?.review_note?`<div class="banner"><strong>Manager feedback:</strong> ${esc(selected.review_note)}</div>`:''}
+      <form id="reportForm"><div class="field"><label for="workDone">What did you complete today? *</label><textarea id="workDone" maxlength="1500" required placeholder="Example: Built the store header, added 8 products, tested mobile layout" ${!editable?'disabled':''}>${esc(selected?.work_done||'')}</textarea></div>
+      <div class="field"><label for="learned">What did you learn today? *</label><textarea id="learned" maxlength="1200" required placeholder="Example: Learned responsive grid CSS and how to debug an image path" ${!editable?'disabled':''}>${esc(selected?.learned||'')}</textarea></div>
+      <div class="field"><label for="challenge">What blocked you? (optional)</label><textarea id="challenge" maxlength="800" placeholder="Describe the challenge and what help you need" ${!editable?'disabled':''}>${esc(selected?.challenge||'')}</textarea></div>
+      <div class="field"><label for="tomorrowPlan">Your next step (optional)</label><textarea id="tomorrowPlan" maxlength="800" placeholder="One clear task for your next scheduled workday" ${!editable?'disabled':''}>${esc(selected?.tomorrow_plan||'')}</textarea></div>
+      <button type="submit" class="btn primary" ${!editable?'disabled':''}>Save daily report</button><p class="mini" style="margin-top:11px">* Required before checking out. Reviewed reports cannot be edited.</p></form></div></div>
+      <div class="card" style="margin-top:18px"><div class="card-title"><h2>My attendance this month</h2><span class="mini">${esc(monthString())}</span></div>${activityTable(ownMonth())}</div>`;
+  }
+  function renderChallenge(){
+    const n=countVerified(user.id);$('#tab-challenge').innerHTML=`<div class="grid two"><div class="card reward"><h2>🏆 Your 25-Day Challenge</h2><p>Build habits through reliable attendance, completed work and daily learning.</p>${progress(n,true)}</div><div class="card"><h2>How to qualify</h2><div class="rule"><span class="rule-number">1</span><div><b>Attend scheduled shifts</b><div class="muted">Check in when you arrive; no extra shifts are required.</div></div></div><div class="rule"><span class="rule-number">2</span><div><b>Complete your daily report</b><div class="muted">Describe real work and a skill or lesson learned.</div></div></div><div class="rule"><span class="rule-number">3</span><div><b>Check out and get approved</b><div class="muted">An admin confirms each submitted day before it counts.</div></div></div><div class="rule"><span class="rule-number">4</span><div><b>Reach the monthly target if eligible</b><div class="muted">Management confirms awards fairly, considering working days, holidays and approved leave.</div></div></div></div></div>
+      <div class="card" style="margin-top:18px"><h2>Why we do this</h2><p class="muted">The challenge celebrates consistency and learning. It is not a requirement to skip breaks, miss school, work when sick, or attend on days off. A month with fewer than 25 scheduled days needs a fair adjusted target.</p></div>`;
+  }
+  function renderTeam(){if(!isAdmin())return;
+    const pending=rows.filter(r=>r.review_status==='pending'&&r.checked_out_at);
+    const list=profiles.filter(p=>p.is_active).sort((a,b)=>countVerified(b.id)-countVerified(a.id));
+    $('#tab-team').innerHTML=`<div class="grid stats">${cardStat('Team members',profiles.length,'Including inactive accounts')}${cardStat('Active employees',profiles.filter(p=>p.is_active&&p.role!=='admin').length,'Staff access enabled')}${cardStat('Pending review',pending.length,'Completed workdays')}${cardStat('Verified this month',rows.filter(verified).length,'Approved attendance records')}</div>
+      <div class="card" style="margin-bottom:18px"><div class="card-title"><h2>Daily reports awaiting approval</h2><span class="pill pending">${pending.length} to review</span></div>
+      ${pending.length?`<div class="table-wrap"><table class="table"><thead><tr><th>Employee</th><th>Date</th><th>Submitted</th><th>Action</th></tr></thead><tbody>${pending.map(r=>`<tr><td class="name">${esc(nameOf(r.employee_id))}</td><td>${fmtDate(r.work_date)}</td><td class="text-truncate">${esc(r.work_done)}</td><td><button class="btn primary small" data-action="detail" data-id="${r.id}">Read & review</button></td></tr>`).join('')}</tbody></table></div>`:'<div class="empty">All caught up! No reports are waiting for review.</div>'}</div>
+      <div class="card" style="margin-bottom:18px"><div class="card-title"><h2>Team progress · ${esc(monthString())}</h2><span class="mini">Approved days / 25</span></div><div class="table-wrap"><table class="table"><thead><tr><th>Employee</th><th>Role</th><th>Approved days</th><th>Progress</th><th>Access</th></tr></thead><tbody>${list.map(p=>`<tr><td class="name">${esc(p.full_name)}<div class="mini">${esc(p.email)}</div></td><td>${esc(p.role)}</td><td><strong>${countVerified(p.id)}</strong> / ${AWARD_TARGET}</td><td style="min-width:130px"><div class="bar"><div style="width:${Math.min(100,countVerified(p.id)/AWARD_TARGET*100)}%"></div></div></td><td>${p.id===user.id?'<span class="status">You</span>':`<button class="btn secondary small" data-action="toggle" data-id="${p.id}">Deactivate</button>`}</td></tr>`).join('')}</tbody></table></div>
+      <p class="mini" style="margin:16px 0 0">To create a new account, use Supabase Dashboard → Authentication → Users → Add user. Profiles appear here automatically. Employees only see their own entries.</p></div>
+      <div class="card"><div class="card-title"><h2>All attendance records · current month</h2></div>${rows.length?`<div class="table-wrap"><table class="table"><thead><tr><th>Employee</th><th>Date</th><th>Work done</th><th>Status</th><th>Review</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="name">${esc(nameOf(r.employee_id))}</td><td>${fmtDate(r.work_date)}</td><td><div class="text-truncate">${esc(r.work_done||'(not submitted)')}</div></td><td>${reviewPill(r.review_status)}</td><td><button class="btn secondary small" data-action="detail" data-id="${r.id}">View</button></td></tr>`).join('')}</tbody></table></div>`:'<div class="empty">No attendance recorded this month.</div>'}</div>
+      ${profiles.some(p=>!p.is_active)?`<div class="card" style="margin-top:18px"><h2>Inactive profiles</h2>${profiles.filter(p=>!p.is_active).map(p=>`<div class="flex" style="justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)"><span>${esc(p.full_name)} · ${esc(p.email)}</span><button class="btn secondary small" data-action="toggle" data-id="${p.id}">Reactivate</button></div>`).join('')}</div>`:''}`;
+  }
+  const rules=[
+    ['Be honest and punctual','Check in when your scheduled shift actually begins. Never log attendance for someone else.'],
+    ['Work with purpose','Start your day with 1–3 meaningful tasks; focus on quality rather than looking busy.'],
+    ['Learn something and share it','Record one practical lesson, tool, fix or skill you learned that day.'],
+    ['Communicate blockers early','Ask for help if stuck instead of hiding the problem or inventing progress.'],
+    ['Protect client information','Never share passwords, private files or customer data outside approved work tools.'],
+    ['Respect colleagues','Be professional and helpful. Feedback should support improvement, not humiliation.'],
+    ['Value rest, health and education','Take agreed breaks, respect working hours and days off. No overtime is required to win an award.'],
+    ['Celebrate progress fairly','Managers verify reports. Approved leave, holidays and different schedules must be considered fairly.']
+  ];
+  function renderRules(){$('#tab-rules').innerHTML=`<div class="card"><h2>The ZUNIQ way of working</h2><p class="muted">Our goal is accountability, skill building and a supportive team — not fear.</p>${rules.map(([h,b],i)=>`<div class="rule"><span class="rule-number">${i+1}</span><div><b>${h}</b><div class="muted">${b}</div></div></div>`).join('')}</div>`;}
+  function renderAccount(){$('#tab-account').innerHTML=`<div class="grid two"><div class="card"><h2>My account</h2><p><b>Name:</b> ${esc(me.full_name)}<br/><b>Email:</b> ${esc(me.email)}<br/><b>Role:</b> ${esc(me.role)}</p><p class="mini">Only the administrator can add accounts or change team access.</p></div><div class="card"><h2>Change my password</h2><form id="passwordForm"><div class="field"><label for="newPassword">New password (minimum 10 characters)</label><input type="password" id="newPassword" minlength="10" maxlength="128" autocomplete="new-password" required/></div><button class="btn primary" type="submit">Update password</button></form><p class="mini" style="margin-top:14px">Use a unique password. Never paste it into GitHub code or send it to your manager in chat.</p></div></div>`;}
+  function render(){renderHome();renderDay();renderChallenge();renderRules();renderAccount();renderTeam();}
+  const titles={home:['Overview','A clear view of your team progress.'],myday:['My workday','Record attendance, what you did and what you learned.'],challenge:['25-Day Challenge','Celebrate consistency with fair, approved attendance.'],team:['Team & approvals','Review attendance and help employees improve.'],rules:['Team rules','Standards that build trust, skills and teamwork.'],account:['My account','Keep your sign-in safe.']};
+  function setTab(target){if(target==='team'&&!isAdmin())return;tab=target;$$('.tab').forEach(x=>x.classList.toggle('on',x.id==='tab-'+target));$$('[data-tab]').forEach(x=>x.classList.toggle('active',x.dataset.tab===target));$('#pageTitle').textContent=titles[target][0];$('#subtitle').textContent=titles[target][1];window.scrollTo({top:0,behavior:'smooth'});}
+  function detail(id){const r=rows.find(x=>String(x.id)===String(id));if(!r)return;const canReview=isAdmin()&&!!r.checked_out_at;
+    $('#modalRoot').innerHTML=`<div class="modal-cover" id="modalCover"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="card-title"><h2 id="modalTitle">${esc(nameOf(r.employee_id))} · ${fmtDate(r.work_date)}</h2><button class="btn secondary small" data-action="close">✕ Close</button></div>
+      <p class="mini">In: ${fmtTime(r.checked_in_at)} &nbsp; · &nbsp; Out: ${fmtTime(r.checked_out_at)} &nbsp; · &nbsp; ${reviewPill(r.review_status)}</p>
+      ${[['Work completed',r.work_done],['What they learned',r.learned],['Challenges / blockers',r.challenge],['Next step',r.tomorrow_plan],['Manager feedback',r.review_note]].map(([a,b])=>`<div class="report-box"><strong>${esc(a)}</strong>${esc(b||'Not provided')}</div>`).join('')}
+      ${canReview?`<div class="field"><label for="reviewNote">Feedback (recommended for rejections)</label><textarea id="reviewNote" maxlength="800" placeholder="Brief, respectful feedback">${esc(r.review_note||'')}</textarea></div><div class="flex"><button class="btn good" data-action="review" data-id="${r.id}" data-approval="yes">✓ Approve</button><button class="btn warn" data-action="review" data-id="${r.id}" data-approval="no">Request changes</button></div>`:'<p class="muted">Review becomes available after the employee checks out.</p>'}
+    </section></div>`;
+  }
+  async function rpc(name,args={}){if(busy)return;loading(true);try{const {error}=await db.rpc(name,args);if(error)throw error;$('#modalRoot').innerHTML='';flash('Saved successfully.');await load();}catch(e){flash(e.message||'Something went wrong.',true);}finally{loading(false);}}
+  $('#loginForm').addEventListener('submit',async e=>{e.preventDefault();if(!db)return;$('#loginBtn').disabled=true;const {error}=await db.auth.signInWithPassword({email:$('#email').value.trim(),password:$('#password').value});$('#loginBtn').disabled=false;if(error)flash(error.message,true,true);else await enter();});
+  $('#logoutBtn').addEventListener('click',async()=>{await db.auth.signOut();location.reload();});
+  $('#refreshBtn').addEventListener('click',load);
+  document.addEventListener('submit',async e=>{
+    if(e.target.id==='reportForm'){e.preventDefault();await rpc('save_daily_report',{p_work_date:editDate,p_work_done:$('#workDone').value.trim(),p_learned:$('#learned').value.trim(),p_challenge:$('#challenge').value.trim(),p_tomorrow_plan:$('#tomorrowPlan').value.trim()});}
+    if(e.target.id==='passwordForm'){e.preventDefault();const pass=$('#newPassword').value;if(pass.length<10)return flash('Use at least 10 characters.',true);loading(true);const {error}=await db.auth.updateUser({password:pass});loading(false);if(error)flash(error.message,true);else {$('#newPassword').value='';flash('Password updated successfully.');}}
+  });
+  document.addEventListener('change',e=>{if(e.target.id==='dayPick'){editDate=e.target.value;renderDay();}});
+  document.addEventListener('click',async e=>{const t=e.target.closest('button[data-tab],button[data-action]');if(!t)return;
+    if(t.dataset.tab){setTab(t.dataset.tab);return;}
+    const a=t.dataset.action;
+    if(a==='go')return setTab(t.dataset.target);
+    if(a==='checkin')return rpc('check_in');
+    if(a==='checkout'){if(!confirm('Check out of today’s shift? Make sure your work report is complete.'))return;return rpc('check_out');}
+    if(a==='detail')return detail(t.dataset.id);
+    if(a==='close'){$('#modalRoot').innerHTML='';return;}
+    if(a==='review'){const approval=t.dataset.approval==='yes';const note=$('#reviewNote')?.value.trim()||'';if(!approval&&!note)return flash('Please provide helpful feedback when requesting changes.',true);return rpc('review_attendance',{p_attendance_id:Number(t.dataset.id),p_approved:approval,p_note:note});}
+    if(a==='toggle'){const p=profiles.find(x=>x.id===t.dataset.id);if(!p)return;if(!confirm(`${p.is_active?'Deactivate':'Reactivate'} ${p.full_name}?`))return;return rpc('set_staff_active',{p_staff_id:p.id,p_active:!p.is_active});}
+  });
+  $('#modalRoot').addEventListener('click',e=>{if(e.target.id==='modalCover')$('#modalRoot').innerHTML='';});
+  $('#year').textContent=new Date().getFullYear();init();
+</script>
+</body>
+</html>
